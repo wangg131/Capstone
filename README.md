@@ -4,7 +4,7 @@
 
 `There isn’t an easy and secure way to find compatible roommates through the currently available web applications.`
 
-<b>Background</b>
+<b>Background</b>  
 It's well known in Seattle that finding affordable rooms for rent is a rat race due to the lack of decently priced housing and high influx of people moving into the city.
 
 ###Market Research:
@@ -29,4 +29,4 @@ Hosts are the users who are advertising a room for rent, and they have a room po
 
 Seekers are people who are looking for a room, and they have a profile with a bio/description. They are required to have a profile bio and their profiles are viewed by prospective Hosts. Seekers are required to input room preferences.
 
-Each user-type can only search for the opposite user-type with compatible attributes. This compatibility filtering will come from the Hosts' input about their room and the Seekers' preferences. They can message each other after getting matched from mutually expressing interest.
+Each user-type can only search for the opposite user-type with compatible attributes. This compatibility filtering will come from the Hosts' input about their available room and the Seekers' preferences. They can message each other after getting matched from mutually expressing interest.
