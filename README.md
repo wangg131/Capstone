@@ -2,26 +2,31 @@
 
 ###Problem Statement:
 
-There isn’t an easy and secure way to find compatible roommates through the currently available web applications.
+`There isn’t an easy and secure way to find compatible roommates through the currently available web applications.`
+
+<b>Background</b>
+It's well known in Seattle that finding affordable rooms for rent is a rat race due to the lack of decently priced housing and high influx of people moving into the city.
 
 ###Market Research:
 
-<b>Competition</b>  
-It is well known in Seattle that the process of finding affordable rooms for rent is tedious and inefficient due to the lack of decently priced housing and high influx of people moving into Seattle.  
+<b>Competition</b>   
+From personal experience and input from others in my network, Craigslist is inconvenient because it doesn't have any requirements for housing posts. Many posts can be missing important details that are useful for room seekers. Oftentimes, a seeker will email about a post only to find out that the room isn't even located in their desired area. It's also very common to get a spam response from a listing. Decently priced rooms go quickly, so having that process slowed down makes it even more difficult.
 
-From personal experience and input from others in my network, I found that Craigslist is the widely most used platform to search and advertise for available housing. However, Craigslist doesn’t require any of the important information that most people would want to see in a housing post, which makes it very inconvenient. Also, if a user wants to find a room that’s only in Seattle, the results can include many posts that are not in the city.  It is also very common to email a host and get a reply that ends up being spam. Searching for the genuine posts, and then seeing results that don’t even match the user’s basic criteria can be very frustrating. Decently priced rooms go quickly, so having that process slowed down makes it even more difficult.
+Roomie Match requires all users to answer every question in their extremely long survey and matches them according to their responses. Many of the required questions were situational which can restrict the number of potentially compatible roommates.
 
-RoomieMatch requires users to answer every question in their extremely long survey. Many of the required questions that they use to filter out potential matches are trivial and situational which restricts the number of potentially compatible roommates.
+Easyroommate allows seekers to upload a personal photo. This isn't ideal, because room-poster can deny a seeker just based on preconceived notions about their appearance.
 
 <b>Differentiation</b>  
-RoomService will allow housing posts and room seekers that meet each other’s criteria to be searchable by each other. They can only get into contact through the application if they mutually express interest in one another.
+RoomService will pre-filter to eliminate roommates who don't meet the user's criteria from the search results. Also, only the basic details of the housing post will be required. Not requiring superfluous information nor allowing seeker profile photos will give a wider pool of *compatible* roommates to potentially match with.
 
-There are basic details of the housing post that will be required—rental price, number of rooms, number of bathrooms, neighborhood, lease-length, pets, smoking, etc. Not requiring extensive information gives a wider pool of *compatible* roommates since many of those living-situation questions are better determined via discussion.
-
-Swiping through their respective search results, users are only allowed to contact each other if they are “matched” meaning that both selected “yes” to each other’s profiles. My in-app messaging feature makes it secure without comprising any contact information.  
-
-RoomService will have an enhanced verification process to make sure that every room post is valid along with requiring basic information about the room. While it seems like this might deter room hosts since they tend to get many inquires on Craigslist, it’ll actually make their experience better as well. Only being contacted by those who meet their requirements will reduce the number of messages flooding their inbox from ineligible room seekers who didn’t read their post clearly.
+RoomService's verification process will make sure that every user is valid. The in-app messaging feature makes it secure without comprising any contact information. The room-posters wont be getting a flood of emails from incompatible seekers since they can only message one another if they mutually expressed interest.
 
 ###User Personas: A summary of your main target user group(s). What are their key characteristics? How do those characteristics factor into project/app/idea?  
 
-There are two user types: Hosts and Room Seekers. Each user-type can look for the other type and are required to sign up with some kind of additional verification. Hosts are the users who are advertising their room for rent. In a host’s housing ad, they’re *required* to include basic information that most people would want to see. Room Seekers are users who are looking for a room for rent. They can swipe through compatible housing posts using their desired criteria as a filter. Seekers will have a short biography about themselves that the Hosts can use as criteria for a potential match as well.
+There are two user types: Hosts and Seekers.
+
+Hosts are the users who are advertising a room for rent, and they have a room post. In their post, they’re *required* to include basic information that most people would want to see in a listing— rental price, number of rooms, number of bathrooms, neighborhood, lease-length, pets, smoking, etc. They can look for Seekers to fill their rooms.
+
+Seekers are people who are looking for a room, and they have a profile with a bio/description. They are required to have a profile bio and their profiles are viewed by prospective Hosts. Seekers are required to input room preferences.
+
+Each user-type can only search for the opposite user-type with compatible attributes. This compatibility filtering will come from the Hosts' input about their room and the Seekers' preferences. They can message each other after getting matched from mutually expressing interest.
