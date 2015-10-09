@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+hosts =
+[{ name: 'Cho Knowles', email: 'woo@yawoo.com', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109}],
+[{ name: 'Blue Knowles', email: 'woo@yawoo.com', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109}],
+[{ name: 'Bep Knowles', email: 'woo@yawoo.com', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109}],
+[{ name: 'Ba Knowles', email: 'woo@yawoo.com', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109}],
+[{ name: 'Bo Knowles', email: 'woo@yawoo.com', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109}]
+
+seekers =
+[{ name: 'Mary Jones', email: 'loo@yawoo.com', phone_number: 360-123-456}],
+[{ name: 'Lorrin White', email: 'chu@yawoo.com', phone_number: 444-123-456,}],
+[{ name: 'Boo Bee', email: 'goo@yawoo.com', phone_number: 888-123-456,}],
+[{ name: 'Hoo Haa', email: 'moo@yawoo.com', phone_number: 999-123-456,}],
+[{ name: 'Ho Lee', email: 'poo@yawoo.com', phone_number: 000-123-456,}]
+
+hosts.each do |host|
+  Host.create host
+end
+
+seekers.each do |seeker|
+  Seeker.create seeker
+end
