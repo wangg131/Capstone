@@ -1,5 +1,12 @@
 # Capstone Product Plan: "RoomService"
 
+<b>10/9/2015 Update</b>
+This week, I made wireframes and plan/outline for the project. Added those tasks on Trello. I also brainstormed potential AR relations that will probably change later. Set-up a rails app with some controllers and models and a seed file. I now have a much better idea about how my project will be structured in terms of how each requirement, complex integration, and advanced feature will play into it.
+Next week, the deliverables will be getting sign-up/sign-in figured out (in-app and Facebook OAuth). I want to complete the text-message verification aspect. I also want to have the first four "pages" of my site functioning. Configuring SSL would be nice too.
+
+<b>Link to Trello</b>
+https://trello.com/b/2lBpYj15/roomservice
+
 ###Problem Statement:
 
 `There isn’t an easy and secure way to find compatible roommates through the currently available web applications.`
