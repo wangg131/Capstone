@@ -35,16 +35,16 @@
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
 
-        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
+        <a class="navbar-brand" href="/"><span class="glyphicon" aria-hidden="true"></span></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Woo <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><h3>what goes here?</h3></li>
+              <li><h3>woah dropdown</h3></li>
               <li role="separator" class="divider"></li>
             </ul>
           </li>
@@ -54,8 +54,8 @@
           <% if session[:merchant_id] %>
             <li><%= link_to "Merchant Dashboard", merchant_dashboard_path(session[:merchant_id]) %></li>
           <% end %>
-            <li><p class="navbar-text">Welcome, <%= @merchant_name %></p></li>
-            <li><a href= "/cart"><i class="fa fa-shopping-cart"></i> (<%= cart_units %>)</a></li>
+            <li><p class="navbar-text">Welcome, <%= @user_name %></p></li>
+            <li><h3>What goes here</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </nav>
