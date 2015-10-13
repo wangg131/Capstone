@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  resources :users, only: [:index, :new, :create]
 
   get    "/signup" => 'users#new', as: 'signup'
   get    "/login" => 'sessions#new', as: 'login'
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   delete "/logout" => 'sessions#destroy', as: 'logout'
 
   get "/dashboard/:id" => 'users#dashboard', as: 'dashboard'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
