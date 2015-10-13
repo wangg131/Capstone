@@ -50,11 +50,9 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <% if session[:merchant_id] %>
-            <li><%= link_to "Merchant Dashboard", merchant_dashboard_path(session[:merchant_id]) %></li>
-          <% end %>
+          <% if session[:user_id] %>
             <li><p class="navbar-text">Welcome, <%= @user_name %></p></li>
-            <li><h3>What goes here</a></li>
+          <% end %>
         </ul>
       </div>
     </nav>

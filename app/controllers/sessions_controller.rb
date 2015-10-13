@@ -22,23 +22,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  #
-  #   begin
-  #   @facebook_user = User.from_omniauth(request.env['omniauth.auth'])
-  #   session[:user_id] = @facebook_user.id
-  #   flash[:success] = "Welcome, #{@facebook_user.name}!"
-  #   rescue
-  #   flash[:warning] = "There was an error while trying to authenticate you..."
-  #   end
-  #
-  # redirect_to root_path
-
-
-  #   auth_hash = request.env['omniauth.auth'] || params
-  #   @facebook_user = User.find_or_create_from_omniauth(auth_hash)
-  #   session[:user_id] = @facebook_user.id
-  # end
-
   def destroy
     session[:user_id] = nil
     redirect_to root_path

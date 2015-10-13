@@ -2,11 +2,18 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_filter :set_login_name
 
   MESSAGES = {not_logged_in: "You are not currently logged in!",
               already_logged_in: "Can't access login page because you're already logged in!",
               already_signed_up: "You're already a member!"
   }
+
+  def set_login_name
+   @user = User.find_by(id: session[:user_id])
+
+   @user_name = @user ? @user.name : "Guest"
+  end
 
   def require_login
     redirect_to login_path, flash: {error: MESSAGES[:not_logged_in]} unless session[:user_id]
@@ -21,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end

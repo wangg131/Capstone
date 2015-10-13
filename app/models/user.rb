@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-  # has_secure_password
-#  validates :email, presence: true, uniqueness: true, format: /@/
-  #
+  has_secure_password
+
   def self.find_or_create_from_omniauth(auth_hash)
     user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
     user.uid = auth_hash['uid']
