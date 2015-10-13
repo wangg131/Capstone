@@ -6,20 +6,60 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<div class="container-fluid">
 <body>
 
-      <header>
-        <div class="row">
-          <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
-            <div class="logo">
-              <h1><%= @header_logo %></h1>
-            </div>
-          </div>
+  <header>
+    <div class="row">
+      <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+        <div class="logo">
+          <h1><%= @header_logo %></h1>
         </div>
+      </div>
+    </div>
 
-      </nav>
+    <% if session[:user_id] %>
+      <div class="account-buttons">
+        <%= link_to "Logout", logout_path , method: :delete, class: "btn btn-default pull-right" %>
+      </div>
 
-<%= yield %>
+    <% else %>
+      <div class="account-buttons">
+        <%= link_to "Login", login_path, class: "btn btn-default pull-right" %>
+        <%= link_to "Sign Up!", signup_path, class: "btn btn-default pull-right" %>
+      </div>
+    <% end %>
+    </header>
+
+    <nav class="navbar navbar-default">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+
+        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><h3>what goes here?</h3></li>
+              <li role="separator" class="divider"></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if session[:merchant_id] %>
+            <li><%= link_to "Merchant Dashboard", merchant_dashboard_path(session[:merchant_id]) %></li>
+          <% end %>
+            <li><p class="navbar-text">Welcome, <%= @merchant_name %></p></li>
+            <li><a href= "/cart"><i class="fa fa-shopping-cart"></i> (<%= cart_units %>)</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </nav>
+    <%= yield %>
 
 </body>
 </html>
