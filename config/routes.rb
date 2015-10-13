@@ -6,21 +6,18 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :users, only: [:index, :new, :create]
 
-  get    "/signup" => 'users#new', as: 'signup'
-  # get    "/login" => 'sessions#new', as: 'login'
-  # post   "/login" => 'sessions#create'
-  delete "/logout" => 'sessions#destroy', as: 'logout'
+  get     "/signup" => 'users#new', as: 'signup'
 
-  get "auth/:provider/callback" => 'sessions#create'
 
-  # get "auth/:provider" => 'sessions#create', as: 'login'
-  delete "logout" => 'sessions#destroy'
+  get     "/login" => 'sessions#new', as: 'login'
+  post    "/login" => 'sessions#create'
 
-  resources :instagrams, only: [:create, :destroy]
-  resources :tweets, only: [:create, :destroy]
+  get     "auth/facebook/callback" => 'sessions#facebook_create'
+  get     "auth/facebook" => 'sessions#facebook_create', as: 'facebook'
 
-  get "/dashboard/:id" => 'users#dashboard', as: 'dashboard'
+  delete  "/logout" => 'sessions#destroy', as: 'logout'
 
+  get     "/dashboard/:id" => 'users#dashboard', as: 'dashboard'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
