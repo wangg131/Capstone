@@ -7,9 +7,17 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create]
 
   get    "/signup" => 'users#new', as: 'signup'
-  get    "/login" => 'sessions#new', as: 'login'
-  post   "/login" => 'sessions#create'
+  # get    "/login" => 'sessions#new', as: 'login'
+  # post   "/login" => 'sessions#create'
   delete "/logout" => 'sessions#destroy', as: 'logout'
+
+  get "auth/:provider/callback" => 'sessions#create'
+
+  # get "auth/:provider" => 'sessions#create', as: 'login'
+  delete "logout" => 'sessions#destroy'
+
+  resources :instagrams, only: [:create, :destroy]
+  resources :tweets, only: [:create, :destroy]
 
   get "/dashboard/:id" => 'users#dashboard', as: 'dashboard'
 

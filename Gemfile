@@ -31,6 +31,7 @@ gem 'httparty'
 
 # OmniAuth Gems
 gem 'omniauth'
+gem 'omniauth-facebook'
 
 # OAuth
 
