@@ -42,6 +42,9 @@ gem 'carrierwave'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Use Authy for 2FA
+gem 'authy'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
