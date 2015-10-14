@@ -8,6 +8,12 @@ Rails.application.routes.draw do
 
   get     "/signup" => 'users#new', as: 'signup'
 
+  get     "users/verify", to: 'users#show_verify', as: 'verify'
+  post    "users/verify"
+  post    "users/resend"
+
+  get     "/account/:id" => 'users#show', as: 'account'
+
 
   get     "/login" => 'sessions#new', as: 'login'
   post    "/login" => 'sessions#create'
@@ -17,7 +23,6 @@ Rails.application.routes.draw do
 
   delete  "/logout" => 'sessions#destroy', as: 'logout'
 
-  get     "/dashboard/:id" => 'users#dashboard', as: 'dashboard'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

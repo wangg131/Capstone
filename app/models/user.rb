@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
+  validates :name, presence: true
+  validates :country_code, presence: true
+  validates :phone_number, presence: true
 
   # def self.create_with_omniauth(auth)
   #   create! do |user|
