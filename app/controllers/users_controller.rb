@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
+  before_filter :authenticate!, only: [:show]
   def new
     @user = User.new
+  end
+
+  def show
+    @user = current_user
   end
 
   def create
