@@ -41,6 +41,28 @@
    margin-top: 40px;
  }
 
+ .facebook_login {
+   color: white;
+   background-color: rgb(59, 89, 152);
+   border-radius: .5em;
+   padding: .75em 0px;
+   text-align: center;
+ }
+
+ .facebook_login_font {
+   color: white;
+   font-size: 1.5em;
+ }
+
+ .fa-facebook-official {
+  margin-right: .75em;
+}
+
+.facebook_login_center {
+  text-align: center;
+
+}
+
  .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
