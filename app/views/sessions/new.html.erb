@@ -6,8 +6,8 @@
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         <%= flash.now[:login_error] %>
       </div>
-    <h3>Sign In</h3>
     <% end %>
+    <h3>Sign In</h3>
     <%= form_for(:session, url: login_path) do |f| %>
       <div class="form-group">
         <%= f.label :email %>
