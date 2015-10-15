@@ -35,8 +35,8 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :usertype, "I..." %>
-          <%= f.select :usertype, ([["am looking for a room", "seeker"], ["have a room for rent", "host"]]), class: "form-control"%>
+          <%= f.label :usertype, "User Type" %><br>
+          <%= f.select :usertype, ([["I am looking for a room", "seeker"], ["I have an available room", "host"]]), class: "form-control", include_blank: ''%>
         </div>
       </fieldset>
 
