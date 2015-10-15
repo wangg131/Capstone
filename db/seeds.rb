@@ -8,11 +8,11 @@
 
 
 users =
-[{ name: 'Cho Knowles', email: 'woo@yawoo.com', password_digest: 'sdkfjlksdjf', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109, provider: nil, usertype: 'seeker'}],
-[{ name: 'Blue Knowles', email: 'woo@yawoo.com', password_digest: 'sdkfjlksdjf', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109, provider: nil, usertype: 'seeker'}],
-[{ name: 'Bep Knowles', email: 'woo@yawoo.com', password_digest: 'sdkfjlksdjf', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109, provider: nil, usertype: 'host'}],
-[{ name: 'Ba Knowles', email: 'woo@yawoo.com', password_digest: 'sdkfjlksdjf', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109, provider: nil, usertype: 'seeker'}],
-[{ name: 'Bo Knowles', email: 'woo@yawoo.com', password_digest: 'sdkfjlksdjf', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109, provider: nil, usertype: 'seeker'}]
+[{ name: 'Cho Knowles', email: 'woo@yawoo.com', password_digest: 'sdkfjlksdjf', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109, provider: nil, user_type: 'seeker'}],
+[{ name: 'Blue Knowles', email: 'woo@yawoo.com', password_digest: 'sdkfjlksdjf', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109, provider: nil, user_type: 'seeker'}],
+[{ name: 'Bep Knowles', email: 'woo@yawoo.com', password_digest: 'sdkfjlksdjf', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109, provider: nil, user_type: 'host'}],
+[{ name: 'Ba Knowles', email: 'woo@yawoo.com', password_digest: 'sdkfjlksdjf', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109, provider: nil, user_type: 'seeker'}],
+[{ name: 'Bo Knowles', email: 'woo@yawoo.com', password_digest: 'sdkfjlksdjf', phone_number: 206-123-456, street: '123 Main Road', city: 'Seattle', state:  'WA', zip: 98109, provider: nil, user_type: 'seeker'}]
 
 users.each do |user|
   User.create user

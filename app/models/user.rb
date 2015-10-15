@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :housing_posts
+  has_one  :seeker_bio
   has_secure_password
 
   # validations for when a user signs up with RoomService and not when a user is logging in with facebook
@@ -9,7 +11,7 @@ class User < ActiveRecord::Base
                           :password,
                           :password_confirmation,
                           :phone_number,
-                          :usertype,
+                          :user_type,
                           :on => :create
 
   def self.find_or_create_from_omniauth(auth_hash)
