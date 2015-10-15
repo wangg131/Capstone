@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :housing_post do
-    
+  factory :post do
+
   end
 
 end
