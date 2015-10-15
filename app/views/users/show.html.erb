@@ -1,6 +1,12 @@
 <h1><%= @user.name %></h1>
-<p>Account Status: <% if @user.verified? %>Verified<% else -%>Not Verified<% end -%>
-<% if !@user.verified? %>
+<p>Account Status:
+  <% if @user.verified? %>
+    Verified
+  <% else -%>
+    Not Verified
+  <% end -%>
+
+  <% if !@user.verified? %>
 <p>
   <%= link_to "Verify your account now.", verify_path %>
 </p>
