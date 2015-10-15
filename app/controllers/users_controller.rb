@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       Authy::API.request_sms(id: @user.authy_id, force: true)
       redirect_to verify_path
     else
-      flash.now[:error] = "Try again, account was not created."
+      flash.now[:error] = "Account was not created. Please try again."
       render :new
     end
   end

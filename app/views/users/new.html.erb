@@ -3,14 +3,12 @@
 <h4>woo</h4>
     <h3>Sign Up!</h3>
     <% if @user.errors.any? %>
-      <div>
-        <%= @user.errors.full_messages.first %>
-      </div>
-      <br>
+      <% @user.errors.full_messages.uniq.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     <% end %>
 
     <%= form_for @user do |f| %>
-
       <fieldset>
         <div class="form-group">
           <%= f.label :name %>

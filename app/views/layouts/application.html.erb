@@ -10,6 +10,12 @@
 <div class="container-fluid">
   <body>
     <header>
+      <% if flash[:error] %>
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <%= flash[:error] %>
+        </div>
+      <% end %>
       <div class="row">
         <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
           <div class="logo">

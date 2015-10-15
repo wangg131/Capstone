@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # validations for when a user signs up with RoomService and not when a user is logging in with facebook
-  validates_presence_of   :email, uniqueness: true, format: {with: /@/},
+  validates               :email, presence: true, uniqueness: true, format: {with: /@/},
                           :on => :create
 
   validates_presence_of   :name,
