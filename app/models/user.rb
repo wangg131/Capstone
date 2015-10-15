@@ -1,9 +1,10 @@
+require 'securerandom'
 class User < ActiveRecord::Base
   has_many :housing_posts
   has_one  :seeker_bio
   has_secure_password
 
-  # validations for when a user signs up with RoomService and not when a user is logging in with facebook
+  # Validations for users registering and loggin in without facebook
   validates               :email, presence: true, uniqueness: true, format: {with: /@/},
                           :if => lambda { |user| user.try(:provider) == nil }
 
@@ -19,7 +20,9 @@ class User < ActiveRecord::Base
     user.uid = auth_hash['uid']
     user.oauth_token = auth_hash['credentials']['token']
     user.name = auth_hash['info']['name']
-    user.password = 'placeholder'
+    # Used the SecureRandom library to set the password as a random string for Facebook OAuth.
+    # Even though it isn't relevant for Facebook authentication, password validations for email login/signup were making it fail. 
+    user.password = SecureRandom.uuid
     user.save!
     return user
   end
