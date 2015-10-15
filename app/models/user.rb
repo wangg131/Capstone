@@ -2,15 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :name, presence: true
-  # validates :country_code, presence: true
   validates :phone_number, presence: true
-
-  # def self.create_with_omniauth(auth)
-  #   create! do |user|
-  #     user.uid = auth["uid"]
-  #     user.name = auth["info"]["name"]
-  #   end
-  # end
 
   def self.find_or_create_from_omniauth(auth_hash)
     user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])

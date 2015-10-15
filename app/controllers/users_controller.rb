@@ -39,7 +39,6 @@ class UsersController < ApplicationController
 
   def verify
     @user = current_user
-    # @user = User.find(session[:pre_2fa_auth_user_id])
 
     # Use Authy to send the verification token
     token = Authy::API.verify(id: @user.authy_id, token: params[:token])
@@ -47,11 +46,6 @@ class UsersController < ApplicationController
     if token.ok?
      # Mark the user as verified for get /user/:id
      @user.update(verified: true)
-      # session[:user_id] = @user.id
-      # session[:pre_2fa_auth_user_id] = nil
-
-      # # Send an SMS to the user 'success'
-      # send_message("You did it! Signup complete :)")
 
       redirect_to account_path(@user.id)
     else
@@ -62,8 +56,7 @@ class UsersController < ApplicationController
 
   def resend
     @user = current_user
-    # @user = User.find(session[:pre_2fa_auth_user_id])
-    Authy::API.request_sms(id: @user.authy_id)
+    Authy::API.request_sms(id: @user.authy_id, force: true)
     flash[:notice] = "Verification code re-sent"
     redirect_to verify_path
   end
