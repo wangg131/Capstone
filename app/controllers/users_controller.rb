@@ -20,14 +20,13 @@ class UsersController < ApplicationController
       authy = Authy::API.register_user(
         email: @user.email,
         cellphone: @user.phone_number,
-        country_code: @user.country_code
+        country_code: "1"
       )
       @user.update(authy_id: authy.id)
 
       # Send an SMS to your user
-      Authy::API.request_sms(id: @user.authy_id)
+      Authy::API.request_sms(id: @user.authy_id, force: true)
       redirect_to verify_path
-
     else
       flash.now[:error] = "Try again, account was not created."
       render :new
@@ -50,8 +49,9 @@ class UsersController < ApplicationController
      @user.update(verified: true)
       # session[:user_id] = @user.id
       # session[:pre_2fa_auth_user_id] = nil
-      # Send an SMS to the user 'success'
-      send_message("You did it! Signup complete :)")
+
+      # # Send an SMS to the user 'success'
+      # send_message("You did it! Signup complete :)")
 
       redirect_to account_path(@user.id)
     else
@@ -65,22 +65,22 @@ class UsersController < ApplicationController
     # @user = User.find(session[:pre_2fa_auth_user_id])
     Authy::API.request_sms(id: @user.authy_id)
     flash[:notice] = "Verification code re-sent"
-    redirect_to verify
+    redirect_to verify_path
   end
 
   private
 
-  def send_message(message)
-    @user = current_user
-    twilio_number = ENV['TWILIO_NUMBER']
-    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    message = @client.account.messages.create(
-      :from => twilio_number,
-      :to => @user.country_code+@user.phone_number,
-      :body => message
-    )
-    puts message.to
-  end
+  # def send_message(message)
+  #   @user = current_user
+  #   twilio_number = ENV['TWILIO_NUMBER']
+  #   @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+  #   message = @client.account.messages.create(
+  #     :from => twilio_number,
+  #     :to => @user.country_code+@user.phone_number,
+  #     :body => message
+  #   )
+  #   puts message.to
+  # end
 
   def create_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone_number, :street, :city, :state, :zip, :usertype, :country_code, :authy_id)

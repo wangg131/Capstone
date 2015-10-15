@@ -34,6 +34,7 @@
 
         <div class="form-group">
           <%= f.label :country_code %>
+          <!-- <select id="authy-countries" data-value="+1"></select> -->
           <%= f.text_field :country_code, class: "form-control", id: "authy-countries" %>
         </div>
 
@@ -50,5 +51,8 @@
 
       <%= f.submit "Create Account", class: "btn btn-primary" %>
     <% end %>
+      <link rel="stylesheet" href="../src/flags.authy.css">
+<link rel="stylesheet" href="../src/form.authy.css">
+<script src="../src/form.authy.js"></script>
   </div>
 </div>
