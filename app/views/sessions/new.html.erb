@@ -7,7 +7,7 @@
         <%= flash.now[:login_error] %>
       </div>
     <% end %>
-    <h3>Sign In</h3>
+    <h3>Log in</h3>
     <%= form_for(:session, url: login_path) do |f| %>
       <div class="form-group">
         <%= f.label :email %>
@@ -22,7 +22,7 @@
     <% end %>
     <h4 class="facebook_login_center">or</h4>
     <div class="facebook_login">
-      <i class="fa fa-facebook-official fa-2x"></i><%= link_to 'Login with Facebook', facebook_path, class: "facebook_login_font" %>
+      <i class="fa fa-facebook-official fa-2x"></i><%= link_to 'Log in with Facebook', facebook_path, class: "facebook_login_font" %>
     </div>
   </div>
 </div>

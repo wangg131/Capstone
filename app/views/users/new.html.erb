@@ -1,6 +1,6 @@
 <div class="row">
   <div class="login-form col-md-4 col-md-offset-4">
-    <h3>Sign Up!</h3>
+    <h3>Sign Up with Email</h3>
     <% if @user.errors.any? %>
       <% @user.errors.full_messages.uniq.each do |msg| %>
         <li><%= msg %></li>
@@ -35,8 +35,8 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :usertype, "User Type" %><br>
-          <%= f.select :usertype, ([["I am looking for a room", "seeker"], ["I have an available room", "host"]]), class: "form-control", include_blank: ''%>
+          <%= f.label :user_type, "User Type" %>
+          <%= f.select :user_type, ([["I am looking for a room", "seeker"], ["I have an available room", "host"]]), class: "form-control", include_blank: ''%>
         </div>
       </fieldset>
 
