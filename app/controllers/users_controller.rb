@@ -14,7 +14,6 @@ class UsersController < ApplicationController
     if @user.save
       # Save the user_id to the session object
       session[:user_id] = @user.id
-      # session[:pre_2fa_auth_user_id] = @user.id
 
       # Create user on Authy, will return an id on the object
       authy = Authy::API.register_user(
