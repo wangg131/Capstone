@@ -12,13 +12,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  # def facebook_create
-  #   auth = request.env["omniauth.auth"]
-  #   user = User.find_by_uid(auth["uid"]) || User.create_with_omniauth(auth)
-  #   session[:user_id] = user.id
-  #   redirect_to root_path
-  # end
-
   def facebook_user?
    provider != nil && uid != nil
   end
