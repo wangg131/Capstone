@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015222205) do
+ActiveRecord::Schema.define(version: 20151016184726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,16 +26,51 @@ ActiveRecord::Schema.define(version: 20151015222205) do
     t.integer  "zip"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "post_id"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "house_type"
+    t.text     "description"
+    t.integer  "price"
+    t.string   "neighborhood"
+    t.string   "lease_length"
+    t.string   "date_available"
+    t.string   "gender_preference"
+    t.boolean  "cats"
+    t.boolean  "dogs"
+    t.boolean  "smoking"
+    t.string   "image"
+    t.integer  "total_roommates"
+    t.integer  "host_id"
+    t.string   "parking"
+    t.string   "laundry"
+    t.integer  "rooms_available"
+    t.string   "bathroom_type"
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.text     "title"
+    t.string   "house_type"
+    t.text     "neighborhoods"
+    t.integer  "rooms_wanted"
+    t.string   "bathroom_type"
+    t.text     "description"
+    t.integer  "min_price"
+    t.integer  "max_price"
+    t.boolean  "cats"
+    t.boolean  "dogs"
+    t.string   "parking"
+    t.string   "laundry"
+    t.integer  "max_roommates"
+    t.boolean  "smoking"
+    t.string   "gender_preference"
+    t.string   "date_needed"
+    t.integer  "seeker_id"
   end
 
   create_table "seekers", force: :cascade do |t|
@@ -44,6 +79,7 @@ ActiveRecord::Schema.define(version: 20151015222205) do
     t.integer  "phone_number"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "profile_id"
   end
 
   create_table "users", force: :cascade do |t|
