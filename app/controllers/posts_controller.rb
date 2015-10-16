@@ -7,16 +7,9 @@ class PostsController < ApplicationController
     @post = Post.create(create_params)
   end
 
-
-
   private
 
   def create_params
-    params.require(:post).permit(:name, :email, :password, :password_confirmation, :phone_number, :street, :city, :state, :zip, :user_type, :country_code, :authy_id)
+    params.require(:post).permit(:title, :house_type, :description, :neighborhood, :date_available, :rooms_available, :bathroom_type, :price, :cats, :dogs, :parking, :laundry, :total_roommates, :smoking, :gender_preference, :user_id, :image)
   end
-
-
-
-
-
 end
