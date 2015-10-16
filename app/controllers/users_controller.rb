@@ -47,10 +47,10 @@ class UsersController < ApplicationController
       # Mark the user as verified for get /user/:id
       @user.update(verified: true)
       # Conditional to prevent this from affecting unverified users
-      if @user.verifed == true && @user.user_type == 'host'
-        redirect to new_post_path
-      elsif @user.user_type == true && @user.user_type == 'seeker'
-       redirect_to new_profile_path
+      if @user.verified == true && @user.user_type == 'host'
+        redirect_to new_post_path(@user.id)
+      elsif @user.verified == true && @user.user_type == 'seeker'
+       redirect_to new_profile_path(@user.id)
       end
     else
       flash.now[:danger] = "Incorrect code, please try again"
