@@ -1,1 +1,17 @@
-<h1>your profile</h1>
+<div class="row">
+  <div class="login-form col-md-4 col-md-offset-4">
+    <h3>Search Preferences</h3>
+    <p> Complete all the fields below for your housing search preferences. Only housing posts that match your desired criteria will be searchable. You can edit your preferences whenever you want.</p>
+
+    <%= form_for @profile, url: new_profile_path(params[:user_id]) do |f| %>
+      <fieldset>
+        <div class="form-group">
+          <%= f.label :bathroom_type, "Bathroom Type" %>
+          <%= f.select :bathroom_type, options_for_select([["private", "private"], ["shared", "shared"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
+        </div>
+      </fieldset>
+
+      <%= f.submit "Create Account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
