@@ -5,7 +5,7 @@
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to account_path(@user.id)
+      redirect_to user_path(@user.id)
     else
       flash.now[:login_error] = "Incorrect password. Try Again."
       render :new
@@ -22,7 +22,12 @@
       @user = User.find_or_create_from_omniauth(auth_hash)
       session[:user_id] = @user.id
       @user.update(verified: true)
-      redirect_to account_path(@user.id)
+
+      if @user.user_type == nil
+      #   redirect_to set_details_path
+      # else
+        redirect_to user_path(@user.id)
+      end
     end
   end
 

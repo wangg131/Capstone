@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
 
   MESSAGES = {not_logged_in: "You are not currently logged in!",
               already_logged_in: "Can't access login page because you're already logged in!",
-              already_signed_up: "You're already a member!"
+              already_signed_up: "You're already a member!",
+              access_denied: "You can't access that page."
   }
 
   def set_login_name
@@ -20,13 +21,17 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in_user
-    redirect_to dashboard_path(session[:user_id]), flash: {error: MESSAGES[:already_logged_in]} if session[:user_id]
+    redirect_to user_path(session[:user_id]), flash: {error: MESSAGES[:already_logged_in]} if session[:user_id]
   end
 
   def registered_user
-    redirect_to dashboard_path(session[:user_id]), flash: {error: MESSAGES[:already_signed_up]} if session[:user_id]
+    redirect_to user_path(session[:user_id]), flash: {error: MESSAGES[:already_signed_up]} if session[:user_id]
   end
 
+  def access_denied
+    redirect_to user_path(session[:user_id]), flash: {error: MESSAGES[:access_denied]} if session[:user_id] != @user.id
+  end
+  
   private
 
   def current_user
@@ -41,7 +46,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def authenticate!
-    redirect_to new_session_path and return unless signed_in?
-  end
+  # def authenticate!
+  #   redirect_to root_path and return unless signed_in?
+  # end
 end

@@ -1,18 +1,15 @@
 class UsersController < ApplicationController
-  before_filter :authenticate!, only: [:show]
+  before_filter :require_login, only: [:show, :edit]
+#  before_filter :access_denied, only: [:show, :edit]
+
   def new
     @user = User.new
-  end
-
-  def show
-    @user = current_user
   end
 
   def create
     @user = User.create(create_params)
 
     if @user.save
-      # Save the user_id to the session object
       session[:user_id] = @user.id
 
       # Create user on Authy, will return an id on the object
@@ -44,9 +41,13 @@ class UsersController < ApplicationController
 
     if token.ok?
      # Mark the user as verified for get /user/:id
-     @user.update(verified: true)
-
-      redirect_to account_path(@user.id)
+    @user.update(verified: true)
+      # Conditional to prevent this from affecting unverified users
+      if @user.verifed == true && @user.user_type == 'host'
+        redirect to new_post_path
+      elsif @user.user_type == true && @user.user_type == 'seeker'
+        redirect_to new_profile_path
+      end
     else
       flash.now[:danger] = "Incorrect code, please try again"
       render :show_verify
@@ -58,6 +59,10 @@ class UsersController < ApplicationController
     Authy::API.request_sms(id: @user.authy_id, force: true)
     flash[:notice] = "Verification code re-sent"
     redirect_to verify_path
+  end
+
+  def show
+    @user = current_user
   end
 
   private

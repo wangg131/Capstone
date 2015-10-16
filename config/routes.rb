@@ -4,24 +4,29 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  resources :users, only: [:index, :new, :create]
+  resources :users, only: [:index, :new, :create, :show]
 
   get     "/signup" => 'users#new', as: 'signup'
 
-  get     "users/verify", to: 'users#show_verify', as: 'verify'
+  get     "users/verify" => 'users#show_verify', as: 'verify'
   post    "users/verify"
   post    "users/resend"
 
-  get     "/account/:id" => 'users#show', as: 'account'
-
-
-  get     "/login" => 'sessions#new', as: 'login'
+  get     "/login" => 'sessions#new'
   post    "/login" => 'sessions#create'
 
   get     "auth/facebook/callback" => 'sessions#facebook_create'
   get     "auth/facebook" => 'sessions#facebook_create', as: 'facebook'
 
-  delete  "/logout" => 'sessions#destroy', as: 'logout'
+  delete  "/logout" => 'sessions#destroy'
+
+  get     "users/:user_id/post/new" => 'post#new', as: 'new_post'
+  get     "users/:user_id/profile/new" => 'profile#new', as: 'new_profile'
+  post    "users/:user_id/post" => 'post#create'
+  post    "users/:user_id/profile" => 'profile#create'
+
+
+  patch   "users/edit_preferences/:id" => 'users#update'
 
 
   # Example of regular route:
