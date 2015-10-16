@@ -11,23 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016184726) do
+ActiveRecord::Schema.define(version: 20151016185815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "hosts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.integer  "phone_number"
-    t.string   "street"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "post_id"
-  end
 
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at",        null: false
@@ -44,7 +31,7 @@ ActiveRecord::Schema.define(version: 20151016184726) do
     t.boolean  "smoking"
     t.string   "image"
     t.integer  "total_roommates"
-    t.integer  "host_id"
+    t.integer  "user_id"
     t.string   "parking"
     t.string   "laundry"
     t.integer  "rooms_available"
@@ -70,16 +57,7 @@ ActiveRecord::Schema.define(version: 20151016184726) do
     t.boolean  "smoking"
     t.string   "gender_preference"
     t.string   "date_needed"
-    t.integer  "seeker_id"
-  end
-
-  create_table "seekers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.integer  "phone_number"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "profile_id"
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,6 +78,8 @@ ActiveRecord::Schema.define(version: 20151016184726) do
     t.string   "country_code"
     t.string   "authy_id"
     t.boolean  "verified"
+    t.integer  "post_id"
+    t.integer  "profile_id"
   end
 
 end
