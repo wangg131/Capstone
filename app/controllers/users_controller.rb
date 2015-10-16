@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-  before_filter :require_login, only: [:show, :edit]
-#  before_filter :access_denied, only: [:show, :edit]
+  before_filter :require_login, only: [:show]
+  before_filter :current_user, only: [:verify, :resend, :show]
 
   def new
     @user = User.new
+  end
+
+  def show
+    @user = current_user
   end
 
   def create
@@ -22,7 +26,7 @@ class UsersController < ApplicationController
 
       # Send an SMS to your user
       Authy::API.request_sms(id: @user.authy_id, force: true)
-      redirect_to verify_path
+      redirect_to show_verify_path
     else
       flash.now[:error] = "Account was not created. Please try again."
       render :new
@@ -41,13 +45,9 @@ class UsersController < ApplicationController
 
     if token.ok?
      # Mark the user as verified for get /user/:id
-    @user.update(verified: true)
-      # Conditional to prevent this from affecting unverified users
-      if @user.verifed == true && @user.user_type == 'host'
-        redirect to new_post_path
-      elsif @user.user_type == true && @user.user_type == 'seeker'
-        redirect_to new_profile_path
-      end
+     @user.update(verified: true)
+
+      redirect_to account_path(@user.id)
     else
       flash.now[:danger] = "Incorrect code, please try again"
       render :show_verify
@@ -59,10 +59,6 @@ class UsersController < ApplicationController
     Authy::API.request_sms(id: @user.authy_id, force: true)
     flash[:notice] = "Verification code re-sent"
     redirect_to verify_path
-  end
-
-  def show
-    @user = current_user
   end
 
   private

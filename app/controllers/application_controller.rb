@@ -21,17 +21,17 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in_user
-    redirect_to user_path(session[:user_id]), flash: {error: MESSAGES[:already_logged_in]} if session[:user_id]
+    redirect_to dashboard_path(session[:user_id]), flash: {error: MESSAGES[:already_logged_in]} if session[:user_id]
   end
 
   def registered_user
-    redirect_to user_path(session[:user_id]), flash: {error: MESSAGES[:already_signed_up]} if session[:user_id]
+    redirect_to dashboard_path(session[:user_id]), flash: {error: MESSAGES[:already_signed_up]} if session[:user_id]
   end
 
   def access_denied
-    redirect_to user_path(session[:user_id]), flash: {error: MESSAGES[:access_denied]} if session[:user_id] != @user.id
+    redirect_to dashboard_path(session[:user_id]), flash: {error: MESSAGES[:access_denied]} if session[:user_id] != @user.id
   end
-  
+
   private
 
   def current_user
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  # def authenticate!
-  #   redirect_to root_path and return unless signed_in?
-  # end
+  def authenticate!
+    redirect_to login_path and return unless signed_in?
+  end
 end
