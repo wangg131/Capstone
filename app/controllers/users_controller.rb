@@ -44,15 +44,14 @@ class UsersController < ApplicationController
     token = Authy::API.verify(id: @user.authy_id, token: params[:token])
 
     if token.ok?
-     # Mark the user as verified for get /user/:id
-     @user.update(verified: true)
-     # Conditional to prevent this from affecting unverified users
-    #  if @user.verifed == true && @user.user_type == 'host'
-    #    redirect to new_post_path
-    #  elsif @user.user_type == true && @user.user_type == 'seeker'
-    #    redirect_to new_profile_path
-    #  end
-      redirect_to user_path(@user.id)
+      # Mark the user as verified for get /user/:id
+      @user.update(verified: true)
+      # Conditional to prevent this from affecting unverified users
+      if @user.verifed == true && @user.user_type == 'host'
+        redirect to new_post_path
+      elsif @user.user_type == true && @user.user_type == 'seeker'
+       redirect_to new_profile_path
+      end
     else
       flash.now[:danger] = "Incorrect code, please try again"
       render :show_verify
