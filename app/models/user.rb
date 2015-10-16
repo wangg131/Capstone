@@ -1,7 +1,7 @@
 require 'securerandom'
 class User < ActiveRecord::Base
-  has_many :housing_posts
-  has_one  :seeker_bio
+  has_one :post
+  has_one  :profile
   has_secure_password
 
   # Validations for users registering and loggin in without facebook
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     user.oauth_token = auth_hash['credentials']['token']
     user.name = auth_hash['info']['name']
     # Used the SecureRandom library to set the password as a random string for Facebook OAuth.
-    # Even though it isn't relevant for Facebook authentication, password validations for email login/signup were making it fail. 
+    # Even though it isn't relevant for Facebook authentication, password validations for email login/signup were making it fail.
     user.password = SecureRandom.uuid
     user.save!
     return user
