@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root    'home#index'
+  root 'home#index'
 
   get     "/signup" => 'users#new', as: 'signup'
 
@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   delete  "/logout" => 'sessions#destroy'
 
+  resources :users, only: [:index, :new, :create, :show]
+
   get     "users/:user_id/post/new" => 'post#new', as: 'new_post'
   get     "users/:user_id/profile/new" => 'profile#new', as: 'new_profile'
   post    "users/:user_id/post" => 'post#create'
@@ -28,7 +30,6 @@ Rails.application.routes.draw do
 
   patch   "users/edit_preferences/:id" => 'users#update'
 
-  resources :users, only: [:index, :new, :create, :show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

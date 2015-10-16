@@ -46,8 +46,13 @@ class UsersController < ApplicationController
     if token.ok?
      # Mark the user as verified for get /user/:id
      @user.update(verified: true)
-
-      redirect_to account_path(@user.id)
+     # Conditional to prevent this from affecting unverified users
+    #  if @user.verifed == true && @user.user_type == 'host'
+    #    redirect to new_post_path
+    #  elsif @user.user_type == true && @user.user_type == 'seeker'
+    #    redirect_to new_profile_path
+    #  end
+      redirect_to user_path(@user.id)
     else
       flash.now[:danger] = "Incorrect code, please try again"
       render :show_verify
