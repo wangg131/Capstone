@@ -1,17 +1,90 @@
 <div class="row">
   <div class="login-form col-md-4 col-md-offset-4">
     <h3>Search Preferences</h3>
-    <p> Complete all the fields below for your housing search preferences. Only housing posts that match your desired criteria will be searchable. You can edit your preferences whenever you want.</p>
+    <p> Complete the fields below for your housing search preferences. Multiple selections for each
+      category are allowed. Only housing posts that match your desired criteria will be searchable and
+      you can edit your preferences whenever you want.</p>
 
     <%= form_for @profile, url: new_profile_path(params[:user_id]) do |f| %>
       <fieldset>
         <div class="form-group">
-          <%= f.label :bathroom_type, "Bathroom Type" %>
-          <%= f.select :bathroom_type, options_for_select([["private", "private"], ["shared", "shared"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
+          <%= f.label :title, "Profile Title" %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, "Describe Yourself" %>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :house_type, "Desired Housing Type(s)" %>
+          <%= f.select :house_type, options_for_select([["house", "house"], ["apartment", "apartment"],
+          ["duplex", "duplex"], ["townhouse", "townhouse"], ["condo", "condo"], ["in-law", "in-law"]]),
+          {}, {:multiple => true, class: "chzn-select form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :neighborhoods, "North Seattle Neighborhoods" %>
+          <%= f.select :neighborhoods, options_for_select([["Phinney Ridge", "Phinney Ridge"],
+          ["Greenwood/Crown Hill", "Greenwood/Crown Hill"], ["Haller Lake/Bitter Lake/Broadview",
+          "Haller Lake/Bitter Lake/Broadview"], ["Ballard/Fremont", "Ballard/Fremont"], ["Greenlake", "Greenlake"],
+          ["Wallingford", "Wallingford"], ["Northgate/Maple Leaf", "Northgate/Maple Leaf"], ["Lake City", "Lake City"],
+          ["University District", "University District"], ["Roosevelt/Ravenna", "Roosevelt/Ravenna"],
+          ["Windermere/Laurelhurst", "Windermere/Laurelhurst"], ["Wedgwood/Sandpoint", "Wedgwood/Sandpoint"]]),
+          {}, {:multiple => true, class: "chzn-select form-control"} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :neighborhoods, "Central Seattle Neighborhoods" %>
+          <%= f.select :neighborhoods, options_for_select(ProfilesController::CENTRAL_NEIGHBORHOODS.each {|neighborhood| neighborhood}),
+          {}, {:multiple => true, class: "chzn-select form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :neighborhoods, "South Seattle Neighborhoods" %>
+          <%= f.select :neighborhoods, options_for_select([  ["Mount Baker", "Mount Baker"], ["Beacon Hill", "Beacon Hill"], ["Georgetown", "Georgetown"],
+            ["SODO/Industrial District", "SODO/Industrial District"], ["Columbia City/Seward Park", "Columbia City/Seward Park"],
+            ["Rainier Valley", "Rainier Valley"], ["Rainier Beach", "Rainier Beach"], ["South Park", "South Park"],
+            ["Alki", "Alki"], ["West Seattle", "West Seattle"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :bathroom_type, "Bathroom Type(s)" %>
+          <%= f.select :bathroom_type, options_for_select([["private", "private"], ["shared", "shared"]]),
+          {}, {:multiple => true, class: "chzn-select form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :rooms_needed, "Number of Rooms Needed" %>
+          <%= f.text_field :rooms_needed, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :max_roommates, "Maximum Number of Housemates" %>
+          <%= f.text_field :max_roommates, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :min_price, "Minumum Price" %>
+          <%= f.text_field :min_price, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :max_price, "Maximum Price" %>
+          <%= f.text_field :max_price, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :laundry, "Washer & Dryer" %>
+          <%= f.select :laundry, options_for_select([["in-unit", "in-unit"], ["on-site", "on-site"],
+          ["in-building", "in-building"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :cats, "Cats Allowed" %>
+          <%= f.select :cats, options_for_select([["in-unit", "in-unit"], ["on-site", "on-site"], ["in-building", "in-building"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :dogs, "Dogs Allowed" %>
+          <%= f.select :dogs, options_for_select([["in-unit", "in-unit"], ["on-site", "on-site"], ["in-building", "in-building"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :smoking, "Smoking Allowed" %>
+          <%= f.select :dogs, options_for_select([["in-unit", "in-unit"], ["on-site", "on-site"], ["in-building", "in-building"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
       </fieldset>
 
-      <%= f.submit "Create Account", class: "btn btn-primary" %>
+      <%= f.submit "Add Preferences", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

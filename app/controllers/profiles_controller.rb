@@ -1,4 +1,9 @@
 class ProfilesController < ApplicationController
+  CENTRAL_NEIGHBORHOODS = [["Magnolia/Interbay", "Magnolia/Interbay"],
+  ["Queen Anne", "Queen Anne"], ["South Lake Union", "South Lake Union"], ["Montlake/Eastlake", "Montlake/Eastlake"],
+  ["Madison Park/Madison Valley", "Madison Park/Madison Valley"], ["Madrona/Leschi", "Madrona/Leschi"],
+  ["First Hill", "First Hill"], ["Capitol Hill", "Capitol Hill"], ["Central District", "Central District"],
+  ["International District", "International District"], ["Belltown/Denny Triangle/Downtown", "Belltown/Denny Triangle/Downtown"], ["Pioneer Square", "Pioneer Square"]]
   def new
     @profile = Profile.new
   end
