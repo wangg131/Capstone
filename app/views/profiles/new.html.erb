@@ -31,10 +31,9 @@
           ["Windermere/Laurelhurst", "Windermere/Laurelhurst"], ["Wedgwood/Sandpoint", "Wedgwood/Sandpoint"]]),
           {}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
-
         <div class="form-group">
           <%= f.label :neighborhoods, "Central Seattle Neighborhoods" %>
-          <%= f.select :neighborhoods, options_for_select(ProfilesController::CENTRAL_NEIGHBORHOODS.each {|neighborhood| neighborhood}),
+          <%= f.select :neighborhoods, options_for_select(@central_neighborhoods),
           {}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
         <div class="form-group">
