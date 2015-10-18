@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(create_params)
+    @user = User.create(user_params)
 
     if @user.save
       session[:user_id] = @user.id
@@ -79,8 +79,9 @@ class UsersController < ApplicationController
   #   puts message.to
   # end
 
-  def create_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone_number, :street, :city, :state, :zip, :user_type, :country_code, :authy_id)
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation,
+    :phone_number, :street, :city, :state, :zip, :user_type, :country_code, :authy_id)
   end
 
 end
