@@ -5,7 +5,7 @@
       category are allowed. Only housing posts that match your desired criteria will be searchable and
       you can edit your preferences whenever you want.</p>
 
-    <%= form_for @profile, url: new_profile_path(params[:user_id]) do |f| %>
+    <%= form_for @profile, url: new_profile_path do |f| %>
       <fieldset>
         <div class="form-group">
           <%= f.label :title, "Profile Title" %>
@@ -69,20 +69,6 @@
           <%= f.select :laundry, options_for_select([["in-unit", "in-unit"], ["on-site", "on-site"],
           ["in-building", "in-building"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
-        <div class="form-group">
-          <%= f.label :cats, "Cats Allowed" %>
-          <%= f.select :cats, options_for_select([["in-unit", "in-unit"], ["on-site", "on-site"], ["in-building", "in-building"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
-        </div>
-        <div class="form-group">
-          <%= f.label :dogs, "Dogs Allowed" %>
-          <%= f.select :dogs, options_for_select([["in-unit", "in-unit"], ["on-site", "on-site"], ["in-building", "in-building"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
-        </div>
-        <div class="form-group">
-          <%= f.label :smoking, "Smoking Allowed" %>
-          <%= f.select :dogs, options_for_select([["in-unit", "in-unit"], ["on-site", "on-site"], ["in-building", "in-building"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
-        </div>
-      </fieldset>
-
       <%= f.submit "Add Preferences", class: "btn btn-primary" %>
     <% end %>
   </div>

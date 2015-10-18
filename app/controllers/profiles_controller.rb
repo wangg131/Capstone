@@ -14,12 +14,13 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.create(profile_params)
+    redirect_to new_profile_path(@user.id)
   end
 
   private
 
-  def create_params
-    params.require(:post).permit(:title, :house_type, :description, :neighborhoods, :rooms_needed, :bathroom_type,
+  def profile_params
+    params.require(:profile).permit(:title, :house_type, :description, :neighborhoods, :rooms_needed, :bathroom_type,
     :min_price, :max_price, :cats, :dogs, :parking, :laundry, :max_roommates, :smoking, :gender_preference,
     :date_needed, :user_id)
   end

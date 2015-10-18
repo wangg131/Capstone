@@ -23,9 +23,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create, :show]
 
   get     "users/:user_id/post/new" => 'posts#new', as: 'new_post'
+
   get     "users/:user_id/profile/new" => 'profiles#new', as: 'new_profile'
+  post    "users/:user_id/profile/new" => 'profiles#create'
   post    "users/:user_id/post" => 'posts#create'
-  post    "users/:user_id/profile" => 'profiles#create'
 
 
   patch   "users/edit_preferences/:id" => 'users#update'
