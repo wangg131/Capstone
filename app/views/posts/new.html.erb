@@ -1,1 +1,68 @@
-<h1>Your post</h1>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_for @post, url: new_post_path do |f| %>
+      <fieldset>
+        <h3>Post Your Housing Ad</h3>
+        <p> Potential renters who match your housing post criteria will be able to look at your listing.
+          You can edit your posting anytime in your settings.</p>
+        <div class="form-group">
+          <%= f.label :title, "Posting Title" %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, "Housing & Room Description" %>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+          <div class="form-group">
+            <%= f.label :house_type, "Housing Type" %>
+            <%= f.select :house_type, options_for_select(@housing_types),
+            {include_hidden: false}, class: "chzn-select form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :rooms_available, "Number of Rooms Available"%>
+            <%= f.text_field :rooms_available, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :total_roommates, "Total Number of Housemates" %>
+            <%= f.text_field :total_roommates, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :price, "Monthly Rental Price" %>
+            <%= f.text_field :price, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :neighborhood, "Neighborhood" %>
+            <%= f.select :neighborhood, grouped_options_for_select(@neighborhoods),
+            {include_hidden: false}, class: "chzn-select form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :bathroom_type, "Bathroom Type" %>
+            <%= f.select :bathroom_type, options_for_select(["Private", "Shared"]),
+            {include_hidden: false}, class: "chzn-select form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :laundry, "Washer & Dryer" %>
+            <%= f.select :laundry, options_for_select(["In-unit", "On-site", "In-building"]),
+            {include_hidden: false}, class: "chzn-select form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :parking, "Parking" %>
+            <%= f.select :parking, options_for_select(["Street", "Garage"]), {include_hidden: false},
+            class: "chzn-select form-control" %>
+          </div>
+          <div class="checkbox-inline">
+            <%= f.label "Cats" %> <br />
+            <%= f.check_box :cats %> <br />
+          </div>
+          <div class="checkbox-inline">
+            <%= f.label "Dogs" %> <br />
+            <%= f.check_box :dogs %> <br />
+          </div>
+          <div class="checkbox-inline">
+            <%= f.label "Smoking" %> <br />
+            <%= f.check_box :smoking %> <br />
+          </div><br>
+        <%= f.submit "Add Preferences", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

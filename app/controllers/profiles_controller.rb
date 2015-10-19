@@ -11,9 +11,9 @@ class ProfilesController < ApplicationController
     @profile = Profile.create(profile_params)
     @user_id = params[:user_id]
     if @profile.save
-      # @profile.user_id = @user_id
-      # @user.profile_id = @profile.id
-      # @profile.save
+      @profile.user_id = @user_id
+      @user.profile_id = @profile.id
+      @profile.save
       # @ingredient_recipe = (params[:recipe][:ingredient_ids].first).to_i
       # @recipe.ingredients << Ingredient.find(@ingredient_recipe) unless @ingredient_recipe != 0
     end
