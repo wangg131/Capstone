@@ -6,9 +6,17 @@ class ProfilesController < ApplicationController
     @housing_types = HOUSING_TYPES
   end
 
+
   def create
     @profile = Profile.create(profile_params)
-    redirect_to new_profile_path(@user.id)
+    @user_id = params[:user_id]
+    if @profile.save
+      @profile.user_id = @user_id
+      @profile.save
+      # @ingredient_recipe = (params[:recipe][:ingredient_ids].first).to_i
+      # @recipe.ingredients << Ingredient.find(@ingredient_recipe) unless @ingredient_recipe != 0
+    end
+    redirect_to user_path(@user.id)
   end
 
   private

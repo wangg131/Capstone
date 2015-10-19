@@ -46,7 +46,7 @@
         <div class="form-group">
           <%= f.label :neighborhoods, "Seattle Neighborhoods" %>
           <%= f.select :neighborhoods, grouped_options_for_select(@neighborhoods),
-          {include_hidden: false}, {:multiple => true, class: "chzn-select form-control select"} %>
+          {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :bathroom_type, "Bathroom Type(s)" %>
