@@ -28,3 +28,6 @@
       ["Alki", "Alki"], ["West Seattle", "West Seattle"]
     ]]
   ]
+  HOUSING_TYPES =
+  {"House"=> "House", "Apartment" => "Apartment", "Duplex" => "Duplex", "Townhouse" => "Townhouse",
+    "condo" => "Condo", "in-law" => "in-law"}

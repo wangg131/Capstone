@@ -17,8 +17,8 @@
         </div>
         <div class="form-group">
           <%= f.label :house_type, "Desired Housing Type(s)" %>
-          <%= f.select :house_type, options_for_select({ "house"=> "House", "apt" => "Apartment"}),
-          {}, {:multiple => true, class: "chzn-select form-control"} %>
+          <%= f.select :house_type, options_for_select(@housing_types),
+          {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :neighborhoods, "Seattle Neighborhoods" %>
@@ -28,7 +28,7 @@
         <div class="form-group">
           <%= f.label :bathroom_type, "Bathroom Type(s)" %>
           <%= f.select :bathroom_type, options_for_select([["private", "private"], ["shared", "shared"]]),
-          {}, {:multiple => true, class: "chzn-select form-control"} %>
+          {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :rooms_needed, "Number of Rooms Needed" %>
@@ -49,7 +49,12 @@
         <div class="form-group">
           <%= f.label :laundry, "Washer & Dryer" %>
           <%= f.select :laundry, options_for_select([["in-unit", "in-unit"], ["on-site", "on-site"],
-          ["in-building", "in-building"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
+          ["in-building", "in-building"]]), {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :parking, "Parking" %>
+          <%= f.select :laundry, options_for_select([["street", "street"], ["garage", "garage"],
+          ["in-building", "in-building"]]), {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
       <%= f.submit "Add Preferences", class: "btn btn-primary" %>
     <% end %>

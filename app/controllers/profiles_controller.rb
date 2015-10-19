@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   def new
     @profile = Profile.new
     @neighborhoods = PROFILE_SEATTLE_SELECT.each {|neighborhood| neighborhood}
+    @housing_types = HOUSING_TYPES
   end
 
   def create
@@ -13,6 +14,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:title, :house_type, :description, {neighborhoods: []}, :rooms_needed, :bathroom_type, :min_price, :max_price, :cats, :dogs, :parking, :laundry, :max_roommates, :smoking, :gender_preference, :date_needed, :user_id)
+    params.require(:profile).permit(:title, {house_type: []}, :description, {neighborhoods: []}, :rooms_needed, {bathroom_type: []}, :min_price, :max_price, :cats, :dogs, {parking: []}, {laundry: []}, :max_roommates, :smoking, :gender_preference, :date_needed, :user_id)
   end
 end
