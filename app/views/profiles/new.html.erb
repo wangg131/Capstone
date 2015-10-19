@@ -17,31 +17,23 @@
         </div>
         <div class="form-group">
           <%= f.label :house_type, "Desired Housing Type(s)" %>
-          <%= f.select :house_type, options_for_select([["house", "house"], ["apartment", "apartment"],
-          ["duplex", "duplex"], ["townhouse", "townhouse"], ["condo", "condo"], ["in-law", "in-law"]]),
+          <%= f.select :house_type, options_for_select({ "house"=> "House", "apt" => "Apartment"}),
           {}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :neighborhoods, "North Seattle Neighborhoods" %>
-          <%= f.select :neighborhoods, options_for_select([["Phinney Ridge", "Phinney Ridge"],
-          ["Greenwood/Crown Hill", "Greenwood/Crown Hill"], ["Haller Lake/Bitter Lake/Broadview",
-          "Haller Lake/Bitter Lake/Broadview"], ["Ballard/Fremont", "Ballard/Fremont"], ["Greenlake", "Greenlake"],
-          ["Wallingford", "Wallingford"], ["Northgate/Maple Leaf", "Northgate/Maple Leaf"], ["Lake City", "Lake City"],
-          ["University District", "University District"], ["Roosevelt/Ravenna", "Roosevelt/Ravenna"],
-          ["Windermere/Laurelhurst", "Windermere/Laurelhurst"], ["Wedgwood/Sandpoint", "Wedgwood/Sandpoint"]]),
-          {}, {:multiple => true, class: "chzn-select form-control"} %>
+          <%= f.select :neighborhoods, options_for_select(@north_neighborhoods),
+          {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :neighborhoods, "Central Seattle Neighborhoods" %>
           <%= f.select :neighborhoods, options_for_select(@central_neighborhoods),
-          {}, {:multiple => true, class: "chzn-select form-control"} %>
+          {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :neighborhoods, "South Seattle Neighborhoods" %>
-          <%= f.select :neighborhoods, options_for_select([  ["Mount Baker", "Mount Baker"], ["Beacon Hill", "Beacon Hill"], ["Georgetown", "Georgetown"],
-            ["SODO/Industrial District", "SODO/Industrial District"], ["Columbia City/Seward Park", "Columbia City/Seward Park"],
-            ["Rainier Valley", "Rainier Valley"], ["Rainier Beach", "Rainier Beach"], ["South Park", "South Park"],
-            ["Alki", "Alki"], ["West Seattle", "West Seattle"]]), {}, {:multiple => true, class: "chzn-select form-control"} %>
+          <%= f.select :neighborhoods, options_for_select(@south_neighborhoods),
+          {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
         <div class="form-group">
           <%= f.label :bathroom_type, "Bathroom Type(s)" %>

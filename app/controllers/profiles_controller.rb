@@ -1,15 +1,10 @@
 class ProfilesController < ApplicationController
 
-  CENTRAL_SEATTLE_SELECT = [["Magnolia/Interbay", "Magnolia/Interbay"],["Queen Anne", "Queen Anne"],
-  ["South Lake Union", "South Lake Union"], ["Montlake/Eastlake", "Montlake/Eastlake"],
-  ["Madison Park/Madison Valley", "Madison Park/Madison Valley"],
-  ["Madrona/Leschi", "Madrona/Leschi"], ["First Hill", "First Hill"], ["Capitol Hill", "Capitol Hill"],
-  ["Central District", "Central District"], ["International District", "International District"],
-  ["Belltown/Denny Triangle/Downtown", "Belltown/Denny Triangle/Downtown"], ["Pioneer Square", "Pioneer Square"]]
-
   def new
     @profile = Profile.new
+    @north_neighborhoods = NORTH_SEATTLE_SELECT.each {|neighborhood| neighborhood}
     @central_neighborhoods = CENTRAL_SEATTLE_SELECT.each {|neighborhood| neighborhood}
+    @south_neighborhoods = SOUTH_SEATTLE_SELECT.each {|neighborhood| neighborhood }
   end
 
   def create
@@ -20,8 +15,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:title, :house_type, :description, :neighborhoods, :rooms_needed, :bathroom_type,
-    :min_price, :max_price, :cats, :dogs, :parking, :laundry, :max_roommates, :smoking, :gender_preference,
-    :date_needed, :user_id)
+    params.require(:profile).permit(:title, :house_type, :description, {neighborhoods: []}, :rooms_needed, :bathroom_type, :min_price, :max_price, :cats, :dogs, :parking, :laundry, :max_roommates, :smoking, :gender_preference, :date_needed, :user_id)
   end
 end
