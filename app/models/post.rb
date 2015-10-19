@@ -4,4 +4,7 @@ class Post < ActiveRecord::Base
   #validates_presence_of :title, :house_type, :description, :neighborhood, :date_available,
   # :rooms_available, :bathroom_type, :price, :cats, :dogs, :parking, :laundry, :total_roommates,
   # :smoking, :gender_preference, :image
+
+  # Mounted Objects -----------------------
+  mount_uploader :image, ImageUploader
 end

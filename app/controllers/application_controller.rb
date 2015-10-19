@@ -4,6 +4,36 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :set_login_name
 
+  PROFILE_SEATTLE_SELECT =
+    [
+      ['North Seattle',
+       [["Phinney Ridge"], ["Greenwood/Crown Hill"],
+       ["Haller Lake/Bitter Lake/Broadview"], ["Ballard/Fremont"],
+       ["Greenlake"], ["Wallingford"], ["Northgate/Maple Leaf"],
+       ["Lake City"], ["University District"], ["Roosevelt/Ravenna"],
+       ["Windermere/Laurelhurst"], ["Wedgwood/Sandpoint"]]
+      ],
+     ['Central Seattle',
+       [["Magnolia/Interbay"],["Queen Anne"],
+       ["South Lake Union"], ["Montlake/Eastlake"],
+       ["Madison Park/Madison Valley"], ["Madrona/Leschi"],
+       ["First Hill"], ["Capitol Hill"], ["Central District"],
+       ["International District"], ["Belltown/Denny Triangle/Downtown"],
+       ["Pioneer Square"]]
+       ],
+    ['South Seattle',
+      [["Mount Baker"], ["Beacon Hill"], ["Georgetown"],
+      ["SODO/Industrial District"], ["Columbia City/Seward Park"],
+      ["Rainier Valley"], ["Rainier Beach"], ["South Park"],
+      ["Alki"], ["West Seattle"]]
+      ]
+    ]
+
+  HOUSING_TYPES =
+    {"House"=> "House", "Apartment" => "Apartment", "Duplex" => "Duplex",
+      "Townhouse" => "Townhouse", "Condo" => "Condo", "In-Law" => "In-Law"}
+
+
   MESSAGES = {not_logged_in: "You are not currently logged in!",
               already_logged_in: "Can't access login page because you're already logged in!",
               already_signed_up: "You're already a member!",
