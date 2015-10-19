@@ -9,11 +9,12 @@ class PostsController < ApplicationController
     @post = Post.create(post_params)
     @user_id = params[:user_id]
     if @post.save
-      @post.user_id = @user_id
-      @user.post_id = @post.id
-      @post.save
+      @post.update_columns(user_id: @user_id)
+      @user.update_columns(post_id: @post.id)
+      redirect_to user_path(@user.id)
+    else
+      render :new
     end
-    redirect_to user_path(@user.id)
   end
 
   private
