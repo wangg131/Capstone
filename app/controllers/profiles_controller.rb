@@ -2,9 +2,7 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new
-    @north_neighborhoods = NORTH_SEATTLE_SELECT.each {|neighborhood| neighborhood}
-    @central_neighborhoods = CENTRAL_SEATTLE_SELECT.each {|neighborhood| neighborhood}
-    @south_neighborhoods = SOUTH_SEATTLE_SELECT.each {|neighborhood| neighborhood }
+    @neighborhoods = PROFILE_SEATTLE_SELECT.each {|neighborhood| neighborhood}
   end
 
   def create

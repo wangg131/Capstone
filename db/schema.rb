@@ -81,4 +81,5 @@ ActiveRecord::Schema.define(version: 20151016191919) do
     t.integer  "post_id"
     t.integer  "profile_id"
   end
+
 end

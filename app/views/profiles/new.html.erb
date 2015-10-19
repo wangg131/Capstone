@@ -21,18 +21,8 @@
           {}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
         <div class="form-group">
-          <%= f.label :neighborhoods, "North Seattle Neighborhoods" %>
-          <%= f.select :neighborhoods, options_for_select(@north_neighborhoods),
-          {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
-        </div>
-        <div class="form-group">
-          <%= f.label :neighborhoods, "Central Seattle Neighborhoods" %>
-          <%= f.select :neighborhoods, options_for_select(@central_neighborhoods),
-          {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
-        </div>
-        <div class="form-group">
-          <%= f.label :neighborhoods, "South Seattle Neighborhoods" %>
-          <%= f.select :neighborhoods, options_for_select(@south_neighborhoods),
+          <%= f.label :neighborhoods, "Seattle Neighborhoods" %>
+          <%= f.select :neighborhoods, grouped_options_for_select(@neighborhoods),
           {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
         </div>
         <div class="form-group">
