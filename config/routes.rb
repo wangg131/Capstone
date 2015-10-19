@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   get     "users/:user_id/profile/new" => 'profiles#new', as: 'new_profile'
   post    "users/:user_id/profile/new" => 'profiles#create'
-  post    "users/:user_id/post" => 'posts#create'
+  post    "users/:user_id/post/new" => 'posts#create'
 
 
   patch   "users/edit_preferences/:id" => 'users#update'

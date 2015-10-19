@@ -40,16 +40,17 @@ class UsersController < ApplicationController
 
   def verify
     @user = current_user
-
     # Use Authy to send the verification token
     token = Authy::API.verify(id: @user.authy_id, token: params[:token])
 
     if token.ok?
+
       # Mark the user as verified for get /user/:id
-      @user.update(verified: true)
+      @user.update_columns(verified: true)
+
       # Conditional to prevent this from affecting unverified users
       if @user.verified == true && @user.user_type == 'host'
-        redirect_to new_post_path(@user.id)
+        redirect_to user_path(@user.id)
       elsif @user.verified == true && @user.user_type == 'seeker'
        redirect_to new_profile_path(@user.id)
       end
