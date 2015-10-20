@@ -26,14 +26,26 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+  OmniAuth.config.test_mode = true
 
   OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
-    :provider => 'facebook',
-    :uid => '12345',
-    info: {email: "a@b.com", name: "Ada"},
-    credentials: { token: 'token' }
-  })
-
+        provider: 'facebook',
+        uid: '123545',
+        info: {
+          first_name: "Gaius",
+          last_name:  "Baltar",
+          email:      "test@example.com"
+        },
+        credentials: {
+          token: "123456",
+          expires_at: Time.now + 1.week
+        },
+        extra: {
+          raw_info: {
+            gender: 'male'
+          }
+        }
+      })
   config.include FactoryGirl::Syntax::Methods
 
   config.expect_with :rspec do |expectations|

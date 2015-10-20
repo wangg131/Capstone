@@ -28,7 +28,7 @@ RSpec.describe SessionsController, type: :controller do
       it "redirects to dashboard page" do
         get :facebook_create, provider: :facebook
 
-        expect(response).to redirect_to user_path(@user.id)
+        expect(response).to redirect_to root_path
       end
 
       it "creates a user" do
@@ -39,8 +39,7 @@ RSpec.describe SessionsController, type: :controller do
 
       it "sets user_id and access token" do
         get :facebook_create, provider: :facebook
-        expect(session[:user_id]).to eq(@user.id)
-        expect(session[:access_token]).to eq("token")
+        expect(session[:user_id]).to eq(User.last.id)
       end
     end
   end
