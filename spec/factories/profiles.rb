@@ -15,7 +15,7 @@ FactoryGirl.define do
     laundry           "In-unit"
     max_roommates     10
     smoking           true
-    user_id           5
+    user_id           1
   end
 
 end
