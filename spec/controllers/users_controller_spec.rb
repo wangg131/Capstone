@@ -7,6 +7,7 @@ RSpec.describe UsersController, type: :controller do
 
     describe "GET #new" do
       it "renders the new template" do
+        session[:user_id] = @user1.id
         get :new
         expect(assigns(:user)).to be_a_new(User)
         expect(response).to render_template(:new)
@@ -18,14 +19,14 @@ RSpec.describe UsersController, type: :controller do
 
         let (:user_params) do
           {
-            username: "Stimpy",
+            name: "Stimpy",
             email: "whamo@whamo.com",
             password: "log",
             password_confirmation: "log"}
         end
 
         it "creates a new user" do
-          post :create, :user => user_params
+          post :create, {user: user_params}
           expect(User.count).to eq(1)
         end
       end
@@ -33,14 +34,14 @@ RSpec.describe UsersController, type: :controller do
       context "with invalid user params" do
         let (:yuck_user) do
           {
-            username: "Eeeediot",
+            name: nil,
             email: "whamo.com",
             password: "log",
             password_confirmation: "song"}
         end
 
         it "doesn't create a new user" do
-          post :create, :user => yuck_user
+          post :create, {user: yuck_user}
           expect(response).to render_template(:new)
         end
       end
@@ -51,6 +52,17 @@ RSpec.describe UsersController, type: :controller do
         get :show, {id: @user1.id}, {user_id: @user1.id}
         expect(response).to render_template(:show)
         expect(response.status).to eq(200)
+      end
+    end
+
+    describe "before action filters" do
+      context "require_login" do
+        it "prevents unauthenticated users from accessing the site" do
+
+        get :show, id: @user1.id
+        expect(flash[:error]).to eq("You are not currently logged in!")
+        expect(response).to redirect_to(login_path)
+        end
       end
     end
 
