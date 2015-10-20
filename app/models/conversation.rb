@@ -5,9 +5,9 @@ class Conversation < ActiveRecord::Base
   validates_uniqueness_of :sender_id, :scope => :recipient_id
 
   # Scopes ---------------------------------------------------------------------
-  # checks to see if a conversation exists between sender & receiver so there is only
-  # one conversation created between them
+  # checks to see if a conversation exists between sender & receiver so there is
+  # only one conversation created between them.
   scope :between, -> (sender_id, recipient_id) do
-   where("(conversations.sender_id = ? AND conversations.recipient_id =?) OR (conversations.sender_id = ? AND conversations.recipient_id =?)", sender_id,recipient_id, recipient_id, sender_id)
-   end
+    where("(conversations.sender_id = ? AND conversations.recipient_id =?) OR (conversations.sender_id = ? AND conversations.recipient_id =?)", sender_id,recipient_id, recipient_id, sender_id)
+  end
 end

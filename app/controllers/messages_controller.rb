@@ -13,6 +13,8 @@ class MessagesController < ApplicationController
       @over_ten = false
       @messages = @conversation.messages
     end
+    # If the last message wasn't created by the current user,the message will
+    # become read
     if @messages.last
       if @messages.last.user_id != current_user.id
         @messages.last.read = true;

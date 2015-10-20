@@ -8,7 +8,8 @@ class ConversationsController < ApplicationController
 
   def create
     # sender is the user who initialized the conversation, but both users
-    # will be sending and getting messages during a conversation
+    # will be sending and getting messages during a conversation. A conversation
+    # is only created if one doesn't already exist
     if Conversation.between(params[:sender_id],params[:recipient_id]).present?
       @conversation = Conversation.between(params[:sender_id],
       params[:recipient_id]).first
