@@ -1,6 +1,12 @@
 <div class="row">
+  <% if @post.errors.any? %>
+    <div>
+      <%= @post.errors.full_messages %>
+    </div>
+    <br>
+  <% end %>
   <div class="col-md-4 col-md-offset-4">
-    <%= form_for @post, url: new_post_path do |f| %>
+      <%= form_for @post, html: {multipart: true}, url: new_post_path do |f| %>
       <fieldset>
         <h3>Post Your Housing Ad</h3>
         <p> Potential renters who match your housing post criteria will be able to look at your listing.
@@ -14,8 +20,9 @@
           <%= f.text_area :description, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :image, "Upload Your Photos" %>
-          <%= f.file_field :image, class: "form-control" %>
+          <%= f.label :images, "Upload Your Photos" %>
+          <p><small>Press the command button to select multiple photos for submission</small></p>
+          <%= f.file_field :images, :multiple => true, include_hidden: false, class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :house_type, "Housing Type" %>

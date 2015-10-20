@@ -36,7 +36,7 @@ gem 'omniauth-facebook'
 
 # carrierwave
 gem 'mini_magick'
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 #S3/EC2
 gem 'fog'
