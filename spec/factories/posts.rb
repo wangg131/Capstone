@@ -14,7 +14,7 @@ FactoryGirl.define do
     laundry           "In-unit"
     total_roommates   3
     smoking           false
-    user_id           5
+    user_id           6
     images            ["GTBWiMK.jpg", "rbFzenY.jpg"]
   end
 
