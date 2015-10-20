@@ -29,6 +29,7 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+<<<<<<< HEAD
   config.before(:suite) do
     Authy.api_uri = 'http://sandbox-api.authy.com'
     Authy.api_key = 'bf12974d70818a08199d17d5e2bae630'
@@ -51,6 +52,28 @@ RSpec.configure do |config|
     "192-967-#{n}"
   end
 
+=======
+  OmniAuth.config.test_mode = true
+
+  OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+        provider: 'facebook',
+        uid: '123545',
+        info: {
+          first_name: "Gaius",
+          last_name:  "Baltar",
+          email:      "test@example.com"
+        },
+        credentials: {
+          token: "123456",
+          expires_at: Time.now + 1.week
+        },
+        extra: {
+          raw_info: {
+            gender: 'male'
+          }
+        }
+      })
+>>>>>>> b07db62c6049a2a4c0ab2cea25097ae3e1ba951f
   config.include FactoryGirl::Syntax::Methods
 
   config.expect_with :rspec do |expectations|
@@ -122,4 +145,16 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+
+    # Choose one or more libraries:
+    with.library :active_record
+    # Or, choose the following (which implies all of the above):
+    with.library :rails
+  end
+end
 end

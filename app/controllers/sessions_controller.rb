@@ -24,7 +24,7 @@
       @user.update(verified: true)
 
       if @user.user_type == nil
-        redirect_to set_details_path
+        redirect_to root_path
       else
         redirect_to user_path(@user.id)
       end
