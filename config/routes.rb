@@ -22,14 +22,23 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :new, :create, :show]
 
-  get     "users/:user_id/profile/new" => 'profiles#new', as: 'new_profile'
-  get     "users/:user_id/post/new" => 'posts#new', as: 'new_post'
-  post    "users/:user_id/profile/new" => 'profiles#create'
-  post    "users/:user_id/post/new" => 'posts#create'
+  # get     "users/:user_id/profile/new" => 'profiles#new', as: 'new_user_profile'
+  # get     "users/:user_id/post/new" => 'posts#new', as: 'new_user_post'
+  # post    "users/:user_id/profile/new" => 'profiles#create'
+  # post    "users/:user_id/post/new" => 'posts#create'
 
 
   patch   "users/edit_preferences/:id" => 'users#update'
 
+
+  resources :conversations do
+    resources :messages
+   end
+
+   resources :users do
+     resources :profiles
+     resources :posts
+   end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

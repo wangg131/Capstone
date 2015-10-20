@@ -2,7 +2,7 @@
   <div class="col-md-4 col-md-offset-4">
     <h3>Create Your Profile</h3>
     <p>Your profile is viewable by compatible renters looking for people to fill their rooms.</p>
-    <%= form_for @profile, url: new_profile_path do |f| %>
+    <%= form_for @profile, url: new_user_profile_path do |f| %>
       <fieldset>
         <div class="form-group">
           <%= f.label :title, "Profile Title" %>
