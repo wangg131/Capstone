@@ -6,7 +6,7 @@
     <br>
   <% end %>
   <div class="col-md-4 col-md-offset-4">
-      <%= form_for @post, html: {multipart: true}, url: new_user_post_path do |f| %>
+      <%= form_for @post, html: {multipart: true}, url: new_user_post_path(@user.id) do |f| %>
       <fieldset>
         <h3>Post Your Housing Ad</h3>
         <p> Potential renters who match your housing post criteria will be able to look at your listing.

@@ -1,12 +1,13 @@
 class ProfilesController < ApplicationController
-
   def new
+    @user = current_user
     @profile = Profile.new
     @neighborhoods = PROFILE_SEATTLE_SELECT.each {|neighborhood| neighborhood}
     @housing_types = HOUSING_TYPES
   end
 
   def create
+    @user = current_user
     @profile = Profile.create(profile_params)
     @user_id = params[:user_id]
     if @profile.save
@@ -14,6 +15,8 @@ class ProfilesController < ApplicationController
       @user.update_columns(profile_id: @profile.id)
       redirect_to user_path(@user.id)
     else
+      @neighborhoods = SEATTLE_SELECT.each {|neighborhood| neighborhood}
+      @housing_types = HOUSING_TYPES
       render :new
     end
   end
