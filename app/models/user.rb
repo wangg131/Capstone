@@ -2,6 +2,7 @@ require 'securerandom'
 class User < ActiveRecord::Base
   has_one :post
   has_one  :profile
+  has_many :conversations, :foreign_key => :sender_id
   has_secure_password
 
   # Validations for users registering and loggin in without facebook

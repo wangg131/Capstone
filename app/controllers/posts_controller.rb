@@ -1,20 +1,21 @@
 class PostsController < ApplicationController
   def new
+    @user = current_user
     @post = Post.new
     @neighborhoods = PROFILE_SEATTLE_SELECT.each {|neighborhood| neighborhood}
     @housing_types = HOUSING_TYPES
   end
 
   def create
+    @user = current_user
     @post = Post.create(post_params)
     @user_id = params[:user_id]
-    raise
     if @post.save
       @post.update_columns(user_id: @user_id)
       @user.update_columns(post_id: @post.id)
       redirect_to user_path(@user.id)
     else
-      @neighborhoods = PROFILE_SEATTLE_SELECT.each {|neighborhood| neighborhood}
+      @neighborhoods = SEATTLE_SELECT.each {|neighborhood| neighborhood}
       @housing_types = HOUSING_TYPES
       render :new
     end
