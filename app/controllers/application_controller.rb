@@ -40,6 +40,11 @@ class ApplicationController < ActionController::Base
               access_denied: "You can't access that page."
   }
 
+  def neighborhoods_housetypes
+    @neighborhoods = SEATTLE_SELECT.each {|neighborhood| neighborhood}
+    @housing_types = HOUSING_TYPES
+  end
+  
   def set_login_name
    @user = User.find_by(id: session[:user_id])
 
@@ -49,6 +54,7 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to login_path, flash: {error: MESSAGES[:not_logged_in]} unless session[:user_id]
   end
+
 
   # def logged_in_user
   #   redirect_to dashboard_path(session[:user_id]), flash: {error: MESSAGES[:already_logged_in]} if session[:user_id]

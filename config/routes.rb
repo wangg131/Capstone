@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   get     "profiles/new" => 'profiles#new', as: 'new_user_profile'
   get     "users/:user_id/posts/new" => 'posts#new', as: 'new_user_post'
-  post    "users/:user_id/profiles/new" => 'profiles#create'
+  post    "profiles/new" => 'profiles#create'
   post    "users/:user_id/posts/new" => 'posts#create'
 
 

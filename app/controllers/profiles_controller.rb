@@ -1,22 +1,19 @@
 class ProfilesController < ApplicationController
   before_filter :current_user
+  before_filter :neighborhoods_housetypes, only:[:new, :create]
 
   def new
     @profile = Profile.new
-    @neighborhoods = SEATTLE_SELECT.each {|neighborhood| neighborhood}
-    @housing_types = HOUSING_TYPES
+    neighborhoods_housetypes
   end
 
   def create
     @profile = Profile.create(profile_params)
     @user_id = session[:user_id]
     if @profile.save
-      @profile.update_columns(user_id: @user_id)
-      @user.update_columns(profile_id: @profile.id)
       redirect_to user_path(@user.id)
     else
-      @neighborhoods = SEATTLE_SELECT.each {|neighborhood| neighborhood}
-      @housing_types = HOUSING_TYPES
+      neighborhoods_housetypes
       render :new
     end
   end

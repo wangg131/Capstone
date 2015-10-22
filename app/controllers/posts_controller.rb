@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_filter :current_user
+  before_filter :neighborhoods_housetypes, only:[:new, :create]
 
   def new
     @post = Post.new
-    @neighborhoods = SEATTLE_SELECT.each {|neighborhood| neighborhood}
-    @housing_types = HOUSING_TYPES
+    neighborhoods_housetypes
   end
 
   def create
@@ -13,8 +13,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to user_path(@user.id)
     else
-      @neighborhoods = SEATTLE_SELECT.each {|neighborhood| neighborhood}
-      @housing_types = HOUSING_TYPES
+      neighborhoods_housetypes
       render :new
     end
   end
