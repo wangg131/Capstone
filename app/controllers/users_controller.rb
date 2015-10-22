@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def verify
-    @user = current_user
+
     # Use Authy to send the verification token
     token = Authy::API.verify(id: @user.authy_id, token: params[:token])
 
@@ -56,15 +56,12 @@ class UsersController < ApplicationController
   end
 
   def resend
-    @user = current_user
     Authy::API.request_sms(id: @user.authy_id, force: true)
     flash[:notice] = "Verification code re-sent"
     redirect_to verify_path
   end
 
-  def show
-    @profile = @user.profile
-  end
+  def show; end
 
   private
 

@@ -3,13 +3,13 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new
-    @neighborhoods = PROFILE_SEATTLE_SELECT.each {|neighborhood| neighborhood}
+    @neighborhoods = SEATTLE_SELECT.each {|neighborhood| neighborhood}
     @housing_types = HOUSING_TYPES
   end
 
   def create
     @profile = Profile.create(profile_params)
-    @user_id = params[:user_id]
+    @user_id = session[:user_id]
     if @profile.save
       @profile.update_columns(user_id: @user_id)
       @user.update_columns(profile_id: @profile.id)
@@ -19,6 +19,9 @@ class ProfilesController < ApplicationController
       @housing_types = HOUSING_TYPES
       render :new
     end
+  end
+
+  def show
   end
 
   private
