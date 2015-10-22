@@ -1,14 +1,9 @@
 class UsersController < ApplicationController
   before_filter :require_login, only: [:show]
-  before_filter :current_user, only: [:verify, :resend, :show]
+  before_filter :current_user, only: [:show, :verify, :resend]
 
   def new
     @user = User.new
-  end
-
-  def show
-    @user = current_user
-    @profile = @user.profile
   end
 
   def create
@@ -67,12 +62,17 @@ class UsersController < ApplicationController
     redirect_to verify_path
   end
 
+  def show
+    @profile = @user.profile
+  end
+
   private
 
   # def send_message(message)
   #   @user = current_user
   #   twilio_number = ENV['TWILIO_NUMBER']
-  #   @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+  #   @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'],
+  #   ENV['TWILIO_AUTH_TOKEN']
   #   message = @client.account.messages.create(
   #     :from => twilio_number,
   #     :to => @user.country_code+@user.phone_number,
@@ -83,7 +83,8 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,
-    :phone_number, :street, :city, :state, :zip, :user_type, :country_code, :authy_id, :post_id, :profile_id)
+    :phone_number, :street, :city, :state, :zip, :user_type, :country_code,
+    :authy_id, :post_id, :profile_id)
   end
 
 end

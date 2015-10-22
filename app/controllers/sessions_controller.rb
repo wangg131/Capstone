@@ -1,4 +1,5 @@
-  class SessionsController < ApplicationController
+class SessionsController < ApplicationController
+
   def new; end
 
   def create #logging in
