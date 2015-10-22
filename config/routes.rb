@@ -23,10 +23,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create, :show]
 
 
-  # get     "users/:user_id/profile/new" => 'profiles#new', as: 'new_user_profile'
-  # get     "users/:user_id/post/new" => 'posts#new', as: 'new_user_post'
-  # post    "users/:user_id/profile/new" => 'profiles#create'
-  # post    "users/:user_id/post/new" => 'posts#create'
+  get     "users/:user_id/profiles/new" => 'profiles#new', as: 'new_user_profile'
+  get     "users/:user_id/posts/new" => 'posts#new', as: 'new_user_post'
+  post    "users/:user_id/profiles/new" => 'profiles#create'
+  post    "users/:user_id/posts/new" => 'posts#create'
 
 
   patch   "users/edit_preferences/:id" => 'users#update'
@@ -38,10 +38,10 @@ Rails.application.routes.draw do
 
    get     "post/image_upload" => 'posts#image_upload', as: 'image_upload'
 
-   resources :users do
-     resources :profiles
-     resources :posts
-   end
+  #  resources :users do
+  #    resources :profiles
+  #    resources :posts
+  #  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

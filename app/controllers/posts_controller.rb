@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def new
     @user = current_user
     @post = Post.new
-    @neighborhoods = PROFILE_SEATTLE_SELECT.each {|neighborhood| neighborhood}
+    @neighborhoods = SEATTLE_SELECT.each {|neighborhood| neighborhood}
     @housing_types = HOUSING_TYPES
   end
 
@@ -26,7 +26,8 @@ class PostsController < ApplicationController
     @user = current_user
     @uploader = Post.new.images
     # @uploader.update_attribute :key, params[:key]
-    @uploader.success_action_redirect = new_user_post_path(@user.id)
+    redirect_to new_user_post_path(@user.id)
+    # @uploader.success_action_redirect = new_user_post_path(@user.id)
   end
 
   # def update
@@ -49,6 +50,6 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :house_type, :description, :neighborhood, :date_available,
     :rooms_available, :bathroom_type, :price, :cats, :dogs, :parking, :laundry, :total_roommates,
-    :smoking, :gender_preference, :user_id, :image)
+    :smoking, :gender_preference, :user_id, :images)
   end
 end
