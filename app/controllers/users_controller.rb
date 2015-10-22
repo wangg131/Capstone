@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
       # Conditional to prevent this from affecting unverified users
       if @user.verified == true && @user.user_type == 'host'
-        redirect_to new_user_post_path(@user.id)
+        redirect_to image_upload_path
       elsif @user.verified == true && @user.user_type == 'seeker'
        redirect_to new_user_profile_path(@user.id)
       end
