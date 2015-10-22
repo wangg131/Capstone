@@ -22,7 +22,7 @@
         <div class="form-group">
           <%= f.label :images, "Upload Your Photos" %>
           <p><small>Press the command button to select multiple photos for submission</small></p>
-          <%= f.file_field :images, class: "form-control" %>
+          <%= f.file_field :images, :multiple => true, include_hidden: false, class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :house_type, "Housing Type" %>

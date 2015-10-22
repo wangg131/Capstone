@@ -6,5 +6,5 @@ class Post < ActiveRecord::Base
   # :smoking, :gender_preference, :image
 
   # Mounted Objects -----------------------
-  mount_uploader :images, ImageUploader
+  mount_uploaders :images, ImageUploader
 end

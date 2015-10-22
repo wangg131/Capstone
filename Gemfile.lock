@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: 49fdad1ec6ca9bb0883b6e193ea64e036e7b48a0
+  specs:
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+
+GIT
   remote: git://github.com/doabit/semantic-ui-sass.git
   revision: ba3acee5bb44f2532436f83e3d7d0cd3152b5fe9
   branch: v1.0beta
@@ -69,11 +79,6 @@ GEM
       sass (>= 3.3.0)
     builder (3.2.2)
     byebug (6.0.2)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     carrierwave-aws (1.0.0)
       aws-sdk (~> 2.0)
       carrierwave (~> 0.7)
@@ -265,6 +270,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   byebug
+  carrierwave!
   carrierwave-aws
   coffee-rails (~> 4.1.0)
   dotenv-rails
