@@ -5,33 +5,34 @@
     <%= form_for @user do |f| %>
       <fieldset>
         <div class="form-group">
-          <%= f.label :name, "Name" %><small>Required</small>
+          <%= f.label :name, "Name" %>
           <%= f.text_field :name, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :email %><small>Must be a valid email</small>
+          <%= f.label :email %><small> | Must be a valid email</small>
           <%= f.text_field :email, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :password %><small>Required</small>
+          <%= f.label :password %>
           <%= f.password_field :password, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :password_confirmation, "Password Confirmation" %><small>Must match password</small>
+          <%= f.label :password_confirmation, "Password Confirmation" %><small> | Must match password</small>
           <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :phone_number, "Cell Phone Number" %><br><small>Required for receiving an account verification code via SMS.</small>
+          <%= f.label :phone_number, "Cell Phone Number" %><small> | Required for SMS account verification.</small>
           <%= f.text_field :phone_number, class: "form-control", id: "authy-cellphone" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :user_type, "User Type" %><br><small>Required</small><br>
-          <%= f.select :user_type, ([["I am looking for a room", "seeker"], ["I have an available room", "host"]]), class: "form-control", include_blank: ''%>
+          <%= f.label :user_type, "User Type" %><small> | Required</small><br>
+          <%= f.select :user_type, ([["I am looking for a room", "seeker"],
+          ["I have an available room", "host"]]), class: "form-control", include_blank: ''%>
         </div>
       </fieldset>
 
