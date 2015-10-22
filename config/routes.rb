@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get     "/signup" => 'users#new', as: 'signup'
 
+  resources :users, only: [:create, :show]
   get     "users/verify" => 'users#show_verify', as: 'show_verify'
   post    "users/verify" => 'users#verify', as: 'verify'
   post    "users/resend" => 'users#resend', as: 'resend'
@@ -20,10 +21,7 @@ Rails.application.routes.draw do
 
   delete  "/logout" => 'sessions#destroy'
 
-  resources :users, only: [:index, :new, :create, :show]
-
-
-  get     "users/:user_id/profiles/new" => 'profiles#new', as: 'new_user_profile'
+  get     "profiles/new" => 'profiles#new', as: 'new_user_profile'
   get     "users/:user_id/posts/new" => 'posts#new', as: 'new_user_post'
   post    "users/:user_id/profiles/new" => 'profiles#create'
   post    "users/:user_id/posts/new" => 'posts#create'
