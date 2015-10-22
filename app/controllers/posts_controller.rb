@@ -13,21 +13,12 @@ class PostsController < ApplicationController
     if @post.save
       @post.update_columns(user_id: @user_id)
       @user.update_columns(post_id: @post.id)
-      # params[:images].each { |image| @post.create(image: image)}
       redirect_to user_path(@user.id)
     else
       @neighborhoods = SEATTLE_SELECT.each {|neighborhood| neighborhood}
       @housing_types = HOUSING_TYPES
       render :new
     end
-  end
-
-  def image_upload
-    @user = current_user
-    @uploader = Post.new.images
-    # @uploader.update_attribute :key, params[:key]
-    redirect_to new_user_post_path(@user.id)
-    # @uploader.success_action_redirect = new_user_post_path(@user.id)
   end
 
   # def update

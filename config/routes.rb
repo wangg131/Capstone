@@ -36,8 +36,6 @@ Rails.application.routes.draw do
     resources :messages
    end
 
-   get     "post/image_upload" => 'posts#image_upload', as: 'image_upload'
-
   #  resources :users do
   #    resources :profiles
   #    resources :posts
