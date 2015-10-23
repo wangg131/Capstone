@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
   delete  "/logout" => 'sessions#destroy'
 
-  get     "profiles/new" => 'profiles#new', as: 'new_user_profile'
-  get     "posts/new" => 'posts#new', as: 'new_user_post'
+  get     "profiles/new" => 'profiles#new', as: 'new_profile'
+  get     "posts/new" => 'posts#new', as: 'new_post'
   post    "profiles/new" => 'profiles#create'
   post    "posts/new" => 'posts#create'
 
