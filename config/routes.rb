@@ -5,30 +5,29 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  get     "/signup" => 'users#new', as: 'signup'
+  get     "/signup"                 => 'users#new', as: 'signup'
 
   resources :users, only: [:create, :show]
-  get     "users/verify" => 'users#show_verify', as: 'show_verify'
-  post    "users/verify" => 'users#verify', as: 'verify'
-  post    "users/resend" => 'users#resend', as: 'resend'
+  get     "users/verify"            => 'users#show_verify', as: 'show_verify'
+  post    "users/verify"            => 'users#verify', as: 'verify'
+  post    "users/resend"            => 'users#resend', as: 'resend'
 
-  get     "/login" => 'sessions#new'
-  post    "/login" => 'sessions#create'
+  get     "/login"                  => 'sessions#new'
+  post    "/login"                  => 'sessions#create'
 
-  get     "auth/facebook/callback" => 'sessions#facebook_create'
-  get     "auth/facebook" => 'sessions#facebook_create', as: 'facebook'
-  get     "users/:id/type" => 'users#edit'
+  get     "auth/facebook/callback"  => 'sessions#facebook_create'
+  get     "auth/facebook"           => 'sessions#facebook_create', as: 'facebook'
+  get     "users/:id/type"          => 'users#edit'
 
-  delete  "/logout" => 'sessions#destroy'
+  delete  "/logout"                 => 'sessions#destroy'
 
-  get     "profiles/new" => 'profiles#new', as: 'new_profile'
-  get     "posts/new" => 'posts#new', as: 'new_post'
-  post    "profiles/new" => 'profiles#create'
-  post    "posts/new" => 'posts#create'
+  get     "profile/new"             => 'profiles#new', as: 'new_profile'
+  get     "post/new"                => 'posts#new', as: 'new_post'
+  post    "profile/new"             => 'profiles#create'
+  post    "post/new"                => 'posts#create'
 
-
-  patch   "users/edit_preferences/:id" => 'users#update'
-
+  get     "/profile"                => 'profiles#show'
+  get     "/post"                   => 'posts#show'
 
   resources :conversations do
     resources :messages

@@ -19,6 +19,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    session[:profile_id] = @user.profile.id
+    @profile = Profile.find(session[:profile_id])
   end
 
   private

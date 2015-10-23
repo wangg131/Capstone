@@ -15,6 +15,10 @@
  */
 @import "semantic-ui";
 
+.profile_center {
+   text-align: center;
+ }
+
 textarea.form-control{
   height: 12em !important;
 
@@ -169,9 +173,9 @@ textarea.form-control{
    border-radius: 5px;
  }
 
- .primo {
-   background-color: #F328D4;
- }
+ // .primo {
+ //   background-color: #F328D4;
+ // }
 
  .below {
    display: block;
