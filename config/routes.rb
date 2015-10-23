@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   delete  "/logout" => 'sessions#destroy'
 
   get     "profiles/new" => 'profiles#new', as: 'new_user_profile'
-  get     "users/:user_id/posts/new" => 'posts#new', as: 'new_user_post'
+  get     "posts/new" => 'posts#new', as: 'new_user_post'
   post    "profiles/new" => 'profiles#create'
-  post    "users/:user_id/posts/new" => 'posts#create'
+  post    "posts/new" => 'posts#create'
 
 
   patch   "users/edit_preferences/:id" => 'users#update'

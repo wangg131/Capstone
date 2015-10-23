@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    @user_id = params[:user_id]
+    @user_id = session[:user_id]
     if @post.save
       redirect_to user_path(@user.id)
     else
