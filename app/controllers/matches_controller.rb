@@ -10,6 +10,7 @@ class MatchesController < ApplicationController
   # GET /matches/1
   # GET /matches/1.json
   def show
+    @match = Match.find(params[:id])
   end
 
   # GET /matches/new
@@ -39,35 +40,30 @@ class MatchesController < ApplicationController
 
   # PATCH/PUT /matches/1
   # PATCH/PUT /matches/1.json
-  def update
-    respond_to do |format|
-      if @match.update(match_params)
-        format.html { redirect_to @match, notice: 'Match was successfully updated.' }
-        format.json { render :show, status: :ok, location: @match }
-      else
-        format.html { render :edit }
-        format.json { render json: @match.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @match.update(match_params)
+  #       format.html { redirect_to @match, notice: 'Match was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @match }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @match.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /matches/1
   # DELETE /matches/1.json
-  def destroy
-    @match.destroy
-    respond_to do |format|
-      format.html { redirect_to matches_url, notice: 'Match was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @match.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to matches_url, notice: 'Match was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_match
-      @match = Match.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
       params.require(:match).permit(:post_id, :profile_id, :approved?)
     end
