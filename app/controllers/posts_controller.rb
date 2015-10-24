@@ -4,15 +4,17 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @photo = @post.photos.build
     neighborhoods_housetypes
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = Post.new(post_params)
     @user_id = session[:user_id]
     if @post.save
-      params[:post]['images'].each do |image_url|
-        @image = @post.update_columns(images: image_url.original_filename)
+      params[:photos]['images'].each do |a|
+        @photo = @post.photos.create!(images: a)
+        # update_columns(images: image_url.original_filename)
         # @post.images << image_url.original_filename
       end
       redirect_to user_path(@user.id)
@@ -25,6 +27,7 @@ class PostsController < ApplicationController
   def show
     session[:post_id] = @user.post.id
     @post = Post.find(session[:post_id])
+    @photos = @post.photos.all
   end
 
   # def update
@@ -47,6 +50,6 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :house_type, :description, :neighborhood, :date_available,
     :rooms_available, :bathroom_type, :price, :cats, :dogs, :parking, :laundry, :total_roommates,
-    :smoking, :gender_preference, :user_id, {images: []})
+    :smoking, :gender_preference, :user_id, {photos_attributes: [:id, :post_id, :images]})
   end
 end
