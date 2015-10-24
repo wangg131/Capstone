@@ -11,11 +11,20 @@ class PostsController < ApplicationController
     @post = Post.create(post_params)
     @user_id = session[:user_id]
     if @post.save
+      params[:post]['images'].each do |image_url|
+        @image = @post.update_columns(images: image_url.original_filename)
+        # @post.images << image_url.original_filename
+      end
       redirect_to user_path(@user.id)
     else
       neighborhoods_housetypes
       render :new
     end
+  end
+
+  def show
+    session[:post_id] = @user.post.id
+    @post = Post.find(session[:post_id])
   end
 
   # def update

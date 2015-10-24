@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="">
+    <h1 class=""><%=  @user.name %><small> | <%=  @post.title %></small></h1>
+
+
+    <h3>Housing Details:</h3>
+    <h4><%= @post.description %></h4>
+    <% @post.images.each do |p| %>
+    <p>  <%= image_tag p.url %></p>
+    <% end %>
+    <h4>Rent per Month $<%= @post.price %></h4>
+    <p>Neighborhood: <%= @post.neighborhood %></p>
+    <p># of Rooms Available: <%= @post.rooms_available %></p>
+    <p>Bathroom: <%= @post.bathroom_type %></p>
+    <p>Laundry: <%= @post.laundry %></p>
+    <p>Parking: <%= @post.parking %></p>
+    <% if @post.cats == true && @post.dogs == true %>
+      <p>Cats & Dogs: Ok</p>
+    <% elsif @post.cats == false && @post.dogs == false %>
+      <p>Cats & Dogs: Not allowed</p>
+    <% elsif @post.cats == true && @post.dogs == false %>
+      <p>Cats: Ok</p>
+      <p>Dogs: Not allowed</p>
+    <% elsif @post.cats == false && @post.dogs == true %>
+      <p>Cats: Not allowed</p>
+      <p>Dogs: Ok</p>
+    <% end %>
+    <% if @post.smoking == true %>
+      <p>Smoking: Ok</p>
+    <% else %>
+      <p>Smoking: Not allowed</p>
+    <% end %>
+  </div>
+</div>
