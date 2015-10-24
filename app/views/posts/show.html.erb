@@ -7,9 +7,6 @@
     <% @photos.each do |p| %>
       <%= image_tag p.images %>
     <% end %>
-
-
-
     <h4>Rent per Month $<%= @post.price %></h4>
     <p>Neighborhood: <%= @post.neighborhood %></p>
     <p># of Rooms Available: <%= @post.rooms_available %></p>

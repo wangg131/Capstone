@@ -20,6 +20,14 @@
             <%= f.label :description, "Housing & Room Description" %>
             <%= f.text_area :description, class: "form-control" %>
           </div>
+          <%= f.fields_for :photos do |p| %>
+          <div class="form-group">
+            <%= p.label :images, "Upload Your Photos" %>
+            <p><small>Press the command button to select multiple photos for
+              submission</small></p>
+            <%= p.file_field :images, :multiple => true, name: "photos[images][]", class: "form-control" %>
+          </div>
+          <% end %>
           <div class="form-group">
             <%= f.label :house_type, "Housing Type" %>
             <%= f.select :house_type, options_for_select(@housing_types),
@@ -69,14 +77,6 @@
             <%= f.label "Smoking" %> <br/>
             <%= f.check_box :smoking %> <br/>
           </div><br>
-          <%= f.fields_for :photos do |p| %>
-          <div class="form-group">
-            <%= p.label :images, "Upload Your Photos" %>
-            <p><small>Press the command button to select multiple photos for
-              submission</small></p>
-            <%= p.file_field :images, :multiple => true, name: "photos[images][]", class: "form-control" %>
-          </div>
-          <% end %>
           <%= f.hidden_field :user_id, value: session[:user_id] %>
           <%= f.submit "Add Preferences", class: "btn btn-primary" %>
       <% end %>
