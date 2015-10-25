@@ -4,9 +4,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    session[:post_id] = @user.post.id
-    @post = Post.find(session[:post_id])
-    @photos = @post.photos.all
+    # session[:post_id] = @user.post.id
+    # @post = Post.find(session[:post_id])
+    # @photos = @post.photos.all
   end
 
   def new

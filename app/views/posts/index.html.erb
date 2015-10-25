@@ -4,7 +4,7 @@
       <div class="post" style="display: none" id= <%= post.id %> >
         <h1 class=""><%=  post.user.name %><small> | <%=  post.title %></small></h1>
         <h3>Housing Details:</h3>
-        <% @photos.each do |p| %>
+        <% post.photos.each do |p| %>
           <%= image_tag p.images %>
         <% end %>
         <h4>Rent per Month $<%= post.price %></h4>

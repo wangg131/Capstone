@@ -3,7 +3,6 @@
 // // You can use CoffeeScript in this file: http://coffeescript.org/
 //
 $(function() {
-
   var profiles = $('.profile');
   var first = profiles[0];
   $(first).show();

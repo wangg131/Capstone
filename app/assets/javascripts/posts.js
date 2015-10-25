@@ -3,7 +3,6 @@
 // // You can use CoffeeScript in this file: http://coffeescript.org/
 //
 $(function() {
-
   var posts = $('.post');
   var first = posts[0];
   $(first).show();
@@ -20,7 +19,7 @@ $(function() {
         approved: true
         },
         success: function() {
-          hideProfileOrPost(profile);
+          hideProfileOrPost(post);
           // given an array of profiles, find the index of the current One
           // show next profile by index
           var index = $(posts).index(post);
