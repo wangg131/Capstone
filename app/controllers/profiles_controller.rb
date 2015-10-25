@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = Profile.all
+    # render partial: 'index'
   end
 
   def new

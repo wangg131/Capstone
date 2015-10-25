@@ -14,7 +14,7 @@
   <% end -%>
 
   <% if @user.post %>
-    <%= link_to "Look for your roommmate!", profiles_path %>
+    <%= link_to "Look for your roommmate!", profiles_path, class: "please" %>
   <% elsif @user.profile%>
     <%= link_to "Look for your room!", posts_path %>
   <% end %>
