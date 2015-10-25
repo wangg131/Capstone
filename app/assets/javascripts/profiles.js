@@ -5,7 +5,6 @@
 $(function() {
 
   var profiles = $('.profile');
-
   var first = profiles[0];
   $(first).show();
 

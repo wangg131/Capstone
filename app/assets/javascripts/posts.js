@@ -5,15 +5,13 @@
 $(function() {
 
   var posts = $('.post');
-
   var first = posts[0];
   $(first).show();
-
 
   $(".yes-post").click(function(event) {
     event.preventDefault();
     var button = this;
-    var post = button.parents(".post");
+    var post = $(button).parents('.post');
 
       $.ajax('/matches', {
         type: "POST",
@@ -21,18 +19,17 @@ $(function() {
         post_id: first.id,
         approved: true
         },
-        success: hideProfileOrPost // callback to this function on success
+        success: function() {
+          hideProfileOrPost(profile);
+          // given an array of profiles, find the index of the current One
+          // show next profile by index
+          var index = $(posts).index(post);
+          $(posts[index+1]).show();
+        }
     });
   });
 
-  // function ajax_callback(url, method) {
-  //   $.ajax(url, {
-  //     type: method,
-  //     success: displayResults // callback to this function on success
-  //   });
-  // }
-
-   function hideProfileOrPost() {
-    //  $this.hide();
-   }
+   function hideProfileOrPost(post) {
+     $(post).hide();
+  }
 });
