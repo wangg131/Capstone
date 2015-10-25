@@ -2,6 +2,13 @@ class ProfilesController < ApplicationController
   before_filter :current_user
   before_filter :neighborhoods_housetypes, only:[:new, :create]
 
+  def index
+    @profiles = Profile.all
+    # @profiles.each do |profile|
+    #   @individual = profile
+    # end
+  end
+
   def new
     @profile = Profile.new
     neighborhoods_housetypes

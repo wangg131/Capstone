@@ -1,14 +1,11 @@
 class MatchesController < ApplicationController
+  before_filter :current_user
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
-  # GET /matches
-  # GET /matches.json
   def index
     @matches = Match.all
   end
 
-  # GET /matches/1
-  # GET /matches/1.json
   def show
     @match = Match.find(params[:id])
   end
@@ -25,18 +22,26 @@ class MatchesController < ApplicationController
   # POST /matches
   # POST /matches.json
   def create
-    @match = Match.new(match_params)
+    @match = Match.find_or_create_by( post_id: @current_user.id,
+                                      profile_id: params[:profile_id],
+                                      approved?: params[:approved])
 
     respond_to do |format|
-      if @match.save
-        format.html { redirect_to @match, notice: 'Match was successfully created.' }
-        format.json { render :show, status: :created, location: @match }
-      else
-        format.html { render :new }
-        format.json { render json: @match.errors, status: :unprocessable_entity }
-      end
+      format.html {render html: "hey"}
+      format.js
     end
   end
+
+    # respond_to do |format|
+    #   if @match.save
+    #     format.html { redirect_to @match, notice: 'Match was successfully created.' }
+    #     format.json { render :show, status: :created, location: @match }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @match.errors, status: :unprocessable_entity }
+      # end
+
+  # end
 
   # PATCH/PUT /matches/1
   # PATCH/PUT /matches/1.json
@@ -64,7 +69,7 @@ class MatchesController < ApplicationController
 
   private
 
-    def match_params
-      params.require(:match).permit(:post_id, :profile_id, :approved?)
-    end
+  def match_params
+    params.require(:match).permit(:post_id, :profile_id, :approved?)
+  end
 end

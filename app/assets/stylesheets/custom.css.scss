@@ -15,6 +15,15 @@
  */
 @import "semantic-ui";
 
+.hidden  {
+  display: none;
+
+}
+
+.inline {
+  float: left;
+}
+
 .profile_center {
    text-align: center;
  }

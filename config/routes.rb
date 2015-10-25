@@ -28,8 +28,12 @@ Rails.application.routes.draw do
   post    "profile/new"             => 'profiles#create'
   post    "post/new"                => 'posts#create'
 
+  get     "/profiles"               => 'profiles#index'
+  get     "/posts"                  => 'posts#index'
   get     "/profile"                => 'profiles#show'
   get     "/post"                   => 'posts#show'
+
+  post    "/matches"                => 'matches#create'
 
   resources :conversations do
     resources :messages
