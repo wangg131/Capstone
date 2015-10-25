@@ -20,8 +20,8 @@ $(function() {
         },
         success: function() {
           hideProfileOrPost(post);
-          // given an array of profiles, find the index of the current One
-          // show next profile by index
+          // given an array of posts, find the index of the current One
+          // show next post by index
           var index = $(posts).index(post);
           $(posts[index+1]).show();
         }

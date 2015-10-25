@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-
+  before_filter :current_user
   def index
     @users = User.all
     @conversations = Conversation.all
