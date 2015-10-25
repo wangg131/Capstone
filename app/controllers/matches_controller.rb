@@ -22,13 +22,22 @@ class MatchesController < ApplicationController
   # POST /matches
   # POST /matches.json
   def create
-    @match = Match.find_or_create_by( post_id: @current_user.id,
-                                      profile_id: params[:profile_id],
-                                      approved?: params[:approved])
-
-    respond_to do |format|
-      format.html {render html: "hey"}
-      format.js
+    if @user.user_type == 'host'
+      @match = Match.find_or_create_by( post_id: @user.id,
+                                        profile_id: params[:profile_id],
+                                        host_approved?: params[:approved])
+      respond_to do |format|
+        format.html {render html: "hey"}
+        format.js
+      end
+    elsif @user.user_type == 'seeker'
+      @match = Match.find_or_create_by( post_id: @user.id,
+                                        profile_id: params[:profile_id],
+                                        seeker_approved?: params[:approved])
+      respond_to do |format|
+        format.html {render html: "hey"}
+        format.js
+      end
     end
   end
 

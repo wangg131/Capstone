@@ -1,51 +1,46 @@
-// // Place all the behaviors and hooks related to the matching controller here.
-// // All this logic will automatically be available in application.js.
-// // You can use CoffeeScript in this file: http://coffeescript.org/
+// // // Place all the behaviors and hooks related to the matching controller here.
+// // // All this logic will automatically be available in application.js.
+// // // You can use CoffeeScript in this file: http://coffeescript.org/
+// //
+// $(function() {
 //
-$(function() {
-
-  var profiles = $('.profile');
-  var posts = $('.post');
-
-  var first_profile = profiles[0];
-  var first_post = posts[0];
-
-  if 
-  $(first).show();
-
-
-  $(".yes").click(function(event) {
-    event.preventDefault();
-    var button = this;
-    var post = button.parents(".posts");
-    var profile = button.parents(".profile");
-
-    if(profile){
-      $.ajax('/matches', {
-        type: "POST",
-        data: {
-        profile_id: first.id,
-        approved: true
-        },
-        success: hideProfileOrPost // callback to this function on success
-      });
-    } else if(post) {
-
-
-    }
-  });
-
-  // function ajax_callback(url, method) {
-  //   $.ajax(url, {
-  //     type: method,
-  //     success: displayResults // callback to this function on success
-  //   });
-  // }
-
-   function hideProfileOrPost() {
-    //  $this.hide();
-   }
-});
+//   var profiles = $('.profile');
+//   var posts = $('.post');
+//
+//   var first_profile = profiles[0];
+//   var first_post = posts[0];
+//   $(first).show();
+//
+//
+//   $(".yes").click(function(event) {
+//     event.preventDefault();
+//     var button = this;
+//     var post = button.parents(".posts");
+//     var profile = button.parents(".profile");
+//
+//       $.ajax('/matches', {
+//         type: "POST",
+//         data: {
+//         profile_id: first.id,
+//         approved: true
+//         },
+//         success: hideProfileOrPost // callback to this function on success
+//     });
+//
+//
+//   });
+//
+//   // function ajax_callback(url, method) {
+//   //   $.ajax(url, {
+//   //     type: method,
+//   //     success: displayResults // callback to this function on success
+//   //   });
+//   // }
+//
+//    function hideProfileOrPost() {
+//     //  $this.hide();
+//    }
+// });
 //   function hideProfileOrPost(data) {
 //
 //     for (var i = 0; i < data.length; i++) {
