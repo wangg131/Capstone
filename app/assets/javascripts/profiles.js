@@ -13,19 +13,19 @@ $(document).ready(function() {
       var button = this;
       var profile = $(button).parents('.profile');
 
-        $.ajax('/matches', {
-          type: "POST",
-          data: {
-          profile_id: first.id,
-          approved: true
-          },
-          success: function() {
-            hideProfileOrPost(profile);
-            // given an array of profiles, find the index of the current One
-            // show next profile by index
-            var index = $(profiles).index(profile);
-            $(profiles[index+1]).show();
-          }
+      $.ajax('/matches', {
+        type: "POST",
+        data: {
+        profile_id: first.id,
+        approved: true
+        },
+        success: function() {
+          hideProfileOrPost(profile);
+          // given an array of profiles, find the index of the current One
+          // show next profile by index
+          var index = $(profiles).index(profile);
+          $(profiles[index+1]).show();
+        }
       });
     });
 
