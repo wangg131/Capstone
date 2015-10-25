@@ -20,11 +20,23 @@ $(function() {
         profile_id: first.id,
         approved: true
         },
-        success: hideProfileOrPost(profile) // callback to this function on success
+        success: function() {
+          hideProfileOrPost(profile); // callback to this function on success
+          // given an array of profiles, find the index of the current One
+          // show next profile by index
+          var index = $(profiles).index(profile);
+          $(profiles[index+1]).show();
+        }
     });
   });
 
    function hideProfileOrPost(profile) {
      $(profile).hide();
-   }
+    //  for(var i = 1; i < profiles.length; i++){
+    //   var other_profiles = profiles[i];
+    //   $(other_profiles).show();
+     //
+    //  }
+  //  }
+  }
 });
