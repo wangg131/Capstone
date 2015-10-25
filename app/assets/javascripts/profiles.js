@@ -21,7 +21,7 @@ $(function() {
         approved: true
         },
         success: function() {
-          hideProfileOrPost(profile); // callback to this function on success
+          hideProfileOrPost(profile);
           // given an array of profiles, find the index of the current One
           // show next profile by index
           var index = $(profiles).index(profile);
@@ -32,11 +32,5 @@ $(function() {
 
    function hideProfileOrPost(profile) {
      $(profile).hide();
-    //  for(var i = 1; i < profiles.length; i++){
-    //   var other_profiles = profiles[i];
-    //   $(other_profiles).show();
-     //
-    //  }
-  //  }
   }
 });

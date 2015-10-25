@@ -10,17 +10,12 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
   end
 
-  # GET /matches/new
   def new
     @match = Match.new
   end
 
-  # GET /matches/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /matches
-  # POST /matches.json
   def create
     if @user.user_type == 'host'
       @match = Match.find_or_create_by( post_id: @user.id,
@@ -41,16 +36,6 @@ class MatchesController < ApplicationController
     end
   end
 
-    # respond_to do |format|
-    #   if @match.save
-    #     format.html { redirect_to @match, notice: 'Match was successfully created.' }
-    #     format.json { render :show, status: :created, location: @match }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @match.errors, status: :unprocessable_entity }
-      # end
-
-  # end
 
   # PATCH/PUT /matches/1
   # PATCH/PUT /matches/1.json
