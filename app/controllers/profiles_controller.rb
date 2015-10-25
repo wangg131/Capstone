@@ -4,9 +4,6 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = Profile.all
-    # @profiles.each do |profile|
-    #   @individual = profile
-    # end
   end
 
   def new

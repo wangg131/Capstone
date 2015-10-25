@@ -2,6 +2,13 @@ class PostsController < ApplicationController
   before_filter :current_user
   before_filter :neighborhoods_housetypes, only:[:new, :create]
 
+  def index
+    @posts = Post.all
+    session[:post_id] = @user.post.id
+    @post = Post.find(session[:post_id])
+    @photos = @post.photos.all
+  end
+
   def new
     @post = Post.new
     @photo = @post.photos.build
