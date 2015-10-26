@@ -25,6 +25,7 @@ $(document).ready(function() {
         // show next post by index
         var index = $(posts).index(post);
         $(posts[index+1]).show();
+        // window.location
       }
     });
   });
