@@ -1,0 +1,34 @@
+<% if flash[:error] %>
+  <div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><i class="fa fa-home fa-5x inline"></i><h1 class="inline logo-text">RoomService</h1></li>
+      </ul>
+        <ul class="nav navbar-nav" style="float: right">
+          <% if @user && session[:user_id] %>
+            <li><%= link_to "Logout", logout_path , method: :delete, class: "" %></li>
+            <li><%= link_to "Go Home", root_path, method: :get , class: ""%></li>
+          <% else %>
+            <li><%= link_to "Log In!", login_path, class: "" %></li>
+            <li><%= link_to "Sign Up!", signup_path, class: "" %></li>
+          <% end %>
+
+      </ul>
+    </div>
+  </div>
+</div>
