@@ -4,9 +4,18 @@
       <div class="post" style="display: none" id= <%= post.id %> >
         <h1 class=""><%=  post.user.name %><small> | <%=  post.title %></small></h1>
         <h3>Housing Details:</h3>
-        <% post.photos.each do |p| %>
-          <%= image_tag p.images %>
-        <% end %>
+        <script type="text/javascript" charset="utf-8">
+          $(function(){
+            $("#slides").electricSlide();
+          })
+        </script>
+          <div id=“slides”>
+            <% post.photos.each do |p| %>
+              <div class="slide">
+                <%= image_tag p.images.medium.url %>
+              </div>
+            <% end %>
+          </div>
         <h4>Rent per Month $<%= post.price %></h4>
         <p>Neighborhood: <%= post.neighborhood %></p>
         <p># of Rooms Available: <%= post.rooms_available %></p>
