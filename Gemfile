@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "jquery-slick-rails"
+
 gem 'aws-sdk-resources', '~> 2'
 gem 'rspec', '~> 3'
 gem 'rake'
