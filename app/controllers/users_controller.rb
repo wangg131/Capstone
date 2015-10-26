@@ -28,8 +28,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def show_verify
-    raise
+  def show_verifys
     return redirect_to signup_path unless session[:user_id]
   end
 

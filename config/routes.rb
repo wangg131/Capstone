@@ -9,10 +9,10 @@ Rails.application.routes.draw do
 
   get     "/signup"                 => 'users#new', as: 'signup'
 
-  resources :users, only: [:create, :show]
   get     "users/verify"            => 'users#show_verify', as: 'show_verify'
   post    "users/verify"            => 'users#verify', as: 'verify'
   post    "users/resend"            => 'users#resend', as: 'resend'
+  resources :users, only: [:index, :create, :show]
 
   get     "/login"                  => 'sessions#new'
   post    "/login"                  => 'sessions#create'
