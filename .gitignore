@@ -23,3 +23,8 @@ coverage
 # Ignore vcr spec directory because it contains SECRETS!
 spec/vcr/*
 public/uploads/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
