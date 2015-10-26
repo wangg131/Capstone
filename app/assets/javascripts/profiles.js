@@ -30,7 +30,7 @@ $(document).ready(function() {
     });
 
     function hideProfileOrPost(profile) {
-       $(profile).hide();
+      $(profile).hide();
     }
   });
 });

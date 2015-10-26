@@ -3,8 +3,7 @@ class ProfilesController < ApplicationController
   before_filter :neighborhoods_housetypes, only:[:new, :create]
 
   def index
-    @profiles = Profile.all
-    # render partial: 'index'
+    @profiles = Profile.all.filter
   end
 
   def new

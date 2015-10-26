@@ -19,7 +19,6 @@ class UsersController < ApplicationController
         country_code: "1"
       )
       @user.update(authy_id: authy.id)
-
       # Send an SMS to your user
       Authy::API.request_sms(id: @user.authy_id, force: true)
       redirect_to show_verify_path
@@ -30,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def show_verify
+    raise
     return redirect_to signup_path unless session[:user_id]
   end
 
