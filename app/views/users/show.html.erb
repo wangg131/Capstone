@@ -1,20 +1,25 @@
-<h1><%= @user.name %></h1>
+<div class="row">
+  <div class="login-form col-md-4 col-md-offset-4">
 
-<p>Account Status:
-  <% if @user.verified? %>
-    Verified
-  <% else -%>
-    Not Verified
-  <% end -%>
+  <h1><%= @user.name %></h1>
 
-  <% if !@user.verified? %>
-<p>
-  <%= link_to "Verify your account now.", show_verify_path %>
-</p>
-  <% end -%>
+  <p>Account Status:
+    <% if @user.verified? %>
+      Verified
+    <% else -%>
+      Not Verified
+    <% end -%>
 
-  <% if @user.post %>
-    <%= link_to "Look for your roommmate!", profiles_path %>
-  <% elsif @user.profile%>
-    <%= link_to "Look for your room!", posts_path %>
-  <% end %>
+    <% if !@user.verified? %>
+  <p>
+    <%= link_to "Verify your account now.", show_verify_path %>
+  </p>
+    <% end -%>
+  <br>
+    <% if @user.post %>
+      <h3><%= link_to "Look for your roommmate!", profiles_path, class: "search-roomies" %></h3>
+    <% elsif @user.profile%>
+      <h3><%= link_to "Look for your room!", posts_path, class: "search-roomies" %></h3>
+    <% end %>
+  </div>
+</div>
