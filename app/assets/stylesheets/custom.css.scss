@@ -14,28 +14,63 @@
  *= require_self
  */
 
-
- // body {
- //     background: image-url("apartment2.jpg") no-repeat center center fixed;
- //
- // }
 @import "semantic-ui";
 
+
+
+* {
+  font-family: 'Inconsolata';
+}
+
+.post {
+  margin-top: 30px;
+
+}
+
+#post-specs {
+  margin-left: 4em;
+  padding-left: 2em;
+  background-color: rgba(117, 230, 207, .3);
+  border: 2px solid #C8FFDA;
+  width: 25%;
+  height: 22em;
+}
+
+#post-specs > p {
+  font-size:  1em;
+}
+#swipe-buttons {
+  margin-left: 4em;
+
+}
+.fa-check-circle:before {
+  color: rgb(0, 204, 0);
+  margin: 1em;
+}
+
+.fa-times-circle:before {
+  color: tomato;
+}
+
+
 .navbar {
-  // background-color: rgba(0, 0, 0, .7) !important;
+  background-color: #3c948b !important;
   border: none !important;
-  font-family: 'Orbitron', sans-serif;
   width: 100% !important;
 }
 
 .navbar .navbar-nav > li > a {
-  font-family: 'Orbitron', sans-serif;
-  text-align: center;
-  color: black;;
+  // text-align: center;
+  color: white !important;
   width: 100%;
   font-size: 1.25em !important;
   padding-bottom: 0;
   margin-top: .5em;
+}
+
+.navbar .navbar-nav > li > a:hover {
+  color: black !important;
+
 }
 
 a.search-roomies:link {
@@ -69,9 +104,18 @@ a.search-roomies:active {
 .inline {
   float: left;
 }
+.fa-home:before{
+  color: white;
+
+
+}
 
 .logo-text {
   margin-left: .2em;
+  font-size: 3em;
+  font-weight: bolder;
+  font-family: 'Helvetica';
+  color: white;
 }
 
 
@@ -223,7 +267,6 @@ textarea.form-control{
 .slick-next::before {
   content: ">";
 }
-
 
 .slick-next {
   right: -25px;
