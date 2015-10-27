@@ -27,8 +27,7 @@ $(document).ready(function() {
             $(profiles[index+1]).show();
             console.log(profiles[index+1]);
               if(profiles[index+1] === undefined){
-                $('.whole').append("<h1>Test</h1>");
-
+                $('.whole').append('');
               }
           // for(index=0; index<profiles.length; index++){
           // }
