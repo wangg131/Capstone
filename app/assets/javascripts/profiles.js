@@ -7,6 +7,7 @@ $(document).ready(function() {
     var profiles = $('.profile');
     var first = profiles[0];
     $(first).show();
+    $('.you').hide();
 
     $(".yes-profile").click(function(event) {
       event.preventDefault();
@@ -25,11 +26,10 @@ $(document).ready(function() {
           // show next profile by index
           var index = $(profiles).index(profile);
             $(profiles[index+1]).show();
-            console.log(profiles[index+1]);
               if(profiles[index+1] === undefined){
-                $('.whole').append('<a class data-method="get" href="/users/:id">Account</a>');
+                 $('.you').show();
+
               }
-          // for(index=0; index<profiles.length; index++){
           // }
         }
       });
