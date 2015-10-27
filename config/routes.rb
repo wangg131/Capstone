@@ -30,8 +30,8 @@ Rails.application.routes.draw do
 
   get     "/profiles"               => 'profiles#index'
   get     "/posts"                  => 'posts#index'
-  get     "/profile"                => 'profiles#show'
-  get     "/post"                   => 'posts#show'
+  get     "/my_profile"             => 'profiles#show'
+  get     "/my_post"                => 'posts#show'
 
   post    "/matches"                => 'matches#create'
 

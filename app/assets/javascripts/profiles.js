@@ -27,7 +27,7 @@ $(document).ready(function() {
             $(profiles[index+1]).show();
             console.log(profiles[index+1]);
               if(profiles[index+1] === undefined){
-                $('.whole').append('');
+                $('.whole').append('<a class data-method="get" href="/users/:id">Account</a>');
               }
           // for(index=0; index<profiles.length; index++){
           // }

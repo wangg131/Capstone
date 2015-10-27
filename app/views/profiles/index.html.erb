@@ -1,6 +1,5 @@
 <div class="row whole">
     <% @profiles.each do |profile| %>
-
       <div class="profile" style="display: none" id= <%= profile.id %> >
         <h1 class="profile_header"><%= profile.user.name %> | <small> <%=  profile.title %></small></h1>
         <h3>About Me:</h3>
@@ -9,3 +8,4 @@
       </div>
     <% end %>
 </div>
+<h2 class="you">YOU</h2>
