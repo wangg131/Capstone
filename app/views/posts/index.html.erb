@@ -1,18 +1,20 @@
 <div class="row">
     <% @posts.each do |post|  %>
       <div class="post" style="display: none" id= <%= post.id %> >
-        <div class="col-md-6 col-md-offset-2">
+        <div class="col-md-offset-1">
           <h1 class=""><%=  post.user.name %><small> | <%=  post.title %></small></h1>
         </div>
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-4 col-md-offset-2">
           <div class="scroller">
             <% post.photos.each do |p| %>
                 <div><%= image_tag p.images.medium.url %></div>
             <% end %>
           </div>
+          <br>
+          <h3><%= post.description %> </h3>
+          <i class="fa fa-check-circle fa-5x yes-post"></i><i class="fa fa-times-circle fa-5x no-post"></i>
         </div>
-          <p> <%= post.description %> </p>
-        <div class="col-md-4 col-md-offset-2">
+        <div class="col-md-4">
           <h4>Rent per Month $<%= post.price %></h4>
           <p>Neighborhood: <%= post.neighborhood %></p>
           <p># of Rooms Available: <%= post.rooms_available %></p>
@@ -35,10 +37,6 @@
           <% else %>
             <p>Smoking: Not allowed</p>
           <% end %>
-
-          <div class ="">
-            <i class="fa fa-check-circle fa-5x yes-post"></i><i class="fa fa-times-circle fa-5x no-post"></i>
-          </div>
         </div>
     <% end %>
   </div>
