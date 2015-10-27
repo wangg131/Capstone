@@ -202,30 +202,36 @@ textarea.form-control{
  }
 
 
- @import 'slick';
+@import 'slick';
 @import 'slick-theme';
 
 .slides {
   div {
     text-align: center;
-    font-size: 30px;
   }
 }
 
 .slick-prev::before, .slick-next::before {
   color: #000;
+  font-size: 30px;
 }
 
+.slick-prev::before {
+  content: "<";
+}
+
+.slick-next::before {
+  content: ">";
+}
+
+
 .slick-next {
-  right: -5px;
+  right: -25px;
 }
 
 .slick-prev {
-  left: -5px;
+  left: -35px;
 }
-
-
-
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
