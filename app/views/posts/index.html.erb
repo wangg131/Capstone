@@ -1,43 +1,52 @@
 <div class="row">
-    <% @posts.each do |post|  %>
-      <div class="post" style="display: none" id= <%= post.id %> >
-        <div class="col-md-offset-1">
-          <h1 class=""><%=  post.user.name %><small> | <%=  post.title %></small></h1>
-        </div>
+  <% @posts.each do |post| %>
+    <div class="post" style="display: none" id= <%= post.id %> >
+      <div class="col-md-8 col-md-offset-2">
+        <h1 class=""><%=  post.user.name %><small> | <%=  post.title %></small></h1><br><br>
+      </div><br>
+      <div class="row">
         <div class="col-md-4 col-md-offset-2">
           <div class="scroller">
             <% post.photos.each do |p| %>
-                <div><%= image_tag p.images.medium.url %></div>
+              <div><%= image_tag p.images.medium.url %></div>
             <% end %>
           </div>
-          <br>
-          <h3><%= post.description %> </h3>
-          <i class="fa fa-check-circle fa-5x yes-post"></i><i class="fa fa-times-circle fa-5x no-post"></i>
         </div>
-        <div class="col-md-4">
-          <h4>Rent per Month $<%= post.price %></h4>
-          <p>Neighborhood: <%= post.neighborhood %></p>
-          <p># of Rooms Available: <%= post.rooms_available %></p>
-          <p>Bathroom: <%= post.bathroom_type %></p>
-          <p>Laundry: <%= post.laundry %></p>
-          <p>Parking: <%= post.parking %></p>
-          <% if post.cats == true && post.dogs == true %>
-            <p>Cats & Dogs: Ok</p>
-          <% elsif post.cats == false && post.dogs == false %>
-            <p>Cats & Dogs: Not allowed</p>
-          <% elsif post.cats == true && post.dogs == false %>
-            <p>Cats: Ok</p>
-            <p>Dogs: Not allowed</p>
-          <% elsif post.cats == false && post.dogs == true %>
-            <p>Cats: Not allowed</p>
-            <p>Dogs: Ok</p>
-          <% end %>
-          <% if post.smoking == true %>
-            <p>Smoking: Ok</p>
-          <% else %>
-            <p>Smoking: Not allowed</p>
-          <% end %>
+        <div id="container">
+          <div class="col-md-4" id="post-specs">
+            <h3 class="price">$<%= post.price %>/month</h3>
+            <h4>Neighborhood: <%= post.neighborhood %></h4>
+            <h4># of Rooms Available: <%= post.rooms_available %></h4>
+            <h4>Bathroom: <%= post.bathroom_type %></h4>
+            <h4>Laundry: <%= post.laundry %></h4>
+            <h4>Parking: <%= post.parking %></h4>
+            <% if post.cats == true && post.dogs == true %>
+              <h4>Cats & Dogs: Ok</h4>
+            <% elsif post.cats == false && post.dogs == false %>
+              <h4>Cats & Dogs: Not allowed</h4>
+            <% elsif post.cats == true && post.dogs == false %>
+              <h4>Cats: Ok</h4>
+              <h4>Dogs: Not allowed</h4>
+            <% elsif post.cats == false && post.dogs == true %>
+              <h4>Cats: Not allowed</h4>
+              <h4>Dogs: Ok</h4>
+            <% end %>
+            <% if post.smoking == true %>
+              <h4>Smoking: Ok</h4>
+            <% else %>
+              <h4>Smoking: Not allowed</h4>
+            <% end %><br><br>
+          </div>
+            <div class="col-md-4" id="swipe-buttons">
+              <i class="fa fa-check-circle fa-5x yes-post"></i><i class="fa fa-times-circle fa-5x no-post"></i>
+            </div>
         </div>
-    <% end %>
-  </div>
+    </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2" id="something-else">
+            <h3><%= post.description %> </h3>
+        </div>
+      </div>
+</div>
+  <% end %>
 </div>

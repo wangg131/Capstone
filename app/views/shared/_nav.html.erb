@@ -21,11 +21,11 @@
       </ul>
         <ul class="nav navbar-nav" style="float: right">
           <% if @user && session[:user_id] %>
+            <li><%= link_to "Account", user_path(@user.id), method: :get , class: ""%></li>
             <li><%= link_to "Logout", logout_path , method: :delete, class: "" %></li>
-            <li><%= link_to "Go Home", root_path, method: :get , class: ""%></li>
           <% else %>
-            <li><%= link_to "Log In!", login_path, class: "" %></li>
             <li><%= link_to "Sign Up!", signup_path, class: "" %></li>
+            <li><%= link_to "Log In!", login_path, class: "" %></li>
           <% end %>
 
       </ul>
