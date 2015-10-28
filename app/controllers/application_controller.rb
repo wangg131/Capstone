@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   HOUSING_TYPES =
     {"House"=> "House", "Apartment" => "Apartment", "Duplex" => "Duplex",
-      "Townhouse" => "Townhouse", "Condo" => "Condo", "In-Law" => "In-Law"}
+      "Condo" => "Condo", "In-Law" => "In-Law"}
 
 
   MESSAGES = {not_logged_in: "You are not currently logged in!",

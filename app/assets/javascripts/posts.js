@@ -19,9 +19,13 @@ $(document).ready(function() {
         post_id: $(post).attr('id'),
         approved: true
         },
-        success: function() {
-          hidePost(post);
-          nextPost(post);
+        success: function(data) {
+          if(data["message"] === "hey"){
+            alert( "It's a match! You can start messaging them now or keep searching.");
+          }else {
+            hidePost(post);
+            nextPost(post);
+          }
         }
       });
     });
@@ -36,14 +40,9 @@ $(document).ready(function() {
         post_id: $(post).attr('id'),
         approved: false
         },
-        success: function(data) {
-          if(data["created"] === 'true'){
-
-
-          }else {
+        success: function() {
           hidePost(post);
           nextPost(post);
-        }
         }
       });
     });
@@ -54,7 +53,7 @@ $(document).ready(function() {
       var index = $(posts).index(post);
       $(posts[index+1]).show();
       if(posts[index+1] === undefined){
-        $('.you').show();
+          $('.you').show();
       }
     }
 

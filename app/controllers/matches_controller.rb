@@ -19,30 +19,22 @@ class MatchesController < ApplicationController
 
   def create
     if @user.user_type == "host"
-      match = Match.find_or_create_by( post_id: @user.post.id,
-                                        profile_id: params[:profile_id])
-      match.update_columns(host_approved?: params[:approved])
-
-      render json: { created: true }, status: :ok
-
-      # respond_to do |format|
-      #   format.html {render html: "hey"}
-      #   format.js
-      # end
+      match = Match.find_by(post_id: @user.post.id, profile_id: params[:profile_id])
+      if match.nil?
+        # if you don't find the match record, create it
+        create_match = Match.create(post_id: @user.post.id, profile_id: params[:profile_id], host_approved?: params[:approved])
+      else
+        # update the match record if it already exists
+        match.update_columns(host_approved?: params[:approved])
+        render json: {message: "hey"}
+      end
     elsif @user.user_type == "seeker"
-      match = Match.find_or_create_by( profile_id: @user.profile.id,
-                                        post_id: params[:post_id])
-      match.update_columns(seeker_approved?: params[:approved])
-      # match.post = @user.profile
-      respond_to do |format|
-          # raise
-          # if match.host_approved? && match.seeker_approved?
-          #   flash[:notice] = "Order created - Click <a href='#{user_path(@user.id)}'>here</a> to go back to account!".html_safe
-            # flash[:notice] = "link_to, "hey", '/users/#{@user.id}'}".html_safe
-            # raise
-          # end
-        format.html {render html: "hey"}
-        format.js
+      match = Match.find_by(profile_id: @user.profile.id, post_id: params[:post_id])
+      if match.nil?
+        create_match = Match.create(profile_id: @user.profile.id, post_id: params[:post_id], seeker_approved?: params[:approved])
+      else
+        match.update_columns(seeker_approved?: params[:approved])
+        render json: {message: "hey"}
       end
     end
   end

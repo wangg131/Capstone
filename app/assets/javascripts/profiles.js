@@ -19,9 +19,13 @@ $(document).ready(function() {
         profile_id: $(profile).attr('id'),
         approved: true
         },
-        success: function() {
+        success: function(data) {
+          if(data["message"] === "hey"){
+            alert( "It's a match! You can start messaging them now or keep searching.");
+          }else{
           hideProfile(profile);
           nextProfile(profile);
+          }
         }
       });
     });
