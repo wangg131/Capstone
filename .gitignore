@@ -30,3 +30,5 @@ public/uploads/
 !.elasticbeanstalk/*.global.yml
 
 /vendor/cache
+
+.ebextensions/ruby.config
