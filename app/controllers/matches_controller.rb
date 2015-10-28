@@ -18,17 +18,19 @@ class MatchesController < ApplicationController
 
   def create
     if @user.user_type == 'host'
-      @match = Match.find_or_create_by( post_id: @user.id,
-                                        profile_id: params[:profile_id],
-                                        host_approved?: params[:approved])
+      match = Match.find_or_create_by( post_id: @user.post.id,
+                                        profile_id: params[:profile_id])
+      match.update_columns(host_approved?: params[:approved])
+      # match.post = @user.post
       respond_to do |format|
         format.html {render html: "hey"}
         format.js
       end
     elsif @user.user_type == 'seeker'
-      @match = Match.find_or_create_by( profile_id: @user.id,
-                                        post_id: params[:post_id],
-                                        seeker_approved?: params[:approved])
+      match = Match.find_or_create_by( profile_id: @user.profile.id,
+                                        post_id: params[:post_id])
+      match.update_columns(seeker_approved?: params[:approved])
+      # match.post = @user.profile
       respond_to do |format|
         format.html {render html: "hey"}
         format.js

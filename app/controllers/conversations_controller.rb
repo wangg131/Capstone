@@ -1,8 +1,12 @@
 class ConversationsController < ApplicationController
   before_filter :current_user
   def index
-    @users = User.all
     @conversations = Conversation.all
+    if @user.user_type == 'host'
+      @matches = Match.where(post_id: @user.post.id, host_approved?: true, seeker_approved?: true)
+    elsif @user.user_type == 'seeker'
+      @matches = Match.where(profile_id: @user.profile.id, host_approved?: true, seeker_approved?: true)
+    end
   end
 
   def create
