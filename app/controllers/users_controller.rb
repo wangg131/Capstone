@@ -64,10 +64,9 @@ class UsersController < ApplicationController
   def show; end
 
   def index
-    User.address(@user.street, @user.city, @user.state, @user.country)
+    @user1 = User.address(@user.street, @user.city, @user.state, @user.country)
   end
-
-
+  
   private
 
 

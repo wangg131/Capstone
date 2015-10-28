@@ -31,7 +31,6 @@ class User < ActiveRecord::Base
 
   def self.address(street, city, state, country)
     address_array = []
-    address_array.push(street + city + state + country)
-    return address_array.compact.join(', ')
+    address_array.push(street, city , state, country)
   end
 end
