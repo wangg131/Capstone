@@ -35,6 +35,10 @@ Rails.application.routes.draw do
 
   post    "/matches"                => 'matches#create'
 
+  get "/maps" => 'maps#index'
+
+  get "/user/map" => 'users#index'
+
   resources :conversations do
     resources :messages
    end

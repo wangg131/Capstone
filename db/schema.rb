@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025012212) do
+ActiveRecord::Schema.define(version: 20151028203438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20151025012212) do
     t.string   "country_code"
     t.string   "authy_id"
     t.boolean  "verified"
+    t.string   "country"
   end
 
 end

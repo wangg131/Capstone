@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_login, only: [:show]
   before_filter :current_user, only: [:show, :verify, :resend]
+  # geocoded_by :address
 
   def new
     @user = User.new
@@ -62,7 +63,13 @@ class UsersController < ApplicationController
 
   def show; end
 
+  def index
+    User.address(@user.street, @user.city, @user.state, @user.country)
+  end
+
+
   private
+
 
   # def send_message(message)
   #   @user = current_user

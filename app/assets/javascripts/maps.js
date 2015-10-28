@@ -1,22 +1,22 @@
-# // # Place all the behaviors and hooks related to the matching controller here.
-# // # All this logic will automatically be available in application.js.
-# // # You can use CoffeeScript in this file: http://coffeescript.org/
-# //
-# // var map = L.map('map').setView([0, 0], 2);
-# // L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-# //     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-# // }).addTo(map);
-# // L.Control.geocoder().addTo(map);
-# //
-# //
-# // L.Routing.control({
-# //     waypoints: [
-# //         L.latLng(57.74, 11.94),
-# //         L.latLng(57.6792, 11.949)
-# //     ],
-# //     routeWhileDragging: true,
-# //     geocoder: L.Control.Geocoder.nominatim()
-# // }).addTo(map);
+// # Place all the behaviors and hooks related to the matching controller here.
+// # All this logic will automatically be available in application.js.
+// # You can use CoffeeScript in this file: http://coffeescript.org/
+//
+// var map = L.map('map').setView([0, 0], 2);
+// L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+//     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+// }).addTo(map);
+// L.Control.geocoder().addTo(map);
+//
+//
+// L.Routing.control({
+//     waypoints: [
+//         L.latLng(57.74, 11.94),
+//         L.latLng(57.6792, 11.949)
+//     ],
+//     routeWhileDragging: true,
+//     geocoder: L.Control.Geocoder.nominatim()
+// }).addTo(map);
 
 $(document).ready(function() {
 
