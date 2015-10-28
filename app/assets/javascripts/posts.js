@@ -7,16 +7,16 @@ $(document).ready(function() {
     var posts = $('.post');
     var first = posts[0];
     $(first).show();
+    $('.you').hide();
 
     $(".yes-post").click(function(event) {
       event.preventDefault();
       var button = this;
       var post = $(button).parents('.post');
-
       $.ajax('/matches', {
         type: "POST",
         data: {
-        post_id: first.id,
+        post_id: $(post).attr('id'),
         approved: true
         },
         success: function() {

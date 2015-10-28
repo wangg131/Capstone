@@ -17,7 +17,7 @@ class MatchesController < ApplicationController
   def edit; end
 
   def create
-    if @user.user_type == 'host'
+    if @user.user_type == "host"
       match = Match.find_or_create_by( post_id: @user.post.id,
                                         profile_id: params[:profile_id])
       match.update_columns(host_approved?: params[:approved])
@@ -26,7 +26,7 @@ class MatchesController < ApplicationController
         format.html {render html: "hey"}
         format.js
       end
-    elsif @user.user_type == 'seeker'
+    elsif @user.user_type == "seeker"
       match = Match.find_or_create_by( profile_id: @user.profile.id,
                                         post_id: params[:post_id])
       match.update_columns(seeker_approved?: params[:approved])
