@@ -24,8 +24,9 @@ $(document).ready(function() {
           // given an array of posts, find the index of the current One
           // show next post by index
           var index = $(posts).index(post);
-          for(index=0; index<posts.length; index++){
-              $(posts[index+1]).show();
+          $(posts[index+1]).show();
+          if(posts[index+1] === undefined){
+              $('.you').show();
           }
         }
       });
