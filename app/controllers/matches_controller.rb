@@ -26,8 +26,8 @@ class MatchesController < ApplicationController
         format.js
       end
     elsif @user.user_type == 'seeker'
-      @match = Match.find_or_create_by( post_id: @user.id,
-                                        profile_id: params[:profile_id],
+      @match = Match.find_or_create_by( profile_id: @user.id,
+                                        post_id: params[:post_id],
                                         seeker_approved?: params[:approved])
       respond_to do |format|
         format.html {render html: "hey"}
