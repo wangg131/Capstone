@@ -36,9 +36,14 @@ $(document).ready(function() {
         post_id: $(post).attr('id'),
         approved: false
         },
-        success: function() {
+        success: function(data) {
+          if(data["created"] === 'true'){
+
+
+          }else {
           hidePost(post);
           nextPost(post);
+        }
         }
       });
     });

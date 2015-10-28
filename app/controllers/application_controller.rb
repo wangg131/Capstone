@@ -56,6 +56,7 @@ class ApplicationController < ActionController::Base
     redirect_to login_path, flash: {error: MESSAGES[:not_logged_in]} unless session[:user_id]
   end
 
+  before_filter -> { flash.now[:notice] = flash[:notice].html_safe if flash[:html_safe] && flash[:notice] }
 
   # def logged_in_user
   #   redirect_to dashboard_path(session[:user_id]), flash: {error: MESSAGES[:already_logged_in]} if session[:user_id]

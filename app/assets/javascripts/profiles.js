@@ -22,7 +22,6 @@ $(document).ready(function() {
         success: function() {
           hideProfile(profile);
           nextProfile(profile);
-
         }
       });
     });
