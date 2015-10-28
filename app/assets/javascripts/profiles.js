@@ -20,15 +20,9 @@ $(document).ready(function() {
         approved: true
         },
         success: function() {
-          hideProfileOrPost(profile);
-          // given an array of profiles, find the index of the current One
-          // show next profile by index
-          var index = $(profiles).index(profile);
-            $(profiles[index+1]).show();
-              if(profiles[index+1] === undefined){
-                 $('.you').show();
+          hideProfile(profile);
+          nextProfile(profile);
 
-              }
         }
       });
     });
@@ -41,24 +35,27 @@ $(document).ready(function() {
       $.ajax('/matches', {
         type: "POST",
         data: {
-        profile_id: first.id,
+        profile_id: $(profile).attr('id'),
         approved: false
         },
         success: function() {
-          hideProfileOrPost(profile);
-          // given an array of profiles, find the index of the current One
-          // show next profile by index
-          var index = $(profiles).index(profile);
-            $(profiles[index+1]).show();
-              if(profiles[index+1] === undefined){
-                 $('.you').show();
-
-              }
+          hideProfile(profile);
+          nextProfile(profile);
         }
       });
     });
 
-    function hideProfileOrPost(profile) {
+    // given an array of profiles, find the index of the current One
+    // show next profile by index
+    function nextProfile(profile){
+      var index = $(profiles).index(profile);
+      $(profiles[index+1]).show();
+      if(profiles[index+1] === undefined){
+        $('.you').show();
+      }
+    }
+
+    function hideProfile(profile) {
       $(profile).hide();
     }
   });

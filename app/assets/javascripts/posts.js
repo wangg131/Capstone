@@ -20,20 +20,41 @@ $(document).ready(function() {
         approved: true
         },
         success: function() {
-          hideProfileOrPost(post);
-          // given an array of posts, find the index of the current One
-          // show next post by index
-          var index = $(posts).index(post);
-          $(posts[index+1]).show();
-          if(posts[index+1] === undefined){
-              $('.you').show();
-          }
+          hidePost(post);
+          nextPost(post);
         }
       });
     });
 
-   function hideProfileOrPost(post) {
-     $(post).hide();
-   }
+    $(".no-post").click(function(event) {
+      event.preventDefault();
+      var button = this;
+      var post = $(button).parents('.post');
+      $.ajax('/matches', {
+        type: "POST",
+        data: {
+        post_id: $(post).attr('id'),
+        approved: false
+        },
+        success: function() {
+          hidePost(post);
+          nextPost(post);
+        }
+      });
+    });
+
+    // given an array of posts, find the index of the current One
+    // show next post by index
+    function nextPost(post){
+      var index = $(posts).index(post);
+      $(posts[index+1]).show();
+      if(posts[index+1] === undefined){
+        $('.you').show();
+      }
+    }
+
+    function hidePost(post) {
+      $(post).hide();
+    }
   });
 });
