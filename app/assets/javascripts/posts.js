@@ -13,15 +13,17 @@ $(document).ready(function() {
       event.preventDefault();
       var button = this;
       var post = $(button).parents('.post');
-      $.ajax('/matches', {
+      $.ajax('/seeker_post_match', {
         type: "POST",
         data: {
         post_id: $(post).attr('id'),
-        approved: true
+        bool: true
         },
         success: function(data) {
-          if(data["message"] === "hey"){
+          if(data["message"] == "hey"){
             alert( "It's a match! You can start messaging them now or keep searching.");
+            hidePost(post);
+            nextPost(post);
           }else {
             hidePost(post);
             nextPost(post);
@@ -34,11 +36,11 @@ $(document).ready(function() {
       event.preventDefault();
       var button = this;
       var post = $(button).parents('.post');
-      $.ajax('/matches', {
+      $.ajax('/seeker_post_match', {
         type: "POST",
         data: {
         post_id: $(post).attr('id'),
-        approved: false
+        bool: false
         },
         success: function() {
           hidePost(post);

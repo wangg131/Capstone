@@ -3,9 +3,9 @@ class ConversationsController < ApplicationController
   def index
     @conversations = Conversation.all
     if @user.user_type == 'host'
-      @matches = Match.where(post_id: @user.post.id, host_approved?: true, seeker_approved?: true)
+      @matches = Match.where(post_id: @user.post.id, host_approved_seeker?: true, seeker_approved_host?: true)
     elsif @user.user_type == 'seeker'
-      @matches = Match.where(profile_id: @user.profile.id, host_approved?: true, seeker_approved?: true)
+      @matches = Match.where(profile_id: @user.profile.id, host_approved_seeker?: true, seeker_approved_host?: true)
     end
   end
 

@@ -33,7 +33,12 @@ Rails.application.routes.draw do
   get     "/my_profile"             => 'profiles#show'
   get     "/my_post"                => 'posts#show'
 
-  post    "/matches"                => 'matches#create'
+  post    "/host_profile_match"        => 'matches#host_profile_match', as: 'match_post_create'
+  post    "/seeker_post_match"         => 'matches#seeker_post_match', as: 'seeker_post_match'
+
+  get "/maps" => 'maps#index'
+
+  get "/user/map" => 'users#index'
 
   resources :conversations do
     resources :messages

@@ -13,15 +13,17 @@ $(document).ready(function() {
       event.preventDefault();
       var button = this;
       var profile = $(button).parents('.profile');
-      $.ajax('/matches', {
+      $.ajax('/host_profile_match', {
         type: "POST",
         data: {
         profile_id: $(profile).attr('id'),
-        approved: true
+        bool: true
         },
         success: function(data) {
           if(data["message"] === "hey"){
             alert( "It's a match! You can start messaging them now or keep searching.");
+            hideProfile(profile);
+            nextProfile(profile);
           }else{
           hideProfile(profile);
           nextProfile(profile);
@@ -35,11 +37,11 @@ $(document).ready(function() {
       var button = this;
       var profile = $(button).parents('.profile');
 
-      $.ajax('/matches', {
+      $.ajax('/host_profile_match', {
         type: "POST",
         data: {
         profile_id: $(profile).attr('id'),
-        approved: false
+        bool: false
         },
         success: function() {
           hideProfile(profile);

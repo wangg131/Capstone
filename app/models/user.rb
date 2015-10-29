@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_one  :profile
   has_many :conversations, :foreign_key => :sender_id
   has_secure_password
+  # geocoded_by :address
 
   # Validations for users registering and loggin in without facebook
   validates               :email, presence: true, uniqueness: true, format: {with: /@/},
@@ -26,5 +27,10 @@ class User < ActiveRecord::Base
     user.password = SecureRandom.uuid
     user.save!
     return user
+  end
+
+  def self.address(street, city, state, country)
+    address_array = []
+    address_array.push(street, city , state, country)
   end
 end

@@ -9,7 +9,6 @@ class PostsController < ApplicationController
     parking_array = JSON.parse(@user.profile.parking)
     bathroom_array = JSON.parse(@user.profile.bathroom_type)
     house_type_array = JSON.parse(@user.profile.house_type)
-
     @posts = Post.where(cats: @user.profile.cats)
                  .where(dogs: @user.profile.dogs)
                  .where(smoking: @user.profile.smoking)
@@ -21,6 +20,7 @@ class PostsController < ApplicationController
                  .where(parking: parking_array)
                  .where(bathroom_type: bathroom_array)
                  .where(house_type: house_type_array)
+            
   end
 
   def new

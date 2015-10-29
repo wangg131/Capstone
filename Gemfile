@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+
+gem 'geocoder'
 gem "jquery-slick-rails"
 
 gem 'aws-sdk-resources', '~> 2'
@@ -98,5 +100,9 @@ group :development, :test do
   group :production do
     gem 'puma'
   end
+
+group :production do
+  gem 'puma'
+end
 
 end
