@@ -94,5 +94,9 @@ group :development, :test do
 
   # Pry Console
   gem 'pry-rails'
+  
+  group :production do
+    gem 'puma'
+  end
 
 end
