@@ -1,4 +1,5 @@
 <div class="row whole">
+    <div class="col-md-8 col-md-offset-2" style="text-align:center">
     <% @profiles.each do |profile| %>
       <div class="profile" style="display: none" id= <%= profile.id %> >
         <h1 class="profile_header"><%= profile.user.name %> | <small> <%=  profile.title %></small></h1>
@@ -7,7 +8,10 @@
         <i class="fa fa-check-circle fa-5x yes-profile"></i><i class="fa fa-times-circle fa-5x no-profile"></i>
       </div>
     <% end %>
+  </div>
 </div>
-<div class="you">
-  <h2 class="you"><%= link_to "Account", user_path(@user.id), method: :get %></h2>
-</div>
+<div class="row">
+  <div class="col-md-8 col-md-offset-4">
+    <div class="you">
+      <h2 class="you">You ran out of potential roomates. Try adjusting your search preferences.<%= link_to "Search Preferences", edit_post_path(@user.post.id), method: :get %></h2>
+    </div>

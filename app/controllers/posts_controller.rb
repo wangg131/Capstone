@@ -50,7 +50,7 @@ class PostsController < ApplicationController
 
   def edit
     neighborhoods_housetypes
-    session[:profile_id] = @user.post.id
+    session[:post_id] = @user.post.id
     @post = Post.find(session[:post_id])
   end
 

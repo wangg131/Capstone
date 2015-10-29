@@ -31,6 +31,7 @@
 }
 
 .you {
+  margin-top: 1em;
   font-size: 2em;
   background-color: grey;
   height: 8em;
@@ -43,7 +44,7 @@ body{
 }
 
 * {
-  font-family: 'Inconsolata';
+  font-family: 'Hind';
 }
 
 .post {
@@ -96,11 +97,17 @@ body{
 
 }
 
-a:visited {
 
-
+a:link, a:visited {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
 }
 
+a:hover {
+  text-decoration: none !important;
+  background-color: transparent;
+}
 
 a.search-roomies:link {
   color: black;
@@ -147,9 +154,8 @@ a.search-roomies:active {
   color: white;
 }
 
-
-.profile_center {
-   text-align: center;
+.profile {
+   margin-top: 5em;
  }
 
 textarea.form-control{
