@@ -4,6 +4,15 @@ class ProfilesController < ApplicationController
   before_filter :neighborhoods_housetypes, only:[:new, :create]
 
   def index
+    # all_profiles = Profile.all
+    # all_profiles.each do |poop|
+    #
+    #   neighborhood_array = all_profiles.map {|prof| JSON.parse(prof.neighborhoods) }.flatten.uniq
+    #   laundry_array = all_profiles.map {|prof| JSON.parse(prof.laundry) }.flatten.uniq
+    #   parking_array = all_profiles.map {|prof| JSON.parse(prof.parking) }.flatten.uniq
+    #   bathroom_array = all_profiles.map {|prof| JSON.parse(prof.bathroom_type) }.flatten.uniq
+    #   house_type_array = all_profiles.map {|prof| JSON.parse(prof.house_type) }.flatten.uniq
+
     @profiles = Profile.where(cats: @user.post.cats)
                  .where(dogs: @user.post.dogs)
                  .where(smoking: @user.post.smoking)
@@ -11,13 +20,12 @@ class ProfilesController < ApplicationController
                  .where("max_roommates >= ?", @user.post.total_roommates)
                  .where("min_price <= ?", @user.post.price)
                  .where("max_price >= ?", @user.post.price)
-                #  .where(neighborhoods: @user.post.neighborhood)
-                #  .where(laundry: @user.post.laundry)
-                #  .where(parking: @user.post.parking)
-                #  .where(bathroom_type: @user.post.bathroom_type)
-                #  .where(house_type: @user.post.house_type)
-# raise
-
+                #  .where(neighborhoods: neighborhood_array)
+                #  .where(laundry: laundry_array)
+                #  .where(parking: parking_array)
+                #  .where(bathroom_type: bathroom_array)
+                #  .where(house_type: house_type_array)
+                raise
   end
 
   def new
