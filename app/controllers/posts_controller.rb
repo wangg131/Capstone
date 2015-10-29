@@ -58,9 +58,6 @@ class PostsController < ApplicationController
     session[:profile_id] = @user.post.id
     @post = Post.find(session[:post_id])
     if @post.update(params[:post].permit(:title,:description, :house_type, :neighborhood, :rooms_available, :bathroom_type, :price, :cats, :dogs, :parking, :laundry, :total_roommates, :smoking))
-raise
-    # if @post.update(params[:post].permit(:title,:description))
-      # to handle multiple images upload on update when user adds more photos
       if params[:images]
         params[:images].each { |image|
           @post.photos.create(image: image)
