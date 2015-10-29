@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029173712) do
+ActiveRecord::Schema.define(version: 20151029222840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,17 +19,17 @@ ActiveRecord::Schema.define(version: 20151029173712) do
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "matches", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "profile_id"
     t.boolean  "host_approved_seeker?"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
     t.boolean  "seeker_approved_host?"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -47,13 +47,11 @@ ActiveRecord::Schema.define(version: 20151029173712) do
   create_table "photos", force: :cascade do |t|
     t.integer  "post_id"
     t.text     "images"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
     t.string   "house_type"
     t.text     "description"
     t.integer  "price"
@@ -71,11 +69,11 @@ ActiveRecord::Schema.define(version: 20151029173712) do
     t.string   "bathroom_type"
     t.text     "images"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
     t.text     "title"
     t.string   "house_type"
     t.text     "neighborhoods"
@@ -90,14 +88,12 @@ ActiveRecord::Schema.define(version: 20151029173712) do
     t.string   "laundry"
     t.integer  "max_roommates"
     t.boolean  "smoking"
-    t.string   "gender_preference"
-    t.string   "date_needed"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
@@ -106,6 +102,7 @@ ActiveRecord::Schema.define(version: 20151029173712) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
+    t.string   "country"
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"
@@ -113,7 +110,8 @@ ActiveRecord::Schema.define(version: 20151029173712) do
     t.string   "authy_id"
     t.boolean  "verified"
     t.string   "user_type"
-    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
