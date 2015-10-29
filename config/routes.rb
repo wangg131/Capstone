@@ -27,11 +27,15 @@ Rails.application.routes.draw do
   get     "post/new"                => 'posts#new', as: 'new_post'
   post    "profile/new"             => 'profiles#create'
   post    "post/new"                => 'posts#create'
+  get     "profile/:id/edit"            => 'profiles#edit', as: 'edit_profile'
+  patch   "profile/:id"        => 'profiles#update', as: 'update_profile'
+  get     "post/:id/edit"               => 'posts#edit', as: 'edit_post'
+  patch   "post/:id"           => 'posts#update', as: 'update_post'
 
   get     "/profiles"               => 'profiles#index'
   get     "/posts"                  => 'posts#index'
-  get     "/my_profile"             => 'profiles#show'
-  get     "/my_post"                => 'posts#show'
+  get     "/my_profile"             => 'profiles#show', as: 'my_profile'
+  get     "/my_post"                => 'posts#show', as: 'my_post'
 
   post    "/host_profile_match"        => 'matches#host_profile_match', as: 'match_post_create'
   post    "/seeker_post_match"         => 'matches#seeker_post_match', as: 'seeker_post_match'

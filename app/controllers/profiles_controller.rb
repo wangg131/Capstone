@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
                 #  .where(parking: parking_array)
                 #  .where(bathroom_type: bathroom_array)
                 #  .where(house_type: house_type_array)
-              
+
   end
 
   def new
@@ -52,6 +52,23 @@ class ProfilesController < ApplicationController
   def show
     session[:profile_id] = @user.profile.id
     @profile = Profile.find(session[:profile_id])
+  end
+
+  def edit
+    neighborhoods_housetypes
+    session[:profile_id] = @user.profile.id
+    @profile = Profile.find(session[:profile_id])
+  end
+
+  def update
+    session[:profile_id] = @user.profile.id
+    @profile = Profile.find(session[:profile_id])
+    if @profile.save
+      @profile.update(profile_params)
+      redirect_to my_profile_path
+    else
+      render :edit
+    end
   end
 
   private

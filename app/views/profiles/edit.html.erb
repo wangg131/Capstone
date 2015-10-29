@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_for @profile, html: {multipart: true}, url: update_profile_path(@profile.id), method: :patch do |f| %>
+      <h3>Edit Profile</h3>
+      <p>Your profile is viewable by compatible renters looking for people to fill their rooms.</p>
+      <fieldset>
+        <div class="form-group">
+          <%= f.label :title, "Profile Title" %>
+          <small><p>Enter a short title to help roommates identify your profile. (Ex: <i>25 yo.
+            student looking for room in a quiet house</i> ) </p></small>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, "About You" %>
+          <small><p>Write about yourself to potential roommates. List habits, preferences, job, interests,
+            or anything you think they should know about you. </p></small>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+
+      <h3>Housing Search Preferences</h3>
+      <p> Complete the fields below for your search preferences. Only housing posts that match your
+        desired criteria will be searchable. To choose multiple options for each category, press the
+        'command' key while selecting. Your preferences can be edited anytime in your settings.</p>
+          <div class="form-group">
+            <%= f.label :house_type, "Desired Housing Type(s)" %>
+            <%= f.select :house_type, options_for_select(@housing_types),
+            {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
+          </div>
+          <div class="form-group col-md-4 col-md-offset-1">
+            <%= f.label :rooms_needed, "Number of Rooms"%>
+            <%= f.text_field :rooms_needed, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-4 col-md-offset-1">
+            <%= f.label :max_roommates, "Max Housemates" %>
+            <%= f.text_field :max_roommates, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-4 col-md-offset-1">
+            <%= f.label :min_price, "Min Price" %>
+            <%= f.text_field :min_price, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-4 col-md-offset-1">
+            <%= f.label :max_price, "Max Price" %>
+            <%= f.text_field :max_price, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :neighborhoods, "Seattle Neighborhoods" %>
+            <%= f.select :neighborhoods, grouped_options_for_select(@neighborhoods),
+            {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
+          </div>
+          <div class="form-group">
+            <%= f.label :bathroom_type, "Bathroom Type(s)" %>
+            <%= f.select :bathroom_type, options_for_select(["Private", "Shared"]),
+            {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
+          </div>
+          <div class="form-group">
+            <%= f.label :laundry, "Washer & Dryer" %>
+            <%= f.select :laundry, options_for_select(["In-unit", "On-site", "In-building"]),
+            {include_hidden: false}, {:multiple => true, class: "chzn-select form-control"} %>
+          </div>
+          <div class="form-group">
+            <%= f.label :parking, "Parking" %>
+            <%= f.select :parking, options_for_select(["Street", "Garage"]), {include_hidden: false},
+            {:multiple => true, class: "chzn-select form-control"} %>
+          </div>
+          <div class="checkbox-inline">
+            <%= f.label "Cats" %> <br />
+            <%= f.check_box :cats %> <br />
+          </div>
+          <div class="checkbox-inline">
+            <%= f.label "Dogs" %> <br />
+            <%= f.check_box :dogs %> <br />
+          </div>
+          <div class="checkbox-inline">
+            <%= f.label "Smoking" %> <br />
+            <%= f.check_box :smoking %> <br />
+          </div><br>
+          <%= f.submit "Add Preferences", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -20,7 +20,7 @@ class PostsController < ApplicationController
                  .where(parking: parking_array)
                  .where(bathroom_type: bathroom_array)
                  .where(house_type: house_type_array)
-            
+
   end
 
   def new
@@ -48,37 +48,36 @@ class PostsController < ApplicationController
     @photos = @post.photos.all
   end
 
-  # def update
-  #   if @post.update(params[:post].permit(:title,:description))
-  #     # to handle multiple images upload on update when user adds more photos
-  #     if params[:images]
-  #       params[:images].each { |image|
-  #         @post.photos.create(image: image)
-  #       }
-  #     end
-  #     flash[:notice] = "Post has been updated."
-  #     redirect_to rootpath
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def edit
+    neighborhoods_housetypes
+    session[:profile_id] = @user.post.id
+    @post = Post.find(session[:post_id])
+  end
 
-  # def compatible_posts
-  #   @profile = Profile.find(session[:user_id])
-  #
-  #   Post.where(cats: @profile.cats ).where(dogs: @profile.dogs).where(smoking: @profile.smoking).where("rooms_available >= ?", @profile.rooms_needed).where("total_roommates <= ?", @profile.max_roommates).where("price BETWEEN ?,?", @profile.min_price, @profile.max_price).where(neighborhood: params[:neighborhoods]).where(house_type: params[:house_type]).where(bathroom_type: params[:bathroom_type]).where(laundry: params[:laundry]).where(parking: params[:parking])
-  # end
-
-  # @order_items = OrderItem.joins(:order).where('orders.status' => 'pending').where('orders.id' => session[:order_id])
-
-
+  def update
+    session[:profile_id] = @user.post.id
+    @post = Post.find(session[:post_id])
+    if @post.update(params[:post].permit(:title,:description, :house_type, :neighborhood, :rooms_available, :bathroom_type, :price, :cats, :dogs, :parking, :laundry, :total_roommates, :smoking))
+raise
+    # if @post.update(params[:post].permit(:title,:description))
+      # to handle multiple images upload on update when user adds more photos
+      if params[:images]
+        params[:images].each { |image|
+          @post.photos.create(image: image)
+        }
+      end
+      flash[:notice] = "Post has been updated."
+      redirect_to my_post_path
+    else
+      render :edit
+    end
+  end
 
   private
-
 
   def post_params
     params.require(:post).permit(:title, :house_type, :description, :neighborhood, :date_available,
     :rooms_available, :bathroom_type, :price, :cats, :dogs, :parking, :laundry, :total_roommates,
-    :smoking, :gender_preference, :user_id, {photos_attributes: [:id, :post_id, :images]})
+    :smoking, :gender_preference, :user_id, :images, {photos_attributes: [:id, :post_id, :images]})
   end
 end
