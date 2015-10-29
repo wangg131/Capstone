@@ -27,10 +27,10 @@ Rails.application.routes.draw do
   get     "post/new"                => 'posts#new', as: 'new_post'
   post    "profile/new"             => 'profiles#create'
   post    "post/new"                => 'posts#create'
-  get     "profile/:id/edit"            => 'profiles#edit', as: 'edit_profile'
-  patch   "profile/:id"        => 'profiles#update', as: 'update_profile'
-  get     "post/:id/edit"               => 'posts#edit', as: 'edit_post'
-  patch   "post/:id"           => 'posts#update', as: 'update_post'
+  get     "profile/:id/edit"        => 'profiles#edit', as: 'edit_profile'
+  patch   "profile/:id"             => 'profiles#update', as: 'update_profile'
+  get     "post/:id/edit"           => 'posts#edit', as: 'edit_post'
+  patch   "post/:id"                => 'posts#update', as: 'update_post'
 
   get     "/profiles"               => 'profiles#index'
   get     "/posts"                  => 'posts#index'
@@ -40,12 +40,12 @@ Rails.application.routes.draw do
   post    "/host_profile_match"        => 'matches#host_profile_match', as: 'match_post_create'
   post    "/seeker_post_match"         => 'matches#seeker_post_match', as: 'seeker_post_match'
 
-  get "/maps" => 'maps#index'
+  get     "/maps" => 'maps#index'
 
-  get "/user/map" => 'users#index'
+  get     "/user/map" => 'users#index'
 
-  get "user/type" => 'users#determine_type', as: 'user_type'
-  patch "user/type" => 'users#update_type'
+  get     "user/type" => 'users#determine_type', as: 'user_type'
+  patch   "user/type" => 'users#update_type'
 
   resources :conversations do
     resources :messages
