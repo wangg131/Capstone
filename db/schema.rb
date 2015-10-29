@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024091126) do
+ActiveRecord::Schema.define(version: 20151029173712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,10 @@ ActiveRecord::Schema.define(version: 20151024091126) do
   create_table "matches", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "profile_id"
-    t.boolean  "approved?"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "host_approved_seeker?"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.boolean  "seeker_approved_host?"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -64,12 +65,12 @@ ActiveRecord::Schema.define(version: 20151024091126) do
     t.boolean  "dogs"
     t.boolean  "smoking"
     t.integer  "total_roommates"
-    t.integer  "host_id"
     t.string   "parking"
     t.string   "laundry"
     t.integer  "rooms_available"
     t.string   "bathroom_type"
     t.text     "images"
+    t.integer  "user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -91,7 +92,7 @@ ActiveRecord::Schema.define(version: 20151024091126) do
     t.boolean  "smoking"
     t.string   "gender_preference"
     t.string   "date_needed"
-    t.integer  "seeker_id"
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,6 +112,7 @@ ActiveRecord::Schema.define(version: 20151024091126) do
     t.string   "country_code"
     t.string   "authy_id"
     t.boolean  "verified"
+    t.string   "user_type"
   end
 
 end
