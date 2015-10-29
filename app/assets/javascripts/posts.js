@@ -13,7 +13,7 @@ $(document).ready(function() {
       event.preventDefault();
       var button = this;
       var post = $(button).parents('.post');
-      $.ajax('/matches', {
+      $.ajax('/seeker_post_match', {
         type: "POST",
         data: {
         post_id: $(post).attr('id'),
@@ -36,7 +36,7 @@ $(document).ready(function() {
       event.preventDefault();
       var button = this;
       var post = $(button).parents('.post');
-      $.ajax('/matches', {
+      $.ajax('/seeker_post_match', {
         type: "POST",
         data: {
         post_id: $(post).attr('id'),

@@ -13,7 +13,7 @@ $(document).ready(function() {
       event.preventDefault();
       var button = this;
       var profile = $(button).parents('.profile');
-      $.ajax('/matches', {
+      $.ajax('/host_profile_match', {
         type: "POST",
         data: {
         profile_id: $(profile).attr('id'),
@@ -37,7 +37,7 @@ $(document).ready(function() {
       var button = this;
       var profile = $(button).parents('.profile');
 
-      $.ajax('/matches', {
+      $.ajax('/host_profile_match', {
         type: "POST",
         data: {
         profile_id: $(profile).attr('id'),
