@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20151029173712) do
     t.string   "authy_id"
     t.boolean  "verified"
     t.string   "user_type"
+    t.string   "country"
   end
 
 end

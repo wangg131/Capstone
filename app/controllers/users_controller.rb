@@ -82,23 +82,9 @@ class UsersController < ApplicationController
 
   private
 
-
-  # def send_message(message)
-  #   @user = current_user
-  #   twilio_number = ENV['TWILIO_NUMBER']
-  #   @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'],
-  #   ENV['TWILIO_AUTH_TOKEN']
-  #   message = @client.account.messages.create(
-  #     :from => twilio_number,
-  #     :to => @user.country_code+@user.phone_number,
-  #     :body => message
-  #   )
-  #   puts message.to
-  # end
-
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,
-    :phone_number, :street, :city, :state, :zip, :user_type, :country_code,
+    :phone_number, :street, :city, :state, :zip, :country, :user_type, :country_code,
     :authy_id, :post_id, :profile_id)
   end
 
