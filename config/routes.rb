@@ -40,6 +40,9 @@ Rails.application.routes.draw do
 
   get "/user/map" => 'users#index'
 
+  get "user/type" => 'users#determine_type', as: 'user_type'
+  patch "user/type" => 'users#update_type'
+
   resources :conversations do
     resources :messages
    end

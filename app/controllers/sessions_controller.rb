@@ -23,9 +23,8 @@ class SessionsController < ApplicationController
       @user = User.find_or_create_from_omniauth(auth_hash)
       session[:user_id] = @user.id
       @user.update(verified: true)
-
       if @user.user_type == nil
-        redirect_to root_path
+        redirect_to user_type_path(@user)
       else
         redirect_to user_path(@user.id)
       end

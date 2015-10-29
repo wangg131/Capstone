@@ -6,16 +6,16 @@ class User < ActiveRecord::Base
   has_secure_password
   # geocoded_by :address
 
-  # Validations for users registering and loggin in without facebook
-  validates               :email, presence: true, uniqueness: true, format: {with: /@/},
-                          :if => lambda { |user| user.try(:provider) == nil }
-
-  validates_presence_of   :name,
-                          :password,
-                          :password_confirmation,
-                          :phone_number,
-                          :user_type,
-                          :if => lambda { |user| user.try(:provider) == nil }
+  # # Validations for users registering and loggin in without facebook
+  # validates               :email, presence: true, uniqueness: true, format: {with: /@/},
+  #                         :if => lambda { |user| user.try(:provider) == nil }
+  #
+  # validates_presence_of   :name,
+  #                         :password,
+  #                         :password_confirmation,
+  #                         :phone_number,
+  #                         :user_type,
+  #                         :if => lambda { |user| user.try(:provider) == nil }
 
   def self.find_or_create_from_omniauth(auth_hash)
     user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])

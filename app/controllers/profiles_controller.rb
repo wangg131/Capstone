@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
                 #  .where(parking: parking_array)
                 #  .where(bathroom_type: bathroom_array)
                 #  .where(house_type: house_type_array)
-                raise
+              
   end
 
   def new

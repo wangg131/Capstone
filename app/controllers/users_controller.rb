@@ -66,7 +66,20 @@ class UsersController < ApplicationController
   def index
     @user1 = User.address(@user.street, @user.city, @user.state, @user.country)
   end
-  
+
+  def determine_type
+    @user
+  end
+
+  def update_type
+    @user.update_columns(user_type: user_params[:user_type])
+    if @user.user_type == "host"
+      redirect_to new_post_path
+    elsif @user.user_type == "seeker"
+      redirect_to new_profile_path
+    end
+  end
+
   private
 
 

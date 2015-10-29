@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029015202) do
+ActiveRecord::Schema.define(version: 20151024091126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,9 @@ ActiveRecord::Schema.define(version: 20151029015202) do
   create_table "matches", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "profile_id"
-    t.boolean  "host_approved_seeker?"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.boolean  "seeker_approved_host?"
+    t.boolean  "approved?"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -54,22 +53,22 @@ ActiveRecord::Schema.define(version: 20151029015202) do
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.string   "title"
     t.string   "house_type"
     t.text     "description"
     t.integer  "price"
     t.string   "neighborhood"
-    t.integer  "rooms_available"
-    t.integer  "total_roommates"
-    t.string   "bathroom_type"
-    t.string   "gender_preference"
+    t.string   "title"
     t.string   "date_available"
-    t.string   "laundry"
-    t.string   "parking"
+    t.string   "gender_preference"
     t.boolean  "cats"
     t.boolean  "dogs"
     t.boolean  "smoking"
-    t.integer  "user_id"
+    t.integer  "total_roommates"
+    t.integer  "host_id"
+    t.string   "parking"
+    t.string   "laundry"
+    t.integer  "rooms_available"
+    t.string   "bathroom_type"
     t.text     "images"
   end
 
@@ -78,21 +77,21 @@ ActiveRecord::Schema.define(version: 20151029015202) do
     t.datetime "updated_at",        null: false
     t.text     "title"
     t.string   "house_type"
+    t.text     "neighborhoods"
+    t.integer  "rooms_needed"
+    t.string   "bathroom_type"
     t.text     "description"
     t.integer  "min_price"
     t.integer  "max_price"
-    t.text     "neighborhoods"
-    t.integer  "rooms_needed"
-    t.integer  "max_roommates"
-    t.string   "bathroom_type"
-    t.string   "gender_preference"
-    t.string   "date_needed"
-    t.string   "parking"
-    t.string   "laundry"
-    t.boolean  "smoking"
     t.boolean  "cats"
     t.boolean  "dogs"
-    t.integer  "user_id"
+    t.string   "parking"
+    t.string   "laundry"
+    t.integer  "max_roommates"
+    t.boolean  "smoking"
+    t.string   "gender_preference"
+    t.string   "date_needed"
+    t.integer  "seeker_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,11 +108,9 @@ ActiveRecord::Schema.define(version: 20151029015202) do
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"
-    t.string   "user_type"
     t.string   "country_code"
     t.string   "authy_id"
     t.boolean  "verified"
-    t.string   "country"
   end
 
 end
