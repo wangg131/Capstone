@@ -3,9 +3,8 @@ class CreateMatches < ActiveRecord::Migration
     create_table :matches do |t|
       t.integer :post_id
       t.integer :profile_id
-      t.boolean :approved?
-
-      t.timestamps null: false
+      t.boolean :host_approved_seeker?
+      t.boolean :seeker_approved_host?
     end
   end
 end
