@@ -17,11 +17,13 @@ $(document).ready(function() {
         type: "POST",
         data: {
         profile_id: $(profile).attr('id'),
-        approved: true
+        bool: true
         },
         success: function(data) {
           if(data["message"] === "hey"){
-            alert( "It's a match! You can start messaging them now or keep searching.");
+            alert(data.message);
+            hideProfile(profile);
+            nextProfile(profile);
           }else{
           hideProfile(profile);
           nextProfile(profile);
@@ -39,7 +41,7 @@ $(document).ready(function() {
         type: "POST",
         data: {
         profile_id: $(profile).attr('id'),
-        approved: false
+        bool: false
         },
         success: function() {
           hideProfile(profile);

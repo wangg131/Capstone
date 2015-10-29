@@ -20,25 +20,49 @@ class MatchesController < ApplicationController
   def create
     if @user.user_type == "host"
       match = Match.find_by(post_id: @user.post.id, profile_id: params[:profile_id])
+      # if the match record doesn't exist, create it
       if match.nil?
-        # if you don't find the match record, create it
-        create_match = Match.create(post_id: @user.post.id, profile_id: params[:profile_id], host_approved?: params[:approved])
+        create_match = Match.create(post_id: @user.post.id, profile_id: params[:profile_id], host_approved_seeker?: params[:bool])
+        render nothing: true
+      # if the seeker already has selected the 'no button', then update the record
+      elsif match.seeker_approved_host? == false
+        match.update_columns(host_approved_seeker?: params[:bool])
+        render nothing: true
+      # if they both approve each other, then send an alert to the user
+      elsif match.seeker_approved_host?
+        match.update_columns(host_approved_seeker?: params[:bool])
+        if match.host_approved_seeker?
+          render json: {message: "hey"}
+        elsif match.host_approved_seeker? == false
+          render nothing: true
+        end
       else
-        # update the match record if it already exists
-        match.update_columns(host_approved?: params[:approved])
-        render json: {message: "hey"}
+        render nothing: true
       end
+
     elsif @user.user_type == "seeker"
       match = Match.find_by(profile_id: @user.profile.id, post_id: params[:post_id])
       if match.nil?
-        create_match = Match.create(profile_id: @user.profile.id, post_id: params[:post_id], seeker_approved?: params[:approved])
+        create_match = Match.create(profile_id: @user.profile.id, post_id: params[:post_id], seeker_approved_host?: params[:bool])
+        render nothing: true
+      elsif match.host_approved_seeker? == false
+        match.update_columns(seeker_approved_host?: params[:bool])
+        render nothing: true
+      elsif match.host_approved_seeker?
+        match.update_columns(seeker_approved_host?: params[:bool])
+        if match.seeker_approved_host?
+          render json: {message: "hey"}
+        elsif match.seeker_approved_host? == false
+          render nothing: true
+        end
       else
-        match.update_columns(seeker_approved?: params[:approved])
-        render json: {message: "hey"}
+        render nothing: true
       end
     end
   end
 
+
+  
 
   # PATCH/PUT /matches/1
   # PATCH/PUT /matches/1.json
@@ -66,13 +90,7 @@ class MatchesController < ApplicationController
 
   private
 
-  def alert_match
-    if match.host_approved? && match.seeker_approved?
-      flash[:notice] = "Order created - Click <a href='#{user_path(@user.id)}'>here</a> to go back to account!".html_safe
-    end
-  end
-
   def match_params
-    params.require(:match).permit(:post_id, :profile_id, :approved?)
+    params.require(:match).permit(:post_id, :profile_id, :seeker_approved_host?, :host_approved_seeker?)
   end
 end
