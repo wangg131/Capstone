@@ -21,7 +21,7 @@ $(document).ready(function() {
         },
         success: function(data) {
           if(data["message"] === "hey"){
-            alert(data.message);
+            alert( "It's a match! You can start messaging them now or keep searching.");
             hideProfile(profile);
             nextProfile(profile);
           }else{

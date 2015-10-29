@@ -1,35 +1,18 @@
 <div class="ui segment">
-  <h3>Conversations</h3>
-    <% if @conversations %>
-      <div class="ui list">
+    <h3>Your Matches</h3>
+    <div class="ui list">
+      <% if @matches %>
+        <% @matches.each do |match| %>
         <div class="item">
-          <% @conversations.each do |conversation| %>
-            <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-              <% if conversation.sender_id == current_user.id %>
-                <% recipient = User.find(conversation.recipient_id) %>
-              <% else %>
-                <% recipient = User.find(conversation.sender_id) %>
-              <% end %>
-              <%= link_to recipient.name, conversation_messages_path(conversation)%>
+          <div class="ui segment small">
+            <% if @user.user_type == "host" %>
+              <%= match.profile.user.name %><%= link_to ' |  Send Message', conversations_path(sender_id: current_user.id, recipient_id: match.profile.user.id), method: 'post'%>
+            <% elsif @user.user_type == "seeker" %>
+              <%= match.post.user.name %><%= link_to ' |  Send Message', conversations_path(sender_id: current_user.id, recipient_id: match.post.user.id), method: 'post'%>
             <% end %>
-          <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
-    <div class=”ui segment”>
-      <h3>Your Matches</h3>
-      <div class=”ui list”>
-        <% if @matches %>
-          <% @matches.each do |match| %>
-              <div class=”item”>
-                <% if @user.user_type == "host" %>
-                  <%= match.profile.user.name %><%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: match.profile.user.id), method: 'post'%>
-                <% elsif @user.user_type == "seeker" %>
-                  <%= match.post.user.name %><%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: match.post.user.id), method: 'post'%>
-                <% end %>
-              </div>
-          <% end %>
         <% end %>
-      </div>
+      <% end %>
     </div>
 </div>

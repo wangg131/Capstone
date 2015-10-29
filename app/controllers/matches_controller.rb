@@ -34,6 +34,8 @@ class MatchesController < ApplicationController
       else
         render nothing: true
       end
+    else
+      render nothing: true
     end
   end
 
@@ -51,6 +53,8 @@ class MatchesController < ApplicationController
       else
         render nothing: true
       end
+    else
+      render nothing: true
     end
   end
 
