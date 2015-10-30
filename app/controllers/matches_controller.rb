@@ -4,7 +4,11 @@ class MatchesController < ApplicationController
   # after_save :alert_match, only: [:create]
 
   def index
-    @matches = Match.all
+    if @user.user_type == 'host'
+      @matches = Match.where(post_id: @user.post.id, host_approved_seeker?: true, seeker_approved_host?: true)
+    elsif @user.user_type == 'seeker'
+      @matches = Match.where(profile_id: @user.profile.id, host_approved_seeker?: true, seeker_approved_host?: true)
+    end
   end
 
   def show
