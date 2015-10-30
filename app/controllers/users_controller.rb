@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_login, only: [:show]
   before_filter :current_user, only: [:show, :verify, :resend]
-  # geocoded_by :address
+  before_filter :logged_in_user, only: [:new]
 
   def new
     @user = User.new
