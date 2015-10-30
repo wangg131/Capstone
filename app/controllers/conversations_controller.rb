@@ -1,7 +1,8 @@
 class ConversationsController < ApplicationController
   before_filter :current_user
+  
   def index
-    @conversations = Conversation.all
+    # @conversations = Conversation.all
     if @user.user_type == 'host'
       @matches = Match.where(post_id: @user.post.id, host_approved_seeker?: true, seeker_approved_host?: true)
     elsif @user.user_type == 'seeker'
