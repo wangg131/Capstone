@@ -60,7 +60,7 @@ $(document).ready(function() {
     }
 
     function hidePost(post) {
-      $(post).hide();
+      $(post).hide("slow" );
     }
   });
 });

@@ -61,7 +61,7 @@ $(document).ready(function() {
     }
 
     function hideProfile(profile) {
-      $(profile).hide();
+      $(profile).hide("slow");
     }
   });
 });
