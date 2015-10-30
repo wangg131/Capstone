@@ -1,5 +1,6 @@
 <div class="row whole">
   <div class="col-md-8 col-md-offset-2" style="text-align:center">
+    <h3 style="float:right"><%= button_to "Edit Profile", edit_profile_path(@user.profile.id), class: "btn btn-default" %></h3>
     <div class="profile" style="display: none" id= <%= @profile.id %> >
       <h1 class="profile_header"><%= @profile.user.name %> | <small> <%=  @profile.title %></small></h1>
       <h3>About Me:</h3>

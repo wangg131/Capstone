@@ -34,7 +34,9 @@
               <h4>Smoking: Ok</h4>
             <% else %>
               <h4>Smoking: Not allowed</h4>
-            <% end %><br><br>
+            <% end %>
+            <h3><%= button_to "Edit Post", edit_post_path(@user.post.id), class: "btn btn-default" %></h3>
+<br><br>
           </div>
         </div>
     </div>
