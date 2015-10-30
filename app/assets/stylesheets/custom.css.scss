@@ -80,17 +80,15 @@ a.btn.btn-primary.btn-lg.home-btn, {
   padding-left: 2em;
   background-color: rgba(117, 230, 207, .3);
   border: 2px solid #C8FFDA;
-  width: 25%;
-  height: 24em;
+  width: 33%;
+  height: 22em;
 }
 
-#profile-specs {
-  // margin-left: 4em;
-  // padding-left: 2em;
-  background-color: rgba(117, 230, 207, .3);
-  border: 2px solid #C8FFDA;
-  // width: 25%;
-  // height: 24em;
+select#user_user_type{
+  size: 20px;
+  font-size: 18px;
+  width: 100%;
+  -webkit-appearance: menulist-button;
 }
 
 #post-specs > p {
@@ -103,7 +101,7 @@ a.btn.btn-primary.btn-lg.home-btn, {
 
 .fa-check-circle:before {
   color: rgb(0, 204, 0);
-  margin-right: 5px;
+  margin: 1em;
 }
 
 .fa-times-circle:before {
