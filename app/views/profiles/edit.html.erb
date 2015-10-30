@@ -18,8 +18,7 @@
         </div>
 
       <h3>Housing Search Preferences</h3>
-      <p> Complete the fields below for your search preferences. Only housing posts that match your
-        desired criteria will be searchable. To choose multiple options for each category, press the
+      <p> To choose multiple options for each category, press the
         'command' key while selecting. Your preferences can be edited anytime in your settings.</p>
           <div class="form-group">
             <%= f.label :house_type, "Desired Housing Type(s)" %>
@@ -74,7 +73,7 @@
             <%= f.label "Smoking" %> <br />
             <%= f.check_box :smoking %> <br />
           </div><br>
-          <%= f.submit "Add Preferences", class: "btn btn-primary" %>
+          <%= f.submit "Edit Preferences", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
