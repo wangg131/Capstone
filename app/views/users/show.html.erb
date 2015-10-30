@@ -3,23 +3,26 @@
 
   <h1><%= @user.name %></h1>
 
-  <p>Account Status:
+  <h3>Account Status:
     <% if @user.verified? %>
       Verified
     <% else -%>
       Not Verified
     <% end -%>
+  </h3>
 
     <% if !@user.verified? %>
-  <p>
-    <%= link_to "Verify your account now.", show_verify_path %>
-  </p>
+      <h3><%= link_to "Verify your account now.", show_verify_path %></h3>
     <% end -%>
   <br>
     <% if @user.post %>
-      <h3><%= link_to "Look for your roommmate!", profiles_path, class: "search-roomies" %></h3>
-    <% elsif @user.profile%>
-      <h3><%= link_to "Look for your room!", posts_path, class: "search-roomies" %></h3>
+      <h3><%= link_to "Edit Your Room Posting", edit_post_path(@user.post.id), class: "search-roomies" %></h3>
+      <h3><%= link_to "View Your Posting", my_post_path, class: "search-roomies" %></h3>
+
+    <% elsif @user.profile %>
+      <h3><%= link_to "Edit Your Profile", edit_profile_path(@user.profile.id), class: "search-roomies" %></h3>
+      <h3><%= link_to "View Your Profile", my_profile_path, class: "search-roomies" %></h3>
+
     <% end %>
   </div>
 </div>

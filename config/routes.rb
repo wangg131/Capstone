@@ -51,11 +51,6 @@ Rails.application.routes.draw do
     resources :messages
    end
 
-  #  resources :users do
-  #    resources :profiles
-  #    resources :posts
-  #  end
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
