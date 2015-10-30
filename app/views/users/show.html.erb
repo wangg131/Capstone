@@ -16,10 +16,10 @@
   <br>
     <% if @user.post %>
       <h3><%= link_to "Edit Your Room Posting", edit_post_path(@user.post.id), class: "search-roomies" %></h3>
-      <h3><%= link_to "View Your Posting", my_post_path, class: "search-roomies" %></h3>
+      <h3><%= link_to "View Your Posting", post_path(@user.id), class: "search-roomies" %></h3>
     <% elsif @user.profile %>
       <h3><%= link_to "Edit Your Profile", edit_profile_path(@user.profile.id), class: "search-roomies" %></h3>
-      <h3><%= link_to "View Your Profile", my_profile_path, class: "search-roomies" %></h3>
+      <h3><%= link_to "View Your Profile", profile_path(@user.id), class: "search-roomies" %></h3>
     <% end %>
   </div>
 </div>

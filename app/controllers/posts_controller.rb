@@ -21,7 +21,6 @@ class PostsController < ApplicationController
                  .where(parking: parking_array)
                  .where(bathroom_type: bathroom_array)
                  .where(house_type: house_type_array)
-
   end
 
   def new
