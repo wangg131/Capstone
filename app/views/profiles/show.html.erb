@@ -1,7 +1,1 @@
-<div class="row whole">
-  <div class="profile" style="display: none" id= <%= @profile.id %> >
-    <h1 class="profile_header"><%= @profile.user.name %> | <small> <%=  @profile.title %></small></h1>
-    <h3>About Me:</h3>
-    <h4><%= @profile.description %></h4>
-  </div>
-</div>
+<%= render 'shared/profile' %>

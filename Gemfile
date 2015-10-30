@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'traceroute'
 gem 'geocoder'
 gem "jquery-slick-rails"
 
@@ -96,13 +96,9 @@ group :development, :test do
 
   # Pry Console
   gem 'pry-rails'
-  
+
   group :production do
     gem 'puma'
   end
-
-group :production do
-  gem 'puma'
-end
 
 end

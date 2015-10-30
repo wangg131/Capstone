@@ -6,9 +6,9 @@
         <div class="item">
           <div class="ui segment small">
             <% if @user.user_type == "host" %>
-              <%= link_to "#{match.profile.user.name}", match_path(match.profile_id) %><%= link_to ' |  Send Message', conversations_path(sender_id: current_user.id, recipient_id: match.profile.user.id), method: 'post'%>
+              <%= link_to "#{match.profile.user.name}", match_profile_path(match, @post) %><%= link_to ' |  Send Message', conversations_path(sender_id: current_user.id, recipient_id: match.profile.user.id), method: 'post'%>
             <% elsif @user.user_type == "seeker" %>
-              <%= link_to "#{match.post.user.name}", match_path(match.post_id) %><%= link_to ' |  Send Message', conversations_path(sender_id: current_user.id, recipient_id: match.post.user.id), method: 'post'%>
+              <%= link_to "#{match.post.user.name}", match_post_path(match, ) %><%= link_to ' |  Send Message', conversations_path(sender_id: current_user.id, recipient_id: match.post.user.id), method: 'post'%>
             <% end %>
           </div>
         </div>

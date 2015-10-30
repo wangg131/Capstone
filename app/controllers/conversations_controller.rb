@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
   before_filter :current_user
-  
+
   def index
     # @conversations = Conversation.all
     if @user.user_type == 'host'
