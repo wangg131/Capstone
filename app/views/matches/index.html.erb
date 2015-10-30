@@ -1,24 +1,23 @@
 <div class="row">
   <div class="login-form col-md-6 col-md-offset-3">
-
-
-<div class="ui segment">
-    <h2>Your Matches  | <small>Click on their name to view their listing</small></h2>
-    <div class="ui list">
-      <% if @matches %>
-        <% @matches.each do |match| %>
-        <div class="item">
-          <div class="ui segment small">
-            <% if @user.user_type == "host" %>
-              <h3><%= link_to "#{match.profile.user.name}  ", profile_path(match.profile.user.id)%><%= link_to '     <i class="fa fa-envelope"></i>'.html_safe, conversations_path(sender_id: current_user.id, recipient_id: match.profile.user.id), method: 'post'%></h3>
-            <% elsif @user.user_type == "seeker" %>
-              <h3><%= link_to "#{match.post.user.name}  ", post_path(match.post.user.id) %><%= link_to '     <i class="fa fa-envelope"></i>'.html_safe, conversations_path(sender_id: current_user.id, recipient_id: match.post.user.id), method: 'post'%></h3>
+    <div class="ui segment">
+      <h2>Your Matches  | <small>Click on their name to view their listing</small></h2>
+        <div class="ui list">
+          <% if @matches %>
+            <% @matches.each do |match| %>
+            <div class="item">
+              <div class="ui segment small">
+                <% if @user.user_type == "host" %>
+                  <h3><%= link_to "#{match.profile.user.name}  ", profile_path(match.profile.user.id)%><%= link_to '     <i class="fa fa-envelope"></i>'.html_safe, conversations_path(sender_id: current_user.id, recipient_id: match.profile.user.id), method: 'post'%></h3>
+                <% elsif @user.user_type == "seeker" %>
+    
+                  <h3><%= link_to "#{match.post.user.name}  ", post_path(match.post.user.id) %><%= link_to '     <i class="fa fa-envelope"></i>'.html_safe, conversations_path(sender_id: current_user.id, recipient_id: match.post.user.id), method: 'post'%></h3>
+                <% end %>
+              </div>
+            </div>
             <% end %>
-          </div>
+          <% end %>
         </div>
-        <% end %>
-      <% end %>
     </div>
-</div>
-</div>
+  </div>
 </div>
