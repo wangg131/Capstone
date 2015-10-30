@@ -1,7 +1,8 @@
 require 'json'
+
 class ProfilesController < ApplicationController
   before_filter :current_user
-  before_filter :neighborhoods_housetypes, only:[:new, :create]
+  before_filter :neighborhoods_housetypes, only:[:new, :create, :edit]
 
   def index
     @profiles = Profile.where(cats: @user.post.cats)
@@ -16,12 +17,11 @@ class ProfilesController < ApplicationController
                  .where("parking LIKE ?", "%#{@user.post.parking}%")
                  .where("bathroom_type LIKE ?", "%#{@user.post.bathroom_type}%")
                  .where("house_type LIKE ?", "%#{@user.post.house_type}%")
-            
+
   end
 
   def new
     @profile = Profile.new
-    neighborhoods_housetypes
   end
 
   def create
@@ -46,7 +46,6 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    neighborhoods_housetypes
     session[:profile_id] = @user.profile.id
     @profile = Profile.find(session[:profile_id])
   end
