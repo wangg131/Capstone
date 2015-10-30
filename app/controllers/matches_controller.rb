@@ -1,21 +1,5 @@
 class MatchesController < ApplicationController
   before_filter :current_user
-  before_action :set_match, only: [:show, :edit, :update, :destroy]
-  # after_save :alert_match, only: [:create]
-
-  def index
-    @matches = Match.all
-  end
-
-  def show
-    @match = Match.find(params[:id])
-  end
-
-  def new
-    @match = Match.new
-  end
-
-  def edit; end
 
   def host_profile_match
     match = Match.find_by(post_id: @user.post.id, profile_id: params[:profile_id])
