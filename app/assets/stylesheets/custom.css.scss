@@ -84,6 +84,15 @@ a.btn.btn-primary.btn-lg.home-btn, {
   height: 24em;
 }
 
+#profile-specs {
+  // margin-left: 4em;
+  // padding-left: 2em;
+  background-color: rgba(117, 230, 207, .3);
+  border: 2px solid #C8FFDA;
+  // width: 25%;
+  // height: 24em;
+}
+
 #post-specs > p {
   font-size:  1em;
 }
@@ -94,7 +103,7 @@ a.btn.btn-primary.btn-lg.home-btn, {
 
 .fa-check-circle:before {
   color: rgb(0, 204, 0);
-  margin: 1em;
+  margin-right: 5px;
 }
 
 .fa-times-circle:before {
