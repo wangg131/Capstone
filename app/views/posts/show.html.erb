@@ -35,7 +35,9 @@
             <% else %>
               <h4>Smoking: Not allowed</h4>
             <% end %>
-            <h3><%= button_to "Edit Post", edit_post_path(@post.id), class: "btn btn-default", method: :get %></h3>
+            <% if @current_user.id == @post.user.id %>
+              <h3><%= button_to "Edit Post", edit_post_path(@post.id), class: "btn btn-default", method: :get %></h3>
+            <% end %>
 <br><br>
           </div>
         </div>

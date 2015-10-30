@@ -82,6 +82,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :signed_in?
 
+  def disable_nav
+    @disable_nav = true
+  end
+
   protected
 
   def authenticate!
