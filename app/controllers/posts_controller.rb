@@ -1,7 +1,8 @@
 require 'json'
+
 class PostsController < ApplicationController
   before_filter :current_user
-  before_filter :neighborhoods_housetypes, only:[:new, :create]
+  before_filter :neighborhoods_housetypes, only:[:new, :create, :edit]
 
   def index
     neighborhoods_array = JSON.parse(@user.profile.neighborhoods)
@@ -26,7 +27,6 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @photo = @post.photos.build
-    neighborhoods_housetypes
   end
 
   def create
@@ -43,19 +43,18 @@ class PostsController < ApplicationController
   end
 
   def show
-    session[:post_id] = @user.post.id
-    @post = Post.find(session[:post_id])
+    user = User.find(params[:id])
+    @post = user.post
     @photos = @post.photos.all
   end
 
   def edit
-    neighborhoods_housetypes
     session[:post_id] = @user.post.id
     @post = Post.find(session[:post_id])
   end
 
   def update
-    session[:profile_id] = @user.post.id
+    session[:post_id] = @user.post.id
     @post = Post.find(session[:post_id])
     if @post.update(params[:post].permit(:title,:description, :house_type, :neighborhood, :rooms_available, :bathroom_type, :price, :cats, :dogs, :parking, :laundry, :total_roommates, :smoking))
       if params[:images]

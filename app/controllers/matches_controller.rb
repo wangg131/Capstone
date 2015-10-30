@@ -1,6 +1,14 @@
 class MatchesController < ApplicationController
   before_filter :current_user
 
+  def index
+    if @user.user_type == 'host'
+      @matches = Match.where(post_id: @user.post.id, host_approved_seeker?: true, seeker_approved_host?: true)
+    elsif @user.user_type == 'seeker'
+      @matches = Match.where(profile_id: @user.profile.id, host_approved_seeker?: true, seeker_approved_host?: true)
+    end
+  end
+
   def host_profile_match
     match = Match.find_by(post_id: @user.post.id, profile_id: params[:profile_id])
     # if the match record doesn't exist, create it

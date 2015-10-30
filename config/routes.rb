@@ -34,8 +34,8 @@ Rails.application.routes.draw do
 
   get     "/profiles"               => 'profiles#index'
   get     "/posts"                  => 'posts#index'
-  get     "/my_profile"             => 'profiles#show', as: 'my_profile'
-  get     "/my_post"                => 'posts#show', as: 'my_post'
+  get     "/profile/:id"             => 'profiles#show', as: 'profile'
+  get     "/post/:id"                => 'posts#show', as: 'post'
 
   post    "/host_profile_match"        => 'matches#host_profile_match', as: 'match_post_create'
   post    "/seeker_post_match"         => 'matches#seeker_post_match', as: 'seeker_post_match'
@@ -46,6 +46,8 @@ Rails.application.routes.draw do
 
   get     "user/type" => 'users#determine_type', as: 'user_type'
   patch   "user/type" => 'users#update_type'
+
+  get     "matches" => 'matches#index', as: 'matches_path'
 
   resources :conversations do
     resources :messages
