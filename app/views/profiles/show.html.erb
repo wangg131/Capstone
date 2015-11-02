@@ -5,10 +5,10 @@
     <% end %>
     <div class="profile" style="display: none" id= <%= @profile.id %> >
       <h1 class="profile_header"><%= @profile.user.name %> | <small> <%=  @profile.title %></small></h1>
-    
+
       <h3>About Me:</h3>
         <h4><%= @profile.description %></h4>
-        <div id="profile-specs">
+
       <h3>Looking For:</h3>
         <h4>Neighborhood: <%= JSON.parse(@profile.neighborhoods).join(",   ")%>
         </h4>
@@ -16,8 +16,6 @@
         <h4>Bathroom: <%= JSON.parse(@profile.bathroom_type).join(",   ") %></h4>
         <h4>Laundry: <%= JSON.parse(@profile.laundry).join(",   ") %></h4>
         <h4>Parking: <%= JSON.parse(@profile.parking).join(",   ") %></h4>
-      </div>
-      </div>
     </div>
   </div>
 </div>
