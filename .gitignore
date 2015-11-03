@@ -32,3 +32,4 @@ public/uploads/
 /vendor/cache
 
 .ebextensions/ruby.config
+.ebextensions/01_files.config
